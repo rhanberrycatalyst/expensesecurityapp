@@ -1,7 +1,7 @@
 package com.catalyst.springboot.webservices;
 
-import com.catalyst.springboot.entities.Employee;
-import com.catalyst.springboot.services.EmployeeService;
+import com.catalyst.springboot.entities.User;
+import com.catalyst.springboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,14 +16,14 @@ import java.security.Principal;
 @RestController
 public class SecurityWebService {
     @Autowired
-    private EmployeeService employeeService;
+    private UserService userService;
 
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public void setuserService(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(value="/security/current", method=RequestMethod.GET)
-    public Employee currentUser(Principal principal){
-        return employeeService.getEmployeeByUsername(principal.getName());
+    public User currentUser(Principal principal){
+        return userService.getUserByUsername(principal.getName());
     }
 }

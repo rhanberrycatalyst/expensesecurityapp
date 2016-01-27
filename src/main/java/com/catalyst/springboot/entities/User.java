@@ -10,10 +10,10 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-public class Employee {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer employeeId;
+	private Integer userId;
 	private String firstname;
 	private String lastname;
 	private Integer age;
@@ -25,12 +25,12 @@ public class Employee {
 	private String password;
 	 
 
-	public void setEmployeeId(Integer employeeId) {
-		this.employeeId = employeeId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
-	public Integer getEmployeeId() {
-		return employeeId;
+	public Integer getUserId() {
+		return userId;
 	}
 
 	public String getFirstname() {
@@ -61,10 +61,6 @@ public class Employee {
 	}
 	
 	
- 
-	
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -86,19 +82,19 @@ public class Employee {
 	@Override
 	public int hashCode() {
 		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
-		builder.append(employeeId);
+		builder.append(userId);
 		return builder.toHashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Employee)){
+		if(!(obj instanceof User)){
 			return false;
 		}
-		Employee employee = (Employee) obj;
+		User user = (User) obj;
  
 		EqualsBuilder builder = new EqualsBuilder();
-		builder.append(this.employeeId, employee.employeeId);
+		builder.append(this.userId, user.userId);
 		return builder.isEquals();
 		
 	}
