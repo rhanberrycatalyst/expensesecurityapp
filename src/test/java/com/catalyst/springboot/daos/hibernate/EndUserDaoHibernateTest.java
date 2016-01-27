@@ -17,17 +17,17 @@ import javax.persistence.TypedQuery;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.catalyst.springboot.entities.User;
+import com.catalyst.springboot.entities.EndUser;
 
-public class UserDaoHibernateTest {
+public class EndUserDaoHibernateTest {
 
-	private UserDaoHibernate target;
+	private EndUserDaoHibernate target;
 
 	private EntityManager mockEm;
 
 	@Before
 	public void setup() {
-		target = new UserDaoHibernate();
+		target = new EndUserDaoHibernate();
 		mockEm = mock(EntityManager.class);
 		target.setEm(mockEm);
 	}
@@ -44,14 +44,14 @@ public class UserDaoHibernateTest {
 	@Test
 	public void testGetAllusers() {
 
-		List<User> expected = new ArrayList<>();
+		List<EndUser> expected = new ArrayList<>();
 
-		TypedQuery<User> mockTypedQuery = mock(TypedQuery.class);
+		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(User.class))).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.getResultList()).thenReturn(expected);
 
-		target.getAllUsers();
+		target.getAllEndUsers();
 
 		verify(mockTypedQuery, times(1)).getResultList();
 
@@ -59,21 +59,21 @@ public class UserDaoHibernateTest {
 
 	@Test
 	public void testGetByuserId() {
-		TypedQuery<User> mockTypedQuery = mock(TypedQuery.class);
+		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(User.class))).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
 		 		 
 		
 		
-		target.getByUserId(0);
+		target.getByEndUserId(0);
 		verify(mockTypedQuery, times(1)).setParameter(eq("id"), eq(0));
 		
 	}
 
 	@Test
 	public void testUpdate() {
-		User expected = new User();
+		EndUser expected = new EndUser();
 		expected.setUserId(1);
 	
 		target.update(expected);
@@ -83,12 +83,12 @@ public class UserDaoHibernateTest {
 
 	@Test
 	public void testDelete() {
-		User userToDelete = new User();
+		EndUser userToDelete = new EndUser();
 		userToDelete.setUserId(5);
 		
-		TypedQuery<User> mockTypedQuery = mock(TypedQuery.class);
+		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(User.class))).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.getSingleResult()).thenReturn(userToDelete);
 		

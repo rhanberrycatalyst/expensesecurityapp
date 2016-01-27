@@ -2,16 +2,16 @@ package com.catalyst.springboot.services;
 
 import java.util.List;
 
-import com.catalyst.springboot.entities.User;
+import com.catalyst.springboot.entities.EndUser;
 
-public interface UserService {
+public interface EndUserService {
 
 	/**
 	 * Add a new user to the application.
 	 * 
 	 * @param user
 	 */
-	void add(User user);
+	void add(EndUser user);
 
 	/**
 	 * Update the information in an existing user. The userId is used to
@@ -19,7 +19,7 @@ public interface UserService {
 	 * 
 	 * @param user
 	 */
-	void update(User user);
+	void update(EndUser user);
 
 	/**
 	 * Removes the information about an user from the application if their
@@ -39,7 +39,7 @@ public interface UserService {
 	 *            returned.
 	 * @return
 	 */
-	List<User> getUsers(Boolean isActive);
+	List<EndUser> getUsers(Boolean isActive);
 
 	/**
 	 * Retrieve a single user's information if that user's userId
@@ -51,7 +51,7 @@ public interface UserService {
 	 *             - the value of userId provided should not be null or less
 	 *             than 0
 	 */
-	User getByUserId(Integer userId) throws InvalidInputException;
+	EndUser getByUserId(Integer userId) throws InvalidInputException;
 
 	/**
 	 * Retrieve a single user's information if that user's username
@@ -60,6 +60,6 @@ public interface UserService {
 	 * @param username
 	 * @return
 	 */
-	User getUserByUsername(String username);
+	EndUser getUserByUsername(String username);
 
 }

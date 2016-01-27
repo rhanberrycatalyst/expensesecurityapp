@@ -3,17 +3,17 @@ package com.catalyst.springboot.daos.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.catalyst.springboot.daos.UserDao;
-import com.catalyst.springboot.entities.User;
+import com.catalyst.springboot.daos.EndUserDao;
+import com.catalyst.springboot.entities.EndUser;
 
 
-public class UserDaoImpl implements UserDao {
+public class EndUserDaoImpl implements EndUserDao {
 
-	private List<User> users = new ArrayList<>();
+	private List<EndUser> users = new ArrayList<>();
 	private Integer nextId = 1;
 	
 	@Override
-	public void add(User user) {
+	public void add(EndUser user) {
 		user.setUserId(nextId);
 		nextId++;
 		users.add(user);
@@ -21,20 +21,20 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public void update(User user) {
+	public void update(EndUser user) {
 		Integer index = users.indexOf(user);
 		users.set(index, user);
 	}
 	
 	
 	@Override
-	public List<User> getAllUsers() { 
+	public List<EndUser> getAllEndUsers() { 
 		return users;
 	}
 	
 	@Override
-	public User getByUserId(Integer userId) {
-		for(User e : users){
+	public EndUser getByEndUserId(Integer userId) {
+		for(EndUser e : users){
 			if(e.getUserId().equals(userId)){
 				return e;
 			}
@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void delete(Integer userId) {
-		User user = new User();
+		EndUser user = new EndUser();
 		user.setUserId(userId);
 		 
 		users.remove(user);
@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getUserByUsername(String username) {
+	public EndUser getEndUserByEndUsername(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
