@@ -1,0 +1,32 @@
+<head>
+</head>
+
+<body>
+<div>
+	<label for="userName">Username: </label>
+	<input id="userName" type="email" ng-valid-required/>
+	<span ng-show="userName.$invalid">User name is required and must be an e-mail addess</span>
+</div>
+<div>
+	<label for="passWord">Password: </label>
+	<input id="passWord" type="password" name="pw1" ng-model="pw1" ng-valid-required/>
+	<span ng-show="passWord.$invalid">Password is required</span>
+</div>
+<div>
+	<label for="confirmPassword">Confirm: </label>
+	<input id="confirmPassword" type="password" name="pw2" ng-model="pw2" ng-valid-required pw-check="pw1"/>
+	<span ng-show="pw2.$error.pwmatch"></span>
+</div>
+<div>
+	<label for="firstName">First Name: </label>
+	<input id="firstName" type="text" required/>
+	<span ng-show="firstName.$invalid">First name is required</span>
+</div>
+<div>
+	<label for="lastName">Last Name: </label>
+	<input id="lastName" type="text" required/>
+	<span ng-show="lastName.$invalid">Last name is required</span>
+</div>
+	<button ng-click="validate()">Register</button>
+	<button ng-click="changeView('/')">Cancel</button>
+</body>

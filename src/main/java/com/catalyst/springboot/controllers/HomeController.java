@@ -31,7 +31,10 @@ public class HomeController {
 	public String employeeUpdate() {
 		return "/employee-update.html";
 	}
-
+	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)
+	public String login() {
+		return "/login.html";
+	}
 
 	@RequestMapping(value = "/employee/delete", method = RequestMethod.GET)
 	public String employeeDelete() {
