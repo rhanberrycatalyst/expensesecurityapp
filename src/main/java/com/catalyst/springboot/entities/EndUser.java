@@ -1,9 +1,16 @@
 package com.catalyst.springboot.entities;
 
+<<<<<<< HEAD:src/main/java/com/catalyst/springboot/entities/EndUser.java
+=======
+import java.util.Set;
+
+>>>>>>> Sprint_1:src/main/java/com/catalyst/springboot/entities/EndUser.java
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -17,8 +24,12 @@ public class EndUser {
 	private String lastname;
 	private String email;
 	private String password;
+	private Boolean isAdmin;
 	 
-
+	@ManyToMany
+	@JoinTable(name = "projectdevs")
+	Set<Project> projects;
+	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
@@ -77,5 +88,16 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+<<<<<<< HEAD:src/main/java/com/catalyst/springboot/entities/EndUser.java
+=======
+
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+>>>>>>> Sprint_1:src/main/java/com/catalyst/springboot/entities/EndUser.java
  
 }
