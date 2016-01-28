@@ -47,21 +47,4 @@ public class EndUserWebService {
 	public void updateuser(@PathVariable Integer id, @RequestBody EndUser user){
 		userService.update(user);
 	}
-	
-	@RequestMapping(value="/users/{id}", method = RequestMethod.DELETE)
-	public void removeuser(@PathVariable Integer id){
-		
-		userService.delete(id);
-		 
-	}
-	 
-	
-	
- 
-	
- 
-	
-	
-	
-	
 }

@@ -11,6 +11,11 @@ public class HomeController {
 	public String home() {
 		return employeeIndex();
 	}
+	
+	@RequestMapping(value = "/project", method = RequestMethod.GET)
+	public String projectHome() {
+		return "/project-create.html";
+	}
 
 	@RequestMapping(value = "/about-us", method = RequestMethod.GET)
 	public String about() {

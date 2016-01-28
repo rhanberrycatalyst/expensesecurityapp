@@ -1,5 +1,6 @@
 package com.catalyst.springboot.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer projectId;
+	
+	@Column(unique=true)
 	private String name;
 	
 	@ManyToOne

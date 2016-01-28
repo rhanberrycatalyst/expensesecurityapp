@@ -1,5 +1,6 @@
 package com.catalyst.springboot.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -26,6 +28,10 @@ public class EndUser {
 	@ManyToMany
 	@JoinTable(name = "projectdevs")
 	Set<Project> projects;
+	
+	@ManyToMany
+	private Set<Project> userProjects = new HashSet<>();
+	
 	
 	public void setUserId(Integer userId) {
 		this.userId = userId;

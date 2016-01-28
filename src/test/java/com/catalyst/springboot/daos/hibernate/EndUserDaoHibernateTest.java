@@ -81,24 +81,4 @@ public class EndUserDaoHibernateTest {
 		verify(mockEm, times(1)).merge(expected);
 	}
 
-	@Test
-	public void testDelete() {
-		EndUser userToDelete = new EndUser();
-		userToDelete.setUserId(5);
-		
-		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
-
-		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
-		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
-		when(mockTypedQuery.getSingleResult()).thenReturn(userToDelete);
-		
-		target.delete(5);
-		
-		verify(mockEm, times(1)).remove(userToDelete);
-		verify(mockTypedQuery, times(1)).setParameter(eq("id"), eq(5));
-		
-	}
-	
- 
-
 }

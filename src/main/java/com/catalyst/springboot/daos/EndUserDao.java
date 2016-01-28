@@ -37,20 +37,12 @@ public interface EndUserDao {
 	EndUser getByEndUserId(Integer endUserId);
 
 	/**
-	 * Deletes information about an endUser with a matching endUserId
-	 * @param endUserId
-	 */
-	void delete(Integer endUserId);
-
-	/**
 	 * Retrieves an endUser with a matching endUsername.
 	 * 
 	 * @param endUsername
 	 * @return
 	 */
 	EndUser getEndUserByEndUsername(String endUsername);
-	
-	
 	
 
 }

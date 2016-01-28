@@ -45,10 +45,4 @@ public class UserWebServiceTest {
 		verify(mockuserService, times(1)).update(null);
 	}
 
-	@Test
-	public void testRemoveuser() throws Exception {
-		userWebService.removeuser(null);
-		verify(mockuserService, times(1)).delete(null);
-	}
-
 }

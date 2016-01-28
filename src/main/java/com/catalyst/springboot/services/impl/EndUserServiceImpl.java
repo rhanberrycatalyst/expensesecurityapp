@@ -74,12 +74,6 @@ public class EndUserServiceImpl implements EndUserService {
 	}
 
 	@Override
-	public void delete(Integer userId) {
-		endUserDao.delete(userId);
-
-	}
-
-	@Override
 	public EndUser getUserByUsername(String username) {
 		return endUserDao.getEndUserByEndUsername(username);
 
