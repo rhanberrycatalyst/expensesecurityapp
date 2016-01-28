@@ -13,14 +13,20 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
 		submit();
 	}
     $scope.sendPost = function() {
-        var data = JSON.stringify({
-                username: $scope.userName,
-                password: $scope.passWord,
-                firstname: $scope.firstName,
-                lastname: $scope.lastName
+    	console.log(userName.value);
+        var userData = JSON.stringify({
+        		username:userName.value,
+                password:passWord.value,
+                firstname:firstName.value,
+                lastname:lastName.value
             })
-        $http.post("/users", data).success(function(data, status) {
-            console.log(data);
-        })
-    }             
+            console.log(userData)
+            $http.post("/users", userData).
+            success(function(data, status, headers, config){
+            	console.log(data);
+            }).
+            error(function(data, status, headers, config){
+            	console.log("fail");
+            });
+    }
 }]);
