@@ -1,32 +1,31 @@
-<head>
-</head>
 
-<body>
+<form name="myForm">
 <div>
 	<label for="userName">Username: </label>
-	<input id="userName" type="email" ng-valid-required/>
+	<input id="userName" type="email" ng-model="formData.userName" required/>
 	<span ng-show="userName.$invalid">User name is required and must be an e-mail addess</span>
 </div>
 <div>
 	<label for="passWord">Password: </label>
-	<input id="passWord" type="password" name="pw1" ng-model="pw1" ng-valid-required/>
+	<input id="passWord" type="password" ng-model="formData.passWord" ng-pattern="/(?=.*[^a-zA-z])/" required/>
 	<span ng-show="passWord.$invalid">Password is required</span>
 </div>
 <div>
-	<label for="confirmPassword">Confirm: </label>
-	<input id="confirmPassword" type="password" name="pw2" ng-model="pw2" ng-valid-required pw-check="pw1"/>
+	<label for="password_c">Confirm: </label>
+	<input id="password_c" type="password" ng-model="forData.password_c" valid-password-c required/>
 	<span ng-show="pw2.$error.pwmatch"></span>
 </div>
 <div>
 	<label for="firstName">First Name: </label>
-	<input id="firstName" type="text" required/>
+	<input id="firstName" type="text" ng-model="formData.firstName" required/>
 	<span ng-show="firstName.$invalid">First name is required</span>
 </div>
 <div>
 	<label for="lastName">Last Name: </label>
-	<input id="lastName" type="text" required/>
+	<input id="lastName" type="text" ng-model="formData.lastName" required/>
 	<span ng-show="lastName.$invalid">Last name is required</span>
 </div>
-	<button ng-click="validate()">Register</button>
+	<button ng-click="sendPost()">Submit1</button>
+	<button type="submit" class="btn" bg-disabled="!myForm.$valid">Submit</button>
 	<button ng-click="changeView('/')">Cancel</button>
-</body>
+</form>

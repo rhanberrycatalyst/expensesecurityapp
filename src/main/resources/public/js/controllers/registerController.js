@@ -4,18 +4,7 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
 		//TO-DO check to see if user name is an e-mail
 		
 		//TO-DO check to see if user name is taken
-		$http.get("database call on username")
-		.then(function(response){
-			checkUser = response.data;
-			if(checkUser == $scope.userName)
-				{
-					//error username already taken
-				}
-			else
-				{
-					//userName pass
-				}
-		})
+		
 		//TO-DO check to make sure first name is entered
 		//TO-DO check to make sure last name is entered
 		//TO-DO check to see if password is at least 8 characters long
@@ -23,7 +12,15 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
 		//TO-DO check to make sure password and confirm are the same
 		submit();
 	}
-	function submit(){
-		
-	}
+    $scope.sendPost = function() {
+        var data = JSON.stringify({
+                username: $scope.userName,
+                password: $scope.passWord,
+                firstname: $scope.firstName,
+                lastname: $scope.lastName
+            })
+        $http.post("/users", data).success(function(data, status) {
+            console.log(data);
+        })
+    }             
 }]);
