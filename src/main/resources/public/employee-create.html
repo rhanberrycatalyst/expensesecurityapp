@@ -10,19 +10,18 @@
     $(document).ready(function() {
         $("#submit").click(function() {
 
-            var employee = {};
+            var user = {};
 
-            employee.firstname = $("#firstname").val();
-            employee.lastname = $("#lastname").val();
-            employee.age = $("#age").val();
-            employee.active = $("#active").val();
-            employee.password = $("#password").val();
-            employee.username = $("#username").val();
+            user.firstname = $("#firstname").val();
+            user.lastname = $("#lastname").val();
+            user.password = $("#password").val();
+            user.email = $("#username").val();
+            user.isAdmin = false;
 
             $.ajax({
-                url : '/employees',
+                url : '/users',
                 method : 'POST',
-                data : JSON.stringify(employee),
+                data : JSON.stringify(user),
                 contentType : 'application/json'
             }).then(function() {
                 window.location.href = "/employee/index";
@@ -70,24 +69,12 @@
                <input id="lastname" type="text" value="" />
           </div>
           <div>
-               <label for="age">age</label>
-               <input id="age" type="text" value="" />
-          </div>
-          <div>
-               <label for="username">Username: </label>
+               <label for="username">Email: </label>
                <input id="username" type="text" value="" />
           </div>
           <div>
                <label for="password">Password: </label>
                <input id="password" type="password" value="" />
-          </div>
-          <div>
-
-               <label for="active">Is active?:</label>
-               <select id="active">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-               </select>
           </div>
           <div>
                <button id="submit" type="button">Submit</button>
