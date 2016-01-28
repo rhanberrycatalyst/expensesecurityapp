@@ -27,16 +27,13 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
 
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("root")
-                .authorities("user");
-
+       
         auth.jdbcAuthentication()
                 .dataSource(datasource)
                 .passwordEncoder(encoder())
-                .usersByUsernameQuery("SELECT username, password, is_active FROM employee WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, 'USER' FROM employee WHERE username=?");//this fakes a user role
+                .usersByUsernameQuery("SELECT email, password FROM enduser WHERE email=?")
+                .authoritiesByUsernameQuery("SELECT enduser.email,roles.title FROM enduser JOIN user_role ON enduser.userid=user_role.userid JOIN roles ON roles.roleid=user_role.roleid WHERE email=?");//this fakes a user role
+          
     }
 
     @Override

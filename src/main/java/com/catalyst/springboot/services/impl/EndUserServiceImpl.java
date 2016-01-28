@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.catalyst.springboot.daos.UserDao;
-import com.catalyst.springboot.entities.User;
-import com.catalyst.springboot.services.UserService;
+import com.catalyst.springboot.daos.EndUserDao;
+import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.services.EndUserService;
 import com.catalyst.springboot.services.InvalidInputException;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class EndUserServiceImpl implements EndUserService {
 
 	@Autowired
-	private UserDao userDao;
+	private EndUserDao endUserDao;
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -26,21 +26,16 @@ public class UserServiceImpl implements UserService {
 		this.encoder = encoder;
 	}
 
-	public void setuserDao(UserDao userDao) {
-		this.userDao = userDao;
+	public void setuserDao(EndUserDao userDao) {
+		this.endUserDao = userDao;
 	}
 
 	@Override
-	public List<User> getUsers(Boolean active) {
+	public List<EndUser> getUsers(Boolean active) {
 
-		List<User> users = userDao.getAllUsers();
+		List<EndUser> users = endUserDao.getAllEndUsers();
 		if (active != null) {
-			List<User> activeusers = new ArrayList<>();
-			for (User e : users) {
-				if (e.isActive().equals(active)) {
-					activeusers.add(e);
-				}
-			}
+			List<EndUser> activeusers = new ArrayList<>();
 			return activeusers;
 		}
 
@@ -48,16 +43,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void add(User user) {
+	public void add(EndUser user) {
 
 		String encryptedPass = encoder.encode(user.getPassword());
 		user.setPassword(encryptedPass);
-		userDao.add(user);
+		endUserDao.add(user);
 	}
 
 	@Override
-	public void update(User user) {
-		String oldPassword = userDao.getByUserId(user.getUserId()).getPassword();
+	public void update(EndUser user) {
+		String oldPassword = endUserDao.getByEndUserId(user.getUserId()).getPassword();
 		String newPassword = user.getPassword();
 
 		if (StringUtils.isEmpty(newPassword) || newPassword.equals(oldPassword)) {
@@ -67,26 +62,26 @@ public class UserServiceImpl implements UserService {
 		} else {
 			user.setPassword(oldPassword);
 		}
-		userDao.update(user);
+		endUserDao.update(user);
 	}
 
 	@Override
-	public User getByUserId(Integer userId) throws InvalidInputException {
+	public EndUser getByUserId(Integer userId) throws InvalidInputException {
 		if (userId == null || userId < 0) {
 			throw new InvalidInputException("userId.NullOrNegative");
 		}
-		return userDao.getByUserId(userId);
+		return endUserDao.getByEndUserId(userId);
 	}
 
 	@Override
 	public void delete(Integer userId) {
-		userDao.delete(userId);
+		endUserDao.delete(userId);
 
 	}
 
 	@Override
-	public User getUserByUsername(String username) {
-		return userDao.getUserByUsername(username);
+	public EndUser getUserByUsername(String username) {
+		return endUserDao.getEndUserByEndUsername(username);
 
 	}
 

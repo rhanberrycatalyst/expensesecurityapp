@@ -7,16 +7,16 @@ import static org.mockito.Mockito.verify;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.catalyst.springboot.services.UserService;
+import com.catalyst.springboot.services.EndUserService;
 
 public class UserWebServiceTest {
-	private UserService mockuserService;
-	private UserWebService userWebService;
+	private EndUserService mockuserService;
+	private EndUserWebService userWebService;
 
 	@Before
 	public void createuserWebService() throws Exception {
-		mockuserService = mock(UserService.class);
-		userWebService = new UserWebService();
+		mockuserService = mock(EndUserService.class);
+		userWebService = new EndUserWebService();
 		userWebService.setuserService(mockuserService);
 	}
 
