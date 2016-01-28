@@ -3,34 +3,38 @@
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
 	
-	$stateProvider.state("home", {
+	$stateProvider.state("index", {
 		url: '/',
-		templateUrl: 'homeView.html',
-		controller: 'homeController'
+		templateUrl: 'index.html'
 		})
 		.state("login", {
 			url: '/loginpage',
-			templateUrl: 'login.html',
-			controller: 'lginController'
+			templateUrl: 'templates/login.html',
+			controller: 'loginController'
+		})
+		.state("home", {
+			url: '/home',
+			templateUrl: 'templates/homeView.html',
+			controller: 'homeController'
 		})
 		.state("register", {
 			url: '/register',
-			templateUrl: 'register.html',
+			templateUrl: 'templates/register.html',
 			controller: 'registerController'
 		})
 		.state("createProject", {
 			url: '/createProject',
-			templateUrl: 'createProject.html',
+			templateUrl: 'templates/createProject.html',
 			controller: 'projectController'
 		})
 		.state("createReport", {
 			url: '/createReport',
-			templateUrl: 'createReport.html',
+			templateUrl: 'templates/createReport.html',
 			controller: 'reportController'
 		})
 		.state("detailView", {
 			url: '/detailView',
-			templateUrl: 'detail.html',
+			templateUrl: 'templates/detail.html',
 			controller: 'detailController'
 	});
 }]);

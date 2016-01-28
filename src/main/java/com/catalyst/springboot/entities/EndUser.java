@@ -1,30 +1,32 @@
 package com.catalyst.springboot.entities;
 
-import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-public class User {
+public class EndUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
 	private String firstname;
 	private String lastname;
-	private Integer age;
-	
-	@Column(name="is_active")
-	private Boolean isActive;
-	
-	private String username;
+	private String email;
 	private String password;
+	private Boolean isAdmin;
 	 
-
+	@ManyToMany
+	@JoinTable(name = "projectdevs")
+	Set<Project> projects;
+	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
@@ -45,30 +47,7 @@ public class User {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public Integer getAge() {
-		return age;
-	}
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-	
-	public void setActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-	public Boolean isActive() {
-		return isActive;
-	}
-	
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
+		
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -88,15 +67,31 @@ public class User {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof User)){
+		if(!(obj instanceof EndUser)){
 			return false;
 		}
-		User user = (User) obj;
+		EndUser user = (EndUser) obj;
  
 		EqualsBuilder builder = new EqualsBuilder();
 		builder.append(this.userId, user.userId);
 		return builder.isEquals();
 		
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
  
 }
