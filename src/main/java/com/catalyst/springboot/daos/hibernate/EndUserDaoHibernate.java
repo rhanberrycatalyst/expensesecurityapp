@@ -34,21 +34,21 @@ public class EndUserDaoHibernate implements EndUserDao{
 	public List<EndUser> getAllEndUsers() {
 		
 		return em.
-				createQuery("SELECT e FROM endUser e", EndUser.class).
+				createQuery("SELECT e FROM enduser e", EndUser.class).
 				getResultList();
 	}
 
 	@Override
 	public EndUser getByEndUserId(Integer endUserId) {	
 		return em
-				.createQuery("SELECT e FROM endUser e WHERE e.endUserId = :id", EndUser.class)
+				.createQuery("SELECT e FROM enduser e WHERE e.userid = :id", EndUser.class)
 				.setParameter("id", endUserId)
 				.getSingleResult();	 
 	}
 
 	@Override
 	public EndUser getEndUserByEndUsername(String endUsername){
-		return em.createQuery("SELECT e FROM endUser e WHERE e.endUsername = :endUsername", EndUser.class)
+		return em.createQuery("SELECT e FROM enduser e WHERE e.name = :endUsername", EndUser.class)
 				 .setParameter("endUsername", endUsername)
 				 .getSingleResult();
 	}

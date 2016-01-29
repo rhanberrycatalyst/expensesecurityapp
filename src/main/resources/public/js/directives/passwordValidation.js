@@ -1,11 +1,19 @@
-angular.module('UserValidation', []).directive('validPasswordC', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {
-            ctrl.$parsers.unshift(function (viewValue, $scope) {
-                var noMatch = viewValue != scope.myForm.password.$viewValue
-                ctrl.$setValidity('noMatch', !noMatch)
-            })
+angular.module("expenseApp").directive("pwCheck", function(){
+	return{
+		require: 'ngModel',
+        link: function (scope, elem, attrs, model) {
+            if (!attrs.pwCheck) {
+                console.error('pwCheck expects a model as an argument!');
+                return;
+            }
+            scope.$watch(attrs.pwCheck, function (value) {
+                model.$setValidity('pwCheck', value === model.$viewValue);
+            });
+            model.$parsers.push(function (value) {
+                var isValid = value === scope.$eval(attrs.pwCheck);
+                model.$setValidity('pwCheck', isValid);
+                return isValid ? value : undefined;
+            });
         }
-    }
-})
+    };
+});
