@@ -7,9 +7,9 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		url: '/',
 		templateUrl: 'index.html'
 		})
-		.state("login", {
-			url: '/loginpage',
-			templateUrl: 'templates/login.html',
+		.state('login', {
+			url: '/signin',
+			templateUrl: 'public/templates/signin.html',
 			controller: 'loginController'
 		})
 		.state("home", {

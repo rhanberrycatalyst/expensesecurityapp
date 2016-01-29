@@ -103,9 +103,9 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/login").permitAll();
+    	http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/signin").permitAll();
     	
-        http.formLogin().loginProcessingUrl("/login");
+        http.formLogin().loginProcessingUrl("/signin");
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.formLogin().successHandler(authenticationSuccessHandler);
         http.formLogin().failureHandler(authenticationFailureHandler)
@@ -113,7 +113,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .logoutSuccessHandler(logoutSuccessHandler)
-        .logoutSuccessUrl("/login")
+        .logoutSuccessUrl("/signin")
         .deleteCookies("JSESSIONID", "CSRF-TOKEN")
         .permitAll();
 

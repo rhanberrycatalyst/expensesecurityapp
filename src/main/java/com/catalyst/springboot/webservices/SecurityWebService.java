@@ -26,4 +26,17 @@ public class SecurityWebService {
     public EndUser currentUser(Principal principal){
         return userService.getUserByUsername(principal.getName());
     }
+
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+
+    public String loginPage() {
+        return "/signin.html";
+    }
+
+//    // Map all urls to this method aside from ones starting with api
+//    @RequestMapping(value = "/**")
+//    public String getIndex() {
+//        // return the view called "index.html" (in the current directory)
+//        return "/index";
+//    }
 }
