@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
+
 
 import javax.sql.DataSource;
 
@@ -23,12 +23,15 @@ import javax.sql.DataSource;
 public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
+    private CustomAuthenticationEntryPoint authenticationEntryPoint;
+
+	@Autowired
     private CustomAuthenticationFailureHandler authenticationFailureHandler;
     @Autowired
     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
     
     @Autowired
-    private CustomLogOutSuccessHandler logOutSuccessHandler;
+    private CustomLogOutSuccessHandler logoutSuccessHandler;
 
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
        
@@ -36,20 +39,22 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .dataSource(datasource)
                 .passwordEncoder(encoder())
                 .usersByUsernameQuery("SELECT email, password FROM enduser WHERE email=?")
-                .authoritiesByUsernameQuery("");//this fakes a user role
+                .authoritiesByUsernameQuery("SELECT enduser.email,springrole.role FROM springrole JOIN enduser ON springrole.roleid=enduser.springroleid WHERE enduser.email=?");//this fakes a user role
           
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.authorizeRequests().antMatchers("/**").authenticated();
-        super.configure(http);
-        http.csrf().disable();
+    	http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/login").permitAll();
+    	
+        http.formLogin().loginProcessingUrl("/login");
+        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.formLogin().successHandler(authenticationSuccessHandler);
         http.formLogin().failureHandler(authenticationFailureHandler)
+        .and().headers().cacheControl()
         .and()
         .logout()
-        .logoutUrl("/logout")
+        .logoutSuccessHandler(logoutSuccessHandler)
         .logoutSuccessUrl("/login")
         .deleteCookies("JSESSIONID", "CSRF-TOKEN")
         .permitAll();
