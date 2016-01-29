@@ -36,7 +36,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .dataSource(datasource)
                 .passwordEncoder(encoder())
                 .usersByUsernameQuery("SELECT email, password FROM enduser WHERE email=?")
-                .authoritiesByUsernameQuery("SELECT email,isadmin FROM enduser WHERE isadmin=true and email=?");//this fakes a user role
+                .authoritiesByUsernameQuery("");//this fakes a user role
           
     }
 
