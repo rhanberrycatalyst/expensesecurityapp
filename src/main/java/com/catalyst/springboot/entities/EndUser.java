@@ -1,6 +1,8 @@
 package com.catalyst.springboot.entities;
 
+
 import java.util.Set;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -86,6 +88,7 @@ public class EndUser {
 		this.email = email;
 	}
 
+
 	public Boolean getIsAdmin() {
 		return isAdmin;
 	}
@@ -93,5 +96,6 @@ public class EndUser {
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
  
 }
