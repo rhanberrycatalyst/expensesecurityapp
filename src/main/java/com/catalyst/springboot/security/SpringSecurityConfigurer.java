@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import javax.sql.DataSource;
 
@@ -25,6 +26,9 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationFailureHandler authenticationFailureHandler;
     @Autowired
     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    
+    @Autowired
+    private CustomLogOutSuccessHandler logOutSuccessHandler;
 
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
        
@@ -32,7 +36,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .dataSource(datasource)
                 .passwordEncoder(encoder())
                 .usersByUsernameQuery("SELECT email, password FROM enduser WHERE email=?")
-                .authoritiesByUsernameQuery("SELECT enduser.email,roles.title FROM enduser JOIN user_role ON enduser.userid=user_role.userid JOIN roles ON roles.roleid=user_role.roleid WHERE email=?");//this fakes a user role
+                .authoritiesByUsernameQuery("SELECT email,isadmin FROM enduser WHERE isadmin=true and email=?");//this fakes a user role
           
     }
 
@@ -42,7 +46,13 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
         super.configure(http);
         http.csrf().disable();
         http.formLogin().successHandler(authenticationSuccessHandler);
-        http.formLogin().failureHandler(authenticationFailureHandler);
+        http.formLogin().failureHandler(authenticationFailureHandler)
+        .and()
+        .logout()
+        .logoutUrl("/logout")
+        .logoutSuccessUrl("/login")
+        .deleteCookies("JSESSIONID", "CSRF-TOKEN")
+        .permitAll();
 
     }
 

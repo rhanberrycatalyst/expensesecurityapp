@@ -1,10 +1,9 @@
 package com.catalyst.springboot.entities;
 
-<<<<<<< HEAD:src/main/java/com/catalyst/springboot/entities/EndUser.java
-=======
+
 import java.util.Set;
 
->>>>>>> Sprint_1:src/main/java/com/catalyst/springboot/entities/EndUser.java
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -88,8 +87,7 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-<<<<<<< HEAD:src/main/java/com/catalyst/springboot/entities/EndUser.java
-=======
+
 
 	public Boolean getIsAdmin() {
 		return isAdmin;
@@ -98,6 +96,6 @@ public class EndUser {
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
->>>>>>> Sprint_1:src/main/java/com/catalyst/springboot/entities/EndUser.java
+
  
 }
