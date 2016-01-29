@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cbb0817-75bc-41fb-a40b-b49b9baad05a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/public/templates/login.html" afterPath="$PROJECT_DIR$/src/main/resources/public/templates/signin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/catalyst/springboot/security/SpringSecurityConfigurer.java" afterPath="$PROJECT_DIR$/src/main/java/com/catalyst/springboot/security/SpringSecurityConfigurer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/catalyst/springboot/webservices/SecurityWebService.java" afterPath="$PROJECT_DIR$/src/main/java/com/catalyst/springboot/webservices/SecurityWebService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/public/js/controllers/loginController.js" afterPath="$PROJECT_DIR$/src/main/resources/public/js/controllers/loginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/public/js/routes.js" afterPath="$PROJECT_DIR$/src/main/resources/public/js/routes.js" />
     </list>
     <ignored path="security.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,8 +41,8 @@
       <file leaf-file-name="SpringSecurityConfigurer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/catalyst/springboot/security/SpringSecurityConfigurer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86906713">
-              <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+            <state vertical-scroll-proportion="1.025685">
+              <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -1150,12 +1145,19 @@
       <workItem from="1453743926839" duration="5340000" />
       <workItem from="1454016924028" duration="7113000" />
       <workItem from="1454088011747" duration="12071000" />
-      <workItem from="1454107749548" duration="435000" />
+      <workItem from="1454107749548" duration="884000" />
     </task>
+    <task id="LOCAL-00001" summary="Merged changes from EWW-39, attempting to get login functionality up and running!">
+      <created>1454108241523</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1454108241523</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29746000" />
+    <option name="totallyTimeSpent" value="30195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1202,6 +1204,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Merged changes from EWW-39, attempting to get login functionality up and running!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged changes from EWW-39, attempting to get login functionality up and running!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1656,8 +1660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/catalyst/springboot/security/SpringSecurityConfigurer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86906713">
-          <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+        <state vertical-scroll-proportion="1.025685">
+          <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
           <folding />
         </state>
       </provider>

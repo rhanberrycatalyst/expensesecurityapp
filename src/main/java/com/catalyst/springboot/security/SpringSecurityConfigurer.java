@@ -103,19 +103,36 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/signin").permitAll();
+    	http
+				.authorizeRequests()
+				.antMatchers("/**")
+				.authenticated()
+					.and()
+				.formLogin()
+				.loginPage("/signin")
+				.permitAll();
     	
-        http.formLogin().loginProcessingUrl("/signin");
-        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
-        http.formLogin().successHandler(authenticationSuccessHandler);
-        http.formLogin().failureHandler(authenticationFailureHandler)
-        .and().headers().cacheControl()
-        .and()
-        .logout()
-        .logoutSuccessHandler(logoutSuccessHandler)
-        .logoutSuccessUrl("/signin")
-        .deleteCookies("JSESSIONID", "CSRF-TOKEN")
-        .permitAll();
+        http
+				.formLogin()
+				.loginProcessingUrl("/signin");
+        http
+				.exceptionHandling()
+				.authenticationEntryPoint(authenticationEntryPoint);
+        http
+				.formLogin()
+				.successHandler(authenticationSuccessHandler);
+        http
+				.formLogin()
+				.failureHandler(authenticationFailureHandler)
+        			.and()
+				.headers()
+				.cacheControl()
+        			.and()
+        		.logout()
+        		.logoutSuccessHandler(logoutSuccessHandler)
+        		.logoutSuccessUrl("/signin")
+        		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
+        		.permitAll();
 
     }
 
