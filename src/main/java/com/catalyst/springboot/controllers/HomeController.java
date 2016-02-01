@@ -9,6 +9,42 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
+		return employeeIndex();
+	}
+	
+	@RequestMapping(value = "/project", method = RequestMethod.GET)
+	public String projectHome() {
+		return "/project-create.html";
+	}
+	
+	@RequestMapping(value = "/report", method = RequestMethod.GET)
+	public String reportHome() {
+		return "/report-create.html";
+	}
+
+	@RequestMapping(value = "/about-us", method = RequestMethod.GET)
+	public String about() {
+
+		return "/about.html";
+	}
+
+	@RequestMapping(value = "/employee/index", method = RequestMethod.GET)
+	public String employeeIndex() {
 		return "/index.html";
+	}
+
+	@RequestMapping(value = "/employee/create", method = RequestMethod.GET)
+	public String employeeCreate() {
+		return "/employee-create.html";
+	}
+	@RequestMapping(value = "/employee/update", method = RequestMethod.GET)
+	public String employeeUpdate() {
+		return "/employee-update.html";
+	}
+
+
+	@RequestMapping(value = "/employee/delete", method = RequestMethod.GET)
+	public String employeeDelete() {
+		return "/employee-delete.html";
 	}
 }

@@ -5,7 +5,19 @@
 <div>
 	<label for="techLead">Tech Lead: </label>
 	<select id="techLead" name="techLead">
-		<option ng-repeat="x in enduser">{{x}}</option>
+		<option ng-repeat="datum in data.data" ng-value="{{datum.userId}}">{{datum.firstname + " " + datum.lastname}}</option>
 	</select>
 </div>
-<button ng-click=(test())>Test</button>
+<div>
+	<label for="developers">Developers: </label>
+	<select id="developers" name="developers" ng-model="devList">
+		<option name="devi" ng-repeat="datus in data.data">{{datus.firstname + " " + datus.lastname}}</option>
+	</select>
+	<span><button ng-click=(addDev(devList))>Add</button></span>
+	<ul>
+		<li ng-repeat="dev in devLists">
+			{{dev}}
+		</li>
+	</ul>
+</div>
+<button ng-click=(sendProject())>Create Project</button>
