@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
 	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider.state("index", {
@@ -9,7 +9,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state('login', {
 			url: '/signin',
-			templateUrl: 'public/templates/signin.html',
+			templateUrl: 'public/templates/login.html',
 			controller: 'loginController'
 		})
 		.state("home", {
@@ -37,4 +37,6 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			templateUrl: 'templates/detail.html',
 			controller: 'detailController'
 	});
+
+	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 }]);

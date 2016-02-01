@@ -27,11 +27,11 @@ public class SecurityWebService {
         return userService.getUserByUsername(principal.getName());
     }
 
-    @RequestMapping(value = "/signin", method = RequestMethod.GET)
-
-    public String loginPage() {
-        return "/signin.html";
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//
+//    public String loginPage() {
+//        return "/login.html";
+//    }
 
 //    // Map all urls to this method aside from ones starting with api
 //    @RequestMapping(value = "/**")

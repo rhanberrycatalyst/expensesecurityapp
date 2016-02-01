@@ -24,4 +24,9 @@
 	<div id="mainView">
 		<ui-view></ui-view>
 	</div>
+	<ul class="nav nav-pills" role="tablist">
+		<li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
+		<li><a href="#/login">login</a></li>
+		<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+	</ul>
 </body>
