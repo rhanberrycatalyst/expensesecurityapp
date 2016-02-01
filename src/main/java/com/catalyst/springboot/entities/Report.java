@@ -18,13 +18,23 @@ public class Report {
 	@JoinColumn(name="userid")
 	private EndUser endUser;
 	
+	public EndUser getEndUser() {
+		return endUser;
+	}
+
+	public void setEndUser(EndUser endUser) {
+		this.endUser = endUser;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="projectid")
 	private Project project;
 	
+	
+
 	@ManyToOne
 	@JoinColumn(name="statusid")
-	private Status status;
+	private ReportStatus status;
 	
 	public Integer getReportId() {
 		return reportId;
@@ -40,5 +50,21 @@ public class Report {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ReportStatus getStatus() {
+		return status;
+	}
+
+	public void setReportStatus(ReportStatus status) {
+		this.status = status;
 	}
 }

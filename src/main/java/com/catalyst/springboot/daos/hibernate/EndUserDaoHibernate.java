@@ -38,9 +38,8 @@ public class EndUserDaoHibernate implements EndUserDao{
 	}
 
 	@Override
-	public EndUser getByEndUserId(Integer endUserId) {
-		return em
-				.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
+	public EndUser getByEndUserId(Integer endUserId) {	
+		return em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 				.setParameter("id", endUserId)
 				.getSingleResult();
 	}
