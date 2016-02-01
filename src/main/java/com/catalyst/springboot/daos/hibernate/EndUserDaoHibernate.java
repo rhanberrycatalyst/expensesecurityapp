@@ -13,24 +13,25 @@ import com.catalyst.springboot.entities.EndUser;
 
 
 @Transactional
-@Component 
+@Component
 public class EndUserDaoHibernate implements EndUserDao{
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
+
 	@Override
 	public void add(EndUser endUser) {
 		em.persist(endUser);
-		
+
 	}
 
 	@Override
 	public List<EndUser> getAllEndUsers() {
+
 		
 		return em.createQuery("SELECT e FROM EndUser e", EndUser.class).
 				getResultList();
@@ -40,18 +41,18 @@ public class EndUserDaoHibernate implements EndUserDao{
 	public EndUser getByEndUserId(Integer endUserId) {	
 		return em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 				.setParameter("id", endUserId)
-				.getSingleResult();	 
+				.getSingleResult();
 	}
 
 	@Override
 	public EndUser getEndUserByEndUsername(String endUsername){
+
 		return em.createQuery("SELECT e FROM endUser e WHERE e.endUsername = :endUsername", EndUser.class)
 				 .setParameter("endUsername", endUsername)
 				 .getSingleResult();
 	}
 	@Override
-	public void update(EndUser endUser) { 
+	public void update(EndUser endUser) {
 		em.merge(endUser);
 	}
-
 }

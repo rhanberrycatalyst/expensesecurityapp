@@ -1,13 +1,11 @@
 package com.catalyst.springboot.entities;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,11 +48,10 @@ public class EndUser {
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
 	
-	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -71,17 +68,17 @@ public class EndUser {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-		
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+
 	public String getPassword() {
 		return password;
 	}
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
@@ -95,11 +92,11 @@ public class EndUser {
 			return false;
 		}
 		EndUser user = (EndUser) obj;
- 
+
 		EqualsBuilder builder = new EqualsBuilder();
 		builder.append(this.userId, user.userId);
 		return builder.isEquals();
-		
+
 	}
 
 	public String getEmail() {
