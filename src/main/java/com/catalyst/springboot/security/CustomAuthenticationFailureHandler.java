@@ -1,4 +1,6 @@
+
 package com.catalyst.springboot.security;
+ 
 
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import java.io.IOException;
@@ -12,7 +14,8 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * Error handler for Authentication failures.
- */
+ * */
+
 public class CustomAuthenticationFailureHandler  implements AuthenticationFailureHandler{
 
 	/**
@@ -20,7 +23,7 @@ public class CustomAuthenticationFailureHandler  implements AuthenticationFailur
 	 * @param request
 	 * @param response
 	 * @param exception
-	 */
+	  */
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			   AuthenticationException exception) throws IOException, ServletException {
 			  
@@ -28,3 +31,4 @@ public class CustomAuthenticationFailureHandler  implements AuthenticationFailur
 			  
 }
 }
+
