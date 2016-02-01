@@ -29,7 +29,6 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public void add(Project project) {
-		System.out.println("In Impl");
 		projectDao.add(project);
 	}
 
