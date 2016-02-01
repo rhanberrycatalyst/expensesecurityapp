@@ -1,5 +1,7 @@
 package com.catalyst.springboot.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,17 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Project {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer projectId;
+	
+	@Column(unique=true)
 	private String name;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = EndUser.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="techid")
-	private EndUser endUser;
+	private EndUser techId;
+	
+	public EndUser getTechId() {
+		return techId;
+	}
+
+	public void setTechId(EndUser techId) {
+		this.techId = techId;
+	}
+	
 
 	public Integer getProjectId() {
 		return projectId;
