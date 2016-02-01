@@ -22,15 +22,6 @@ public interface EndUserService {
 	void update(EndUser user);
 
 	/**
-	 * Removes the information about an user from the application if their
-	 * userId matches.
-	 * 
-	 * @param userId
-	 *            -
-	 */
-	void delete(Integer userId);
-
-	/**
 	 * Retrieve all users from the application.
 	 * 
 	 * @param isActive
@@ -39,7 +30,7 @@ public interface EndUserService {
 	 *            returned.
 	 * @return
 	 */
-	List<EndUser> getUsers(Boolean isActive);
+	List<EndUser> getUsers();
 
 	/**
 	 * Retrieve a single user's information if that user's userId

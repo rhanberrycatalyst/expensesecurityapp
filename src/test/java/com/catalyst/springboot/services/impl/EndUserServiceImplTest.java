@@ -40,17 +40,6 @@ public class EndUserServiceImplTest {
 		verify(mockuserDao, times(1)).update(null);
 	}
 	
-	@Test
-	public void testDeleteuser(){
-		
-		target.delete(null);
-		verify(mockuserDao, times(1)).delete(null);
-	}
-	@Test(expected=InvalidInputException.class)
-	public void testGetByuserIdNull() throws InvalidInputException {
-		target.getByUserId(null);
-	}
-	
 	@Test(expected=InvalidInputException.class)
 	public void testGetByuserIdZero() throws InvalidInputException{
 		target.getByUserId(-1);

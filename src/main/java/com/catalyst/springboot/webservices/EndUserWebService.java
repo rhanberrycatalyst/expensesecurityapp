@@ -32,36 +32,24 @@ public class EndUserWebService {
 		
 		
 	@RequestMapping(value="/users", method = RequestMethod.GET)
-	public List<EndUser> getusers(Boolean active){
-		return userService.getUsers(active);
+	public List<EndUser> getusers(){
+		return userService.getUsers();
 	}	
 	
 
 	
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
-	public EndUser getuserByID(@PathVariable Integer id) throws InvalidInputException{ 
+	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{ 
 		return userService.getByUserId(id);
+	}
+	
+	@RequestMapping(value="/userss/{name}", method=RequestMethod.GET)
+	public EndUser getByUserName(@PathVariable String name) throws InvalidInputException{ 
+		return userService.getUserByUsername(name);
 	}
 	
 	@RequestMapping(value="/users/{id}", method = RequestMethod.PUT)
 	public void updateuser(@PathVariable Integer id, @RequestBody EndUser user){
 		userService.update(user);
 	}
-	
-	@RequestMapping(value="/users/{id}", method = RequestMethod.DELETE)
-	public void removeuser(@PathVariable Integer id){
-		
-		userService.delete(id);
-		 
-	}
-	 
-	
-	
- 
-	
- 
-	
-	
-	
-	
 }

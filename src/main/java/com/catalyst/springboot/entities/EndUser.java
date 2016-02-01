@@ -1,15 +1,22 @@
 package com.catalyst.springboot.entities;
 
-
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -23,16 +30,27 @@ public class EndUser {
 	private String lastname;
 	private String email;
 	private String password;
-	private Boolean isAdmin;
 	 
+	@JoinTable(name = "user_project_roles")
+	@MapKeyJoinColumn(name = "projects")
+	@ElementCollection
+	private Map<Project,Role> roleByproject = new HashMap<>();
+	
+	@OneToMany(targetEntity = Project.class)
+	private List<Project> projects;
+	
+	
 	@ManyToMany
-	@JoinTable(name = "projectdevs")
-	Set<Project> projects;
+	private Set<Project> userProjects = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name="springroleid")
+	private SpringRole springrole;
 	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -49,17 +67,17 @@ public class EndUser {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-		
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+
 	public String getPassword() {
 		return password;
 	}
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
@@ -73,11 +91,11 @@ public class EndUser {
 			return false;
 		}
 		EndUser user = (EndUser) obj;
- 
+
 		EqualsBuilder builder = new EqualsBuilder();
 		builder.append(this.userId, user.userId);
 		return builder.isEquals();
-		
+
 	}
 
 	public String getEmail() {
@@ -87,15 +105,4 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-	public Boolean getIsAdmin() {
-		return isAdmin;
-	}
-
-	public void setIsAdmin(Boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-
- 
 }

@@ -43,20 +43,9 @@ public class EndUserDaoImpl implements EndUserDao {
 	}
 
 	@Override
-	public void delete(Integer userId) {
-		EndUser user = new EndUser();
-		user.setUserId(userId);
-		 
-		users.remove(user);
-		
-	}
-
-	@Override
 	public EndUser getEndUserByEndUsername(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 	
 }
