@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Create</title>
+<title>Project</title>
 <link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -10,21 +10,20 @@
     $(document).ready(function() {
         $("#submit").click(function() {
 
-            var user = {};
+            var report = {};
 
-            user.firstname = $("#firstname").val();
-            user.lastname = $("#lastname").val();
-            user.password = $("#password").val();
-            user.email = $("#username").val();
-            user.isActive = true;
-
+            report.name = $("#firstname").val();
+            report.endUser = {'userId': 1},
+            report.project = {'projectId': 1},
+            report.reportStatus = {'report' : 1};
+         
             $.ajax({
-                url : '/users',
+                url : '/reports',
                 method : 'POST',
-                data : JSON.stringify(user),
+                data : JSON.stringify(report),
                 contentType : 'application/json'
             }).then(function() {
-                window.location.href = "/employee/index";
+            	console.log(report);
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });
@@ -61,20 +60,12 @@
      <div class="container">
 
           <div>
-               <label for="firstname">firstname</label>
+               <label for="firstname">Report Name</label>
                <input id="firstname" type="text" value="" />
           </div>
           <div>
-               <label for="lastname">lastname</label>
-               <input id="lastname" type="text" value="" />
-          </div>
-          <div>
-               <label for="username">Email: </label>
-               <input id="username" type="text" value="" />
-          </div>
-          <div>
-               <label for="password">Password: </label>
-               <input id="password" type="password" value="" />
+               <label for="lastname">Tech Lead</label>
+               <input id="lastname" type="number" value="" />
           </div>
           <div>
                <button id="submit" type="button">Submit</button>

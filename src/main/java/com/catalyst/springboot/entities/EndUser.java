@@ -30,6 +30,7 @@ public class EndUser {
 	private String lastname;
 	private String email;
 	private String password;
+	private Boolean isActive;
 	 
 	@JoinTable(name = "user_project_roles")
 	@MapKeyJoinColumn(name = "projects")
@@ -104,5 +105,13 @@ public class EndUser {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 }

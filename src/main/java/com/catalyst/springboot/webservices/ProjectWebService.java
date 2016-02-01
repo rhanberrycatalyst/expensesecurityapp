@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.springboot.services.ProjectService;
-import com.catalyst.springboot.daos.hibernate.EndUserDaoHibernate;
-import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.entities.Project;
-import com.catalyst.springboot.services.EndUserService;
 import com.catalyst.springboot.services.InvalidInputException;
 
 @RestController
@@ -21,8 +18,6 @@ public class ProjectWebService {
 	
 	@Autowired
 	private ProjectService projectService;
-	
-	private EndUserDaoHibernate endUserDao;
 	
 	public void setprojectService(ProjectService projectService) {
 		this.projectService = projectService;
