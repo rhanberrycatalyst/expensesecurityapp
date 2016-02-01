@@ -1,44 +1,30 @@
-'use strict';
+angular.module('expenseApp', ['ngRoute','ui.router','auth']).controller(
+    'loginController',
 
-angular.module('expenseApp')
-    .controller('loginController',
+    function($scope, $route, auth) {
 
-        //this is an example login controller taken from the angular spring security tutorial.
-        function($rootScope, $scope, $http, $location) {
-            //this is the authentication function
+        $scope.credentials = {};
 
-            var authenticate = function(credentials, callback) {
+        $scope.tab = function(route) {
+            return $route.current && route === $route.current.controller;
+        };
 
-                var headers = credentials ? {authorization : "Basic "
-                + btoa(credentials.username + ":" + credentials.password)
-                } : {};
+        $scope.authenticated = function() {
+            return auth.authenticated;
+        }
 
-                $http.get('user', {headers : headers}).success(function(data) {
-                    if (data.name) {
-                        $rootScope.authenticated = true;
-                    } else {
-                        $rootScope.authenticated = false;
-                    }
-                    callback && callback();
-                }).error(function() {
-                    $rootScope.authenticated = false;
-                    callback && callback();
-                });
+        $scope.login = function() {
+            auth.authenticate($scope.credentials, function(authenticated) {
+                if (authenticated) {
+                    console.log("Login succeeded")
+                    $scope.error = false;
+                } else {
+                    console.log("Login failed")
+                    $scope.error = true;
+                }
+            })
+        };
 
-            }
+        $scope.logout = auth.clear;
 
-            authenticate();
-            $scope.credentials = {};
-            //code below checks to see if user is already authenticated, and labels user as such for further action
-            $scope.login = function() {
-                authenticate($scope.credentials, function() {
-                    if ($rootScope.authenticated) {
-                        $location.path("/");
-                        $scope.error = false;
-                    } else {
-                        $location.path("/login");
-                        $scope.error = true;
-                    }
-                });
-            };
-        });
+    });

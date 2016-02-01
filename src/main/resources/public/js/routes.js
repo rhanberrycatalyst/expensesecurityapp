@@ -8,7 +8,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$h
 		templateUrl: 'index.html'
 		})
 		.state('login', {
-			url: '/signin',
+			url: '/login',
 			templateUrl: 'public/templates/login.html',
 			controller: 'loginController'
 		})
@@ -39,4 +39,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$h
 	});
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-}]);
+	}]).run(function(auth){
+		//initializes the auth module on home page load and login/logout
+		auth.init('/','/login','/logout');
+	});
