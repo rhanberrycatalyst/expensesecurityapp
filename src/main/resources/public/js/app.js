@@ -1,1 +1,1 @@
-angular.module('expenseApp', ['ui.router', 'auth']);
+angular.module('expenseApp', ['ui.router', 'ngRoute','auth']);

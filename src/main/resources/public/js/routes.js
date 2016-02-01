@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
+angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider',function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider){
 	$urlRouterProvider.otherwise('/');
-	
+	$locationProvider.html5Mode(true);
 	$stateProvider.state("index", {
 		url: '/',
 		templateUrl: 'index.html'
 		})
-		.state('login', {
+		.state("login", {
 			url: '/login',
 			templateUrl: 'public/templates/login.html',
 			controller: 'loginController'
