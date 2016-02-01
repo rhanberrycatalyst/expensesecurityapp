@@ -1,9 +1,6 @@
 package com.catalyst.springboot.entities;
 
-
 import java.util.Set;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,15 +21,15 @@ public class EndUser {
 	private String email;
 	private String password;
 	private Boolean isAdmin;
-	 
+
 	@ManyToMany
 	@JoinTable(name = "projectdevs")
 	Set<Project> projects;
-	
+
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -49,17 +46,17 @@ public class EndUser {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-		
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+
 	public String getPassword() {
 		return password;
 	}
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
@@ -73,11 +70,11 @@ public class EndUser {
 			return false;
 		}
 		EndUser user = (EndUser) obj;
- 
+
 		EqualsBuilder builder = new EqualsBuilder();
 		builder.append(this.userId, user.userId);
 		return builder.isEquals();
-		
+
 	}
 
 	public String getEmail() {
@@ -88,7 +85,6 @@ public class EndUser {
 		this.email = email;
 	}
 
-
 	public Boolean getIsAdmin() {
 		return isAdmin;
 	}
@@ -96,6 +92,4 @@ public class EndUser {
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-
- 
 }

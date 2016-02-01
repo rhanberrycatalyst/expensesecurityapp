@@ -43,6 +43,11 @@ public class EndUserWebService {
 		return userService.getByUserId(id);
 	}
 	
+	@RequestMapping(value="/userss/{name}", method=RequestMethod.GET)
+	public EndUser getByUserName(@PathVariable String name) throws InvalidInputException{ 
+		return userService.getUserByUsername(name);
+	}
+	
 	@RequestMapping(value="/users/{id}", method = RequestMethod.PUT)
 	public void updateuser(@PathVariable Integer id, @RequestBody EndUser user){
 		userService.update(user);
