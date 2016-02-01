@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.catalyst.springboot.daos.ProjectDao;
+import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.entities.Project;
 
 @Transactional
@@ -17,12 +18,21 @@ public class ProjectDaoHibernate implements ProjectDao {
 	@PersistenceContext
 	private EntityManager em;
 	
+	EndUserDaoHibernate userHibernate = new EndUserDaoHibernate();
+	
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
 	
 	@Override
 	public void add(Project project) {
+		System.out.println("Test Run");
+		Integer userId = project.getTechId().getUserId();
+		EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
+		.setParameter("id", userId)
+		.getSingleResult();
+		System.out.println(endUser.getFirstname());
+		project.setTechId(endUser);
 		em.persist(project);
 		
 	}

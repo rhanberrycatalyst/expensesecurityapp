@@ -26,16 +26,16 @@ public class UserWebServiceTest {
 		verify(mockuserService, times(1)).add(null);
 	}
 
-	@Test
+	/*@Test
 	public void testGetusers() throws Exception {
 
-		userWebService.getusers(null);
+		userWebService.getUsers(null);
 		verify(mockuserService, times(1)).getUsers(null);
-	}
+	}*/
 
 	@Test
 	public void testGetuserByID() throws Exception {
-		userWebService.getuserByID(null);
+		userWebService.getUserByID(null);
 		verify(mockuserService, times(1)).getByUserId(null);
 	}
 

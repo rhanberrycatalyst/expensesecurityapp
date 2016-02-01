@@ -32,14 +32,14 @@ public class EndUserWebService {
 		
 		
 	@RequestMapping(value="/users", method = RequestMethod.GET)
-	public List<EndUser> getusers(Boolean active){
-		return userService.getUsers(active);
+	public List<EndUser> getusers(){
+		return userService.getUsers();
 	}	
 	
 
 	
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
-	public EndUser getuserByID(@PathVariable Integer id) throws InvalidInputException{ 
+	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{ 
 		return userService.getByUserId(id);
 	}
 	

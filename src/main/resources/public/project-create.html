@@ -13,7 +13,7 @@
             var project = {};
 
             project.name = $("#firstname").val();
-            project.techId = $("#lastname").val();
+            project.techId = {'userId': 1};
          
             $.ajax({
                 url : '/projects',
@@ -22,7 +22,6 @@
                 contentType : 'application/json'
             }).then(function() {
             	console.log(project);
-                console.log("Success, yo!")
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });

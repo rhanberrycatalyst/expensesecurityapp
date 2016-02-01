@@ -30,7 +30,7 @@ public interface EndUserService {
 	 *            returned.
 	 * @return
 	 */
-	List<EndUser> getUsers(Boolean isActive);
+	List<EndUser> getUsers();
 
 	/**
 	 * Retrieve a single user's information if that user's userId

@@ -1,14 +1,23 @@
 package com.catalyst.springboot.entities;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,14 +32,22 @@ public class EndUser {
 	private String lastname;
 	private String email;
 	private String password;
-	private Boolean isAdmin;
 	 
-	@ManyToMany
-	@JoinTable(name = "projectdevs")
-	Set<Project> projects;
+	@JoinTable(name = "user_project_roles")
+	@MapKeyJoinColumn(name = "projects")
+	@ElementCollection
+	private Map<Project,Role> roleByproject = new HashMap<>();
+	
+	@OneToMany(targetEntity = Project.class)
+	private List<Project> projects;
+	
 	
 	@ManyToMany
 	private Set<Project> userProjects = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name="springroleid")
+	private SpringRole springrole;
 	
 	
 	public void setUserId(Integer userId) {
@@ -92,12 +109,4 @@ public class EndUser {
 		this.email = email;
 	}
 
-	public Boolean getIsAdmin() {
-		return isAdmin;
-	}
-
-	public void setIsAdmin(Boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
- 
 }

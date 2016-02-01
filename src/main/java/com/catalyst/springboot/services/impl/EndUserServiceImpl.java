@@ -1,6 +1,5 @@
 package com.catalyst.springboot.services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,14 +30,9 @@ public class EndUserServiceImpl implements EndUserService {
 	}
 
 	@Override
-	public List<EndUser> getUsers(Boolean active) {
+	public List<EndUser> getUsers() {
 
 		List<EndUser> users = endUserDao.getAllEndUsers();
-		if (active != null) {
-			List<EndUser> activeusers = new ArrayList<>();
-			return activeusers;
-		}
-
 		return users;
 	}
 
