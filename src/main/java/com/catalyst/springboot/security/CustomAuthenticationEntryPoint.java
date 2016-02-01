@@ -1,3 +1,4 @@
+/**
 package com.catalyst.springboot.security;
 
 import java.io.IOException;
@@ -22,3 +23,4 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
 
 }
+*/

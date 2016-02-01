@@ -1,3 +1,4 @@
+/**
 package com.catalyst.springboot.security;
 
 import java.io.IOException;
@@ -20,4 +21,4 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		response.setStatus(HttpServletResponse.SC_OK);
 	}
 
-}
+}*/

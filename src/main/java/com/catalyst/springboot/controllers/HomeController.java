@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return employeeIndex();
+	public String signin()
+	{
+		return "/login.html";
 	}
 
 	@RequestMapping(value = "/about-us", method = RequestMethod.GET)
