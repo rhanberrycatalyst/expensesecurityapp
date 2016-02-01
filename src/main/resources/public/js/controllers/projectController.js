@@ -1,9 +1,6 @@
-angular.module('expenseApp').controller('projectController', ['$scope', '$state', '$http', function($scope, $state, $http){
-	$scope.test = function(){
-		var obj = {name: 'misko', gender: 'male'};
-		var log = [];
-		angular.forEach(obj, function(value, key) {
-		  console.log(key + ': ' + value);
-		});
-	}	
+angular.module('expenseApp').controller('projectController', ['$scope', '$state', '$http', 'getUsersService' function($scope, $state, $http, getUsersService){
+	$scope.users = function(){
+		var test = getUsersService.getUserList();
+		console.log(test);
+	};	
 }]);
