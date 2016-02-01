@@ -1,15 +1,12 @@
-angular.module("expenseApp").service("getDevsService", function(){
-	var userList = [];
-	var addUser = function(newUser){
-		userList.push(newUser);
-	};
+angular.module("expenseApp").service("getUsersService", ["$http", function($http){
 	
-	var getDevs = function(){
-		return userList;
-	};
+	var userList = [$http.get('/users')];
+	console.log(userList);
+	angular.forEach(userList, function(value, key){
+		console.log(key + ': ' + value);
+	});
 	
 	return{
-		addUser: addUser,
-		getUser: getUsers
+		userList: userList
 	};
-})
+}]);
