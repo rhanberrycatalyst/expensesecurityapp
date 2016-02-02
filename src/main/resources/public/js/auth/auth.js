@@ -1,7 +1,7 @@
 /**
  * Created by rhanberry on 2/1/2016.
  */
-angular.module('auth', []).factory(
+angular.module('expenseApp', []).factory(
     'auth',
 
     function($rootScope, $http, $location) {
