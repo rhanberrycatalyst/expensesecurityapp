@@ -136,31 +136,4 @@ public class EndUser {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	/**
-	 * Auto-generated hashCode function 
-	 */
-	@Override
-	public int hashCode() {
-		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
-		builder.append(userId);
-		return builder.toHashCode();
-	}
-
-	/**
-	 * auto-generated equals function
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if(!(obj instanceof EndUser)){
-			return false;
-		}
-		EndUser user = (EndUser) obj;
- 
-		EqualsBuilder builder = new EqualsBuilder();
-		builder.append(this.userId, user.userId);
-		return builder.isEquals();
-		
-	}
-
 }
