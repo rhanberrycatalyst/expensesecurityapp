@@ -105,7 +105,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http
 				.authorizeRequests()
-				.antMatchers("/index.html", "/home.html", "/login.html", "/")
+				.antMatchers("/index.html", "/home.html", "public/js/login/login.html", "/")
 				.authenticated()
 					.and()
 				.formLogin()

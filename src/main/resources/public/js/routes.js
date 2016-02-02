@@ -2,16 +2,11 @@
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider',function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider){
 	$urlRouterProvider.otherwise('/');
-	$locationProvider.html5Mode(true);
+	
 
 	$stateProvider.state("index", {
 		url: '/',
 		templateUrl: 'index.html'
-		})
-		.state("login", {
-			url: '/login',
-			templateUrl: 'public/templates/login.html',
-			controller: 'loginController'
 		})
 		.state("home", {
 			url: '/home',
@@ -39,9 +34,5 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', '$h
 			controller: 'detailController'
 	});
 
-	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-	}]).run(function(auth){
-		//initializes the auth module on home page load and login/logout
-		auth.init('/','/login','/logout');
-	console.log("routes work");
-	});
+	
+	}]);
