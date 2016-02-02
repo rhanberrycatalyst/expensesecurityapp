@@ -14,20 +14,26 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
+
 public class EndUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
+	@NotNull
 	private String firstname;
+	@NotNull
 	private String lastname;
+	@NotNull
 	private String email;
+	@NotNull
 	private String password;
+	@NotNull
 	private Boolean isActive;
 	 
 	@JoinTable(name = "user_project_roles")

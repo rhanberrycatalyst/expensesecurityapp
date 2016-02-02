@@ -27,7 +27,7 @@ public class LineItemDaoImpl implements LineItemDao{
 	
 	
 	@Override
-	public List<LineItem> getAllLineItems() { 
+	public List<LineItem> getAllLineItemsByReportId(Integer reportId) { 
 		return lineItems;
 	}
 	

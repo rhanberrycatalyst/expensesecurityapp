@@ -30,7 +30,7 @@ public interface ReportService {
 	 *            returned.
 	 * @return
 	 */
-	List<Report> getReports();
+	List<Report> getReportsByUserId(Integer userId);
 
 	/**
 	 * Retrieve a single report's information if that report's reportId
