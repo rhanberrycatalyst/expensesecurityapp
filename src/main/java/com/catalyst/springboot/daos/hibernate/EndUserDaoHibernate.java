@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.catalyst.springboot.daos.EndUserDao;
 import com.catalyst.springboot.entities.EndUser;
 
-
 @Transactional
 @Component 
 public class EndUserDaoHibernate implements EndUserDao{

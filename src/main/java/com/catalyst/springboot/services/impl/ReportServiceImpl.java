@@ -28,7 +28,6 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public void add(Report report) {
-		System.out.println("In Impl");
 		reportDao.add(report);
 	}
 
