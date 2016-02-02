@@ -42,8 +42,12 @@ public class ProjectDaoImpl implements ProjectDao{
 	}
 
 	@Override
-	public Project getProjectByProjectname(String projectname) {
-		// TODO Auto-generated method stub
+	public Project getProjectByProjectName(String projectname) {
+		for(Project p : projects){
+			if(p.getName().equals(projectname)){
+				return p;
+			}
+		}
 		return null;
 	}
 }

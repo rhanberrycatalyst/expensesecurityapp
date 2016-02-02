@@ -49,7 +49,8 @@ public interface ProjectService {
 	 * 
 	 * @param projectname
 	 * @return
+	 * @throws InvalidInputException 
 	 */
-	Project getProjectByProjectname(String projectname);
+	Project getProjectByProjectName(String projectname) throws InvalidInputException;
 
 }
