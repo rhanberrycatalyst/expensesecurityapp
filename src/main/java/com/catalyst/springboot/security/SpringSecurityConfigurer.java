@@ -98,11 +98,11 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	/**
 	 * Tells the Websecurity to ignore the css, js, and pics folders.
 	 */
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/js/**", "/pics/**");
-
-	}
+//	@Override
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/css/**", "/js/**", "/pics/**");
+//
+//	}
 
 	@Autowired
 	private DataSource datasource;

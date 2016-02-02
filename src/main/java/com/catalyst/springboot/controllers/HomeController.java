@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController{
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String signin()
+	public String login()
 	{
-		return "/templates/login.html";
+		return "/login.html";
 	}
 	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
