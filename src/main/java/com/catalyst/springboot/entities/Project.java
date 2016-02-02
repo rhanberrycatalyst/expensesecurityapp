@@ -1,5 +1,7 @@
 package com.catalyst.springboot.entities;
 
+import java.util.Collection;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
 
 @Entity
 public class Project {
@@ -24,6 +27,23 @@ public class Project {
 	@JoinColumn(name="techid")
 	private EndUser techId;
 	
+	@ManyToMany
+	@JoinTable(
+			name = "projectdevs",
+			joinColumns = @JoinColumn(name = "projects_projectid"),
+			inverseJoinColumns = @JoinColumn(name = "enduser_userid")
+			)
+	private Collection<EndUser> endUsers;
+	
+	
+	public Collection<EndUser> getEndUsers() {
+		return endUsers;
+	}
+
+	public void setEndUsers(Collection<EndUser> endUsers) {
+		this.endUsers = endUsers;
+	}
+
 	public EndUser getTechId() {
 		return techId;
 	}

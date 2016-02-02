@@ -29,6 +29,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 		.setParameter("id", userId)
 		.getSingleResult();
 		project.setTechId(endUser);
+		
 		em.persist(project);
 		
 	}

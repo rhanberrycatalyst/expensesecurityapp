@@ -1,10 +1,8 @@
 package com.catalyst.springboot.entities;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -37,12 +35,8 @@ public class EndUser {
 	@ElementCollection
 	private Map<Project,Role> roleByproject = new HashMap<>();
 	
-	@OneToMany(targetEntity = Project.class)
-	private List<Project> projects;
-	
-	
-	@ManyToMany
-	private Set<Project> userProjects = new HashSet<>();
+	@ManyToMany(mappedBy="endUsers")
+	private Collection<Project> project;
 	
 	@ManyToOne
 	@JoinColumn(name="springroleid")
