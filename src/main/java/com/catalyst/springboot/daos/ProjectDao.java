@@ -41,7 +41,7 @@ public interface ProjectDao {
 	 * @param Projectname
 	 * @return
 	 */
-	Project getProjectByProjectName(String ProjectName);
+	Project getProjectByProjectName(String projectName);
 	
 
 }
