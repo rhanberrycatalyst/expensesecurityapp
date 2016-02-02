@@ -16,7 +16,7 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
     	console.log(techLead.value);
         var userData = JSON.stringify({
         		name:projectName.value,
-                techId:techLead.value
+                techId:{"userId":techLead.value}
             })
             console.log(userData)
             $http.post("/projects", userData).
