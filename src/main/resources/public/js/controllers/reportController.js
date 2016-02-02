@@ -5,7 +5,6 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 		$scope.itemList.push({'typeid':$scope.itemType, 'value':$scope.cost});
 		$scope.itemType = '';
 		$scope.cost = '';
-		console.log($scope.itemList);
 	};
 	$scope.typeDisplay = function(typeID){
 		if(typeID == 1){
@@ -38,11 +37,11 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 		$scope.itemList.splice(index, 1);
 	};
 	$scope.sendReport = function() {
-    	console.log(reportName.value);
-    	console.log(note.value);
-        var userData = JSON.stringify({
-        		name:reportName.value,
-                note:note.value
+        var lineItems = $scope.itemList;
+        var reportData = [{name:reportName.value, note:note.value}, lineItems];
+        console.log(reportData);
+		var userData = JSON.stringify({
+        		reportData
             })
             console.log(userData)
             $http.post("/reports", userData).
