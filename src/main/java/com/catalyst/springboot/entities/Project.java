@@ -14,6 +14,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The class below creates @Entity in database with:
+ * 		Auto-generated projectId
+ * 		Unique name
+ * 		JoinColumn for Technical Lead
+ * Entity also connects to, and sets, JoinTable projectdevs for tracking developers on project.
+ * @author ldahlberg
+ * @author gwalpole
+ */
 @Entity
 public class Project {
 	
@@ -68,44 +77,5 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj){
-			return true;
-		}
-		if (obj == null){
-			return false;
-		}
-		if (getClass() != obj.getClass()){
-			return false;
-		}
-		Project other = (Project) obj;
-		if (name == null) {
-			if (other.name != null) {
-				return false;
-			}
-		} else if (!name.equals(other.name)) {
-			return false;
-		}
-		if (projectId == null) {
-			if (other.projectId != null) {
-				return false;
-			}
-		} else if (!projectId.equals(other.projectId)){
-			return false;
-		}
-		return true;
 	}
 }
