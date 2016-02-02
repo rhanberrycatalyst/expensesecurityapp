@@ -36,7 +36,7 @@ public interface ProjectDao {
 	Project getByProjectId(Integer projectId);
 
 	/**
-	 * Retrieves an Project with a matching Projectname.
+	 * Retrieves an Project with a matching ProjectName.
 	 * 
 	 * @param Projectname
 	 * @return

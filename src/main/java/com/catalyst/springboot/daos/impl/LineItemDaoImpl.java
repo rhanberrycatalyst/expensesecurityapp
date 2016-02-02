@@ -9,14 +9,10 @@ import com.catalyst.springboot.entities.LineItem;
 public class LineItemDaoImpl implements LineItemDao{
 	
 	private List<LineItem> lineItems = new ArrayList<>();
-	//private Integer nextId = 1;
 	
 	@Override
 	public void add(ArrayList<LineItem> lineItem) {
-		/*lineItem.setLineItemId(nextId);
-		nextId++;*/
-		lineItems =lineItem ;
-		
+		lineItems = lineItem ;	
 	}
 	
 	@Override
