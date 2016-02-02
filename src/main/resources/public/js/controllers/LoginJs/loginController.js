@@ -1,4 +1,4 @@
-angular.module('loginModule').controller('loginController', ['$routeProvider', '$httpProvider', function($rootScope, $scope, $http, $location, $route) {
+angular.module('expenseApp').controller('loginController', ['$routeProvider', '$httpProvider', function($rootScope, $scope, $http, $location, $route) {
 
 	$scope.tab = function(route) {
 		return $route.current && route === $route.current.controller;

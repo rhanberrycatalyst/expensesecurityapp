@@ -4,13 +4,13 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider.state("index", {
-		url: '/',
+		url: '/index',
 		templateUrl: 'index.html'
 		})
 		.state("login", {
-			url: '/loginpage',
-			templateUrl: 'templates/login.html',
-			controller: 'loginController'
+			url: '/',
+			templateUrl: '/login.html',
+			controller: 'LoginJs/loginController'
 		})
 		.state("home", {
 			url: '/home',
