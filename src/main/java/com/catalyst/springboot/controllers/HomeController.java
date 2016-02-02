@@ -10,7 +10,7 @@ public class HomeController{
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String signin()
 	{
-		return "/login.html";
+		return "/templates/login.html";
 	}
 	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
@@ -53,4 +53,6 @@ public class HomeController{
 	public String employeeDelete() {
 		return "/employee-delete.html";
 	}
+	
+	
 }
