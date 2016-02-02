@@ -39,21 +39,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	
 
-	@Autowired
-	private CustomLogOutSuccessHandler logoutSuccessHandler;
-
-	@Bean
-	CustomLogOutSuccessHandler logoutSuccessHandler() {
-		return new CustomLogOutSuccessHandler();
-	}
-
-	/**
-	 * @param logoutSuccess
-	 *            the logoutSuccess to set
-	 */
-	public void setLogOutSuccess(CustomLogOutSuccessHandler logoutSuccess) {
-		this.logoutSuccessHandler = logoutSuccess;
-	}
+	
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -72,12 +58,12 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/").permitAll()
-				.usernameParameter("username").passwordParameter("password")
+				.usernameParameter("username").passwordParameter("password").loginProcessingUrl("/login")
 			.failureHandler(authenticationFailureHandler).and().headers().cacheControl()
 		.and()
 		
 		.logout()
-				.logoutSuccessHandler(logoutSuccessHandler).logoutSuccessUrl("/")
+				.logoutSuccessUrl("/")
 				.deleteCookies("JSESSIONID", "CSRF-TOKEN").permitAll().and().csrf().disable();
 		
 

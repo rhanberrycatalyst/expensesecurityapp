@@ -1,0 +1,36 @@
+package com.catalyst.springboot.webservices;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.services.EndUserService;
+
+@RestController
+public class SecurityWebService {
+	@Autowired
+	private EndUserService endUserService;
+	public void setEmployeeService(EndUserService endUserService)
+	{
+		this. endUserService=endUserService;
+	}
+	@RequestMapping(value="/security/current",method=RequestMethod.GET)
+	//public Principal currentUser(Principal principal){
+		public EndUser currentUser(Principal principal){
+		//return principal;
+		System.out.println("principal"+principal);
+		
+		return  endUserService.getUserByUsername(principal.getName());
+	}
+	
+
+}
