@@ -58,6 +58,12 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
+		auth.inMemoryAuthentication()
+        .withUser("user")
+        .password("root")
+        .authorities("user");
+		
+		
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
