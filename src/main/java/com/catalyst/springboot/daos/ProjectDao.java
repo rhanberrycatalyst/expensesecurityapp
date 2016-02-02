@@ -21,13 +21,13 @@ public interface ProjectDao {
 	 * @param Project
 	 */
 	void update(Project project);
-	
+
 	/**
 	 * Retrieves all Projects currently in storage.
 	 * @return
 	 */
 	List<Project> getAllProjects();
-	
+
 	/**
 	 * Retrieve information about a single Project from storage with a matching ProjectId
 	 * @param ProjectId
@@ -37,11 +37,12 @@ public interface ProjectDao {
 
 	/**
 	 * Retrieves an Project with a matching Projectname.
-	 * 
+	 *
 	 * @param Projectname
 	 * @return
 	 */
-	Project getProjectByProjectname(String Projectname);
-	
+	Project getProjectByProjectName(String Projectname);
+
+
 
 }

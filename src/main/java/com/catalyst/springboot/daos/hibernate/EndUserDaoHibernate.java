@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.catalyst.springboot.daos.EndUserDao;
 import com.catalyst.springboot.entities.EndUser;
 
-
 @Transactional
 @Component
 public class EndUserDaoHibernate implements EndUserDao{
@@ -36,7 +35,7 @@ public class EndUserDaoHibernate implements EndUserDao{
 	}
 
 	@Override
-	public EndUser getByEndUserId(Integer endUserId) {	
+	public EndUser getByEndUserId(Integer endUserId) {
 		return em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 				.setParameter("id", endUserId)
 				.getSingleResult();
@@ -44,13 +43,14 @@ public class EndUserDaoHibernate implements EndUserDao{
 
 	@Override
 	public EndUser getEndUserByEndUsername(String endUsername){
-
 		return em.createQuery("SELECT e FROM EndUser e WHERE e.endUsername = :endUsername", EndUser.class)
 				 .setParameter("endUsername", endUsername)
 				 .getSingleResult();
 	}
 	@Override
+
 	public void update(EndUser endUser) {
 		em.merge(endUser);
 	}
+
 }

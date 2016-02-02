@@ -31,23 +31,23 @@ public class EndUser {
 	private String email;
 	private String password;
 	private Boolean isActive;
-	 
+
 	@JoinTable(name = "user_project_roles")
 	@MapKeyJoinColumn(name = "projects")
 	@ElementCollection
 	private Map<Project,Role> roleByproject = new HashMap<>();
-	
+
 	@OneToMany(targetEntity = Project.class)
 	private List<Project> projects;
-	
-	
+
+
 	@ManyToMany
 	private Set<Project> userProjects = new HashSet<>();
-	
+
 	@ManyToOne
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
-	
+
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
@@ -106,7 +106,23 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Boolean getIsActive() {
 		return isActive;
 	}

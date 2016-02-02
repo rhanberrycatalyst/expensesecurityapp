@@ -10,44 +10,26 @@
     $(document).ready(function() {
         $("#submit").click(function() {
 
-            var report = {};
-
-            report.name = $("#firstname").val();
-            report.endUser = {'userId': 1},
-            report.project = {'projectId': 1},
-            report.reportStatus = {'report' : 1};
-
-            var lineItems = {
-           			[
-           				lineItems.value = 25,
-                	    lineItems.report = {'reportId': 1},
-                	    lineItems.type = {'typeId' : 1};
-                	]
-           			[
-        				lineItems.value = 15,
-             	   	 	lineItems.report = {'reportId': 1},
-             	    	lineItems.type = {'typeId' : 2};
-             		]
-                };
-
-            $.ajax({
-                url : '/reports',
-                method : 'POST',
-                data : JSON.stringify(report),
-                contentType : 'application/json'
-            }).then(function() {
-            	console.log(report);
-            }, function(errors) {
-                $("#errorMsgs").text(errors);
-            });
+            var lineItem = [
+       			{
+       				value: 25,
+            	    report: {'reportId': 1},
+            	    type : {'typeId' : 1}
+       			},	
+       			{
+    				value : 15,
+         	   	 	report: {'reportId': 1},
+         	    	type : {'typeId' : 2}
+       			}		
+            ];
 
             $.ajax({
                 url : '/lineitems',
                 method : 'POST',
-                data : JSON.stringify(lineItems),
+                data : JSON.stringify(lineItem),
                 contentType : 'application/json'
             }).then(function() {
-            	console.log(lineItems);
+            	console.log(lineItem);
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });

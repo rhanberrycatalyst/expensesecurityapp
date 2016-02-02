@@ -48,7 +48,11 @@ public class ProjectDaoHibernate implements ProjectDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Project getProjectByProjectname(String projectname){
+=======
+	public Project getProjectByProjectName(String projectname){
+>>>>>>> new_schema
 		return em.createQuery("SELECT p FROM project p WHERE p.projectname = :projectname", Project.class)
 				 .setParameter("projectname", projectname)
 				 .getSingleResult();

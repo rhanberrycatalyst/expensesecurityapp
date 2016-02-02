@@ -13,11 +13,12 @@ public class Report {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer reportId;
 	private String name;
+	private String note;
 
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private EndUser endUser;
-	
+
 	public EndUser getEndUser() {
 		return endUser;
 	}
@@ -29,13 +30,11 @@ public class Report {
 	@ManyToOne
 	@JoinColumn(name="projectid")
 	private Project project;
-	
-	
 
 	@ManyToOne
 	@JoinColumn(name="statusid")
-	private ReportStatus status;
-	
+	private ReportStatus reportstatus;
+
 	public Integer getReportId() {
 		return reportId;
 	}
@@ -51,7 +50,7 @@ public class Report {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Project getProject() {
 		return project;
 	}
@@ -61,10 +60,18 @@ public class Report {
 	}
 
 	public ReportStatus getStatus() {
-		return status;
+		return reportstatus;
 	}
 
 	public void setReportStatus(ReportStatus status) {
-		this.status = status;
+		this.reportstatus = status;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 }

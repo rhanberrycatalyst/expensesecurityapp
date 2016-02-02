@@ -11,45 +11,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.services.EndUserService;
-import com.catalyst.springboot.services.InvalidInputException; 
+import com.catalyst.springboot.services.InvalidInputException;
 
 @RestController
 public class EndUserWebService {
 
 	@Autowired
 	private EndUserService userService;
-	
+
 	public void setuserService(EndUserService userService) {
 		this.userService = userService;
 	}
 
-	
-	
+
+
 	@RequestMapping(value="/users", method=RequestMethod.POST)
 	public void adduser(@RequestBody EndUser user){
 		userService.add(user);
-	} 
-		
-		
+	}
+
+
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public List<EndUser> getusers(){
 		return userService.getUsers();
-	}	
-	
+	}
 
-	
+
+
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
-	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{ 
+	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{
 		return userService.getByUserId(id);
 	}
-	
+
 	@RequestMapping(value="/userss/{name}", method=RequestMethod.GET)
-	public EndUser getByUserName(@PathVariable String name) throws InvalidInputException{ 
+	public EndUser getByUserName(@PathVariable String name) throws InvalidInputException{
 		return userService.getUserByUsername(name);
 	}
-	
+
 	@RequestMapping(value="/users/{id}", method = RequestMethod.PUT)
 	public void updateuser(@PathVariable Integer id, @RequestBody EndUser user){
 		userService.update(user);
 	}
+
 }

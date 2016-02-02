@@ -12,7 +12,7 @@ import com.catalyst.springboot.services.ProjectService;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
-	
+
 	@Autowired
 	private ProjectDao projectDao;
 
@@ -46,8 +46,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project getProjectByProjectname(String projectname) {
-		return projectDao.getProjectByProjectname(projectname);
+	public Project getProjectByProjectName(String projectName) throws InvalidInputException {
+		if (projectName == null || projectName == "") {
+			throw new InvalidInputException("projectName null or empty");
+		}
+		return projectDao.getProjectByProjectName(projectName);
 
 	}
 }
