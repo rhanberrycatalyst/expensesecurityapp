@@ -11,6 +11,14 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 		$scope.devLists = getDevsService.getDev();
 		console.log(getDevsService.getDev());
 	};
+	$scope.projectNameAvailable = function(){
+		$http({
+			method: "GET",
+			url: '/userss/' + userName.value
+		}).then(function (data) {
+	          callback(data);
+	    });
+	}
 	$scope.sendProject = function() {
     	console.log(projectName.value);
     	console.log(techLead.value);
