@@ -27,4 +27,6 @@ angular.module('expenseApp', ['ngRoute','ui.router','auth']).controller(
 
         $scope.logout = auth.clear;
 
+        console.log("Logincontroller works");
+
     });

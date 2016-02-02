@@ -81,5 +81,5 @@ angular.module('auth', []).factory(
         };
 
         return auth;
-
+console.log("authfactory works");
     });
