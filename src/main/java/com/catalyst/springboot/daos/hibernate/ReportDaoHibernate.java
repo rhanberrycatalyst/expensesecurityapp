@@ -48,15 +48,16 @@ public class ReportDaoHibernate implements ReportDao {
 	}
 
 	@Override
-	public List<Report> getAllReports() {
+	public List<Report> getAllReportsByUserId(Integer userId) {
 		
-		return em.createQuery("SELECT p FROM report p", Report.class).
-				getResultList();
+		return em.createQuery("SELECT r FROM Report r WHERE r.userId = :id", Report.class)
+				.setParameter("id", userId)
+				.getResultList();
 	}
 
 	@Override
 	public Report getByReportId(Integer reportId) {	
-		return em.createQuery("SELECT p FROM report p WHERE p.reportId = :id", Report.class)
+		return em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
 				.setParameter("id", reportId)
 				.getSingleResult();	 
 	}

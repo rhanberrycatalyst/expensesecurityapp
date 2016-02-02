@@ -28,7 +28,7 @@ public interface LineItemDao {
 		 * Retrieves all lineItems currently in storage.
 		 * @return
 		 */
-		List<LineItem> getAllLineItems();
+		List<LineItem> getAllLineItemsByReportId(Integer reportId);
 		
 		/**
 		 * Retrieve information about a single lineItem from storage with a matching lineItemId

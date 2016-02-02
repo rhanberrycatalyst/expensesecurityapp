@@ -31,18 +31,16 @@ public class ReportWebService {
 	} 
 		
 		
-	@RequestMapping(value="/reports", method = RequestMethod.GET)
-	public List<Report> getreports(){
-		return reportService.getReports();
+	@RequestMapping(value="/reports/{userid}", method = RequestMethod.GET)
+	public List<Report> getreports(@PathVariable Integer userId){
+		return reportService.getReportsByUserId(userId);
 	}	
-	
-
 	
 	@RequestMapping(value="/reports/{id}", method=RequestMethod.GET)
 	public Report getReportByID(@PathVariable Integer id) throws InvalidInputException{ 
 		return reportService.getByReportId(id);
 	}
-	
+
 	@RequestMapping(value="/reports/{id}", method = RequestMethod.PUT)
 	public void updatereport(@PathVariable Integer id, @RequestBody Report report){
 		reportService.update(report);
