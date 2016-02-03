@@ -16,6 +16,7 @@
             report.endUser = {'userId': 1},
             report.project = {'projectId': 1},
             report.reportStatus = {'report' : 1};
+<<<<<<< HEAD
 
             var lineItems = {
            			[
@@ -30,6 +31,20 @@
              		]
                 };
 
+=======
+            
+            report.lineItems = [
+					{
+					value:35,
+					type : {'typeId' : 3}
+					},
+					{
+					value: 15,
+				 	type : {'typeId' : 4}
+					}		
+				]	
+         
+>>>>>>> new_schema
             $.ajax({
                 url : '/reports',
                 method : 'POST',
@@ -40,8 +55,13 @@
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });
+<<<<<<< HEAD
 
             $.ajax({
+=======
+            
+            /* $.ajax({
+>>>>>>> new_schema
                 url : '/lineitems',
                 method : 'POST',
                 data : JSON.stringify(lineItems),
@@ -51,7 +71,7 @@
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });
-
+ */
         });
 
     });

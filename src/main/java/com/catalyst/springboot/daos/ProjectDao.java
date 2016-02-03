@@ -6,8 +6,8 @@ import com.catalyst.springboot.entities.Project;
 
 /**
  * The methods declared in this interface are to provide basic CRUD functionality related to Project objects.
- * @author Greg Walpole
- * @author Luke Dahlberg
+ * @author ldahlberg
+ * @author gwalpole
  */
 public interface ProjectDao {
 	/**
@@ -18,7 +18,7 @@ public interface ProjectDao {
 
 	/**
 	 * Updates the information about an Project already in storage.
-	 * @param Project
+	 * @param project
 	 */
 	void update(Project project);
 
@@ -30,7 +30,7 @@ public interface ProjectDao {
 
 	/**
 	 * Retrieve information about a single Project from storage with a matching ProjectId
-	 * @param ProjectId
+	 * @param projectId
 	 * @return
 	 */
 	Project getByProjectId(Integer projectId);
@@ -42,7 +42,5 @@ public interface ProjectDao {
 	 * @return
 	 */
 	Project getProjectByProjectName(String Projectname);
-
-
 
 }

@@ -1,5 +1,6 @@
 package com.catalyst.springboot.daos.hibernate;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Component;
 
 import com.catalyst.springboot.daos.ReportDao;
 import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.entities.LineItem;
 import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 import com.catalyst.springboot.entities.ReportStatus;
+import com.catalyst.springboot.entities.Type;
 
 @Transactional
 @Component
@@ -45,18 +48,37 @@ public class ReportDaoHibernate implements ReportDao {
 		report.setReportStatus(reportStatus);
 		em.persist(report);
 		
+		Integer reportValue = report.getReportId();
+		Collection<LineItem> lineItems = report.getLineItems();
+		for (LineItem item: lineItems){
+			Integer reportId = reportValue;
+			Report lineReport = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
+			.setParameter("id", reportId)
+			.getSingleResult();
+			
+			Integer typeId = item.getType().getTypeId();
+			System.out.println(typeId);
+			Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
+			.setParameter("id", typeId)
+			.getSingleResult();
+			
+			item.setReport(lineReport);
+			item.setType(type);
+			em.persist(item);		
+		}
 	}
 
 	@Override
-	public List<Report> getAllReports() {
+	public List<Report> getAllReportsByUserId(Integer userId) {
 		
-		return em.createQuery("SELECT p FROM report p", Report.class).
-				getResultList();
+		return em.createQuery("SELECT r FROM Report r WHERE r.userId = :id", Report.class)
+				.setParameter("id", userId)
+				.getResultList();
 	}
 
 	@Override
 	public Report getByReportId(Integer reportId) {	
-		return em.createQuery("SELECT p FROM report p WHERE p.reportId = :id", Report.class)
+		return em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
 				.setParameter("id", reportId)
 				.getSingleResult();	 
 	}

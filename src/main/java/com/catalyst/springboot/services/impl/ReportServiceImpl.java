@@ -20,9 +20,9 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<Report> getReports() {
+	public List<Report> getReportsByUserId(Integer userId) {
 
-		List<Report> reports = reportDao.getAllReports();
+		List<Report> reports = reportDao.getAllReportsByUserId(userId);
 		return reports;
 	}
 

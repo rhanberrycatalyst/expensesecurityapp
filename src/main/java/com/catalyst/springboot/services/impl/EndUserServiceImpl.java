@@ -21,14 +21,30 @@ public class EndUserServiceImpl implements EndUserService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	/**
+	 * Sets an encoder object
+	 * @param encoder
+	 */
 	public void setEncoder(BCryptPasswordEncoder encoder) {
 		this.encoder = encoder;
 	}
 
+	/**
+	 * Sets the userDAO object
+	 * @param userDao
+	 */
 	public void setuserDao(EndUserDao userDao) {
 		this.endUserDao = userDao;
 	}
 
+	/**
+	 * Retrieve all users from the application.
+	 * @param isActive
+	 *            - optional parameter. If supplied, will only retrieve
+	 *            users with matching values. If null, all users are
+	 *            returned.
+	 * @return
+	 */
 	@Override
 	public List<EndUser> getUsers() {
 
@@ -36,6 +52,10 @@ public class EndUserServiceImpl implements EndUserService {
 		return users;
 	}
 
+	/**
+	 * Add a new user to the application.
+	 * @param user
+	 */
 	@Override
 	public void add(EndUser user) {
 
@@ -44,6 +64,11 @@ public class EndUserServiceImpl implements EndUserService {
 		endUserDao.add(user);
 	}
 
+	/**
+	 * Update the information in an existing user. The userId is used to
+	 * find the unique user's information.
+	 * @param user
+	 */
 	@Override
 	public void update(EndUser user) {
 		String oldPassword = endUserDao.getByEndUserId(user.getUserId()).getPassword();
@@ -59,6 +84,15 @@ public class EndUserServiceImpl implements EndUserService {
 		endUserDao.update(user);
 	}
 
+	/**
+	 * Retrieve a single user's information if that user's userId
+	 * matches the supplied userId
+	 * @param userId
+	 * @return
+	 * @throws InvalidInputException
+	 *             - the value of userId provided should not be null or less
+	 *             than 0
+	 */
 	@Override
 	public EndUser getByUserId(Integer userId) throws InvalidInputException {
 		if (userId == null || userId < 0) {
@@ -67,6 +101,12 @@ public class EndUserServiceImpl implements EndUserService {
 		return endUserDao.getByEndUserId(userId);
 	}
 
+	/**
+	 * Retrieve a single user's information if that user's username
+	 * matches the supplied username.
+	 * @param username
+	 * @return
+	 */
 	@Override
 	public EndUser getUserByUsername(String username) {
 		return endUserDao.getEndUserByEndUsername(username);

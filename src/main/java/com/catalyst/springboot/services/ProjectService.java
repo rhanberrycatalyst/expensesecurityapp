@@ -4,6 +4,12 @@ import java.util.List;
 
 import com.catalyst.springboot.entities.Project;
 
+/**
+ * The methods declared in this interface are to provide basic CRUD functionality 
+ * related to Project Services.
+ * @author ldahlberg
+ * @author gwalpole
+ */
 public interface ProjectService {
 	/**
 	 * Add a new project to the application.
