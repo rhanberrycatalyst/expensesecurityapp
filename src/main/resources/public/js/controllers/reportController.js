@@ -43,11 +43,11 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
         var lineItemsList = $scope.itemList;
         console.log(lineItemsList);
 		var userData = angular.toJson({
-				endUser:{"userId":5},
+				endUser:{"userId":5}, //TODO make a meaningful variable
         		name:reportName.value,
         		note:note.value,
-        		project:{"projectId":1},
-        		reportStatus:{"reportStatusId":1},
+        		project:{"projectId":1}, //TODO make a meaningful variable
+        		reportStatus:{"reportStatusId":1}, //TODO make a meaningful variable
         		lineItems:lineItemsList
             })
             console.log(userData)
