@@ -72,12 +72,12 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/").permitAll()
-				.usernameParameter("username").passwordParameter("password")
+				.usernameParameter("username").passwordParameter("password").loginProcessingUrl("/login")
 			.failureHandler(authenticationFailureHandler).and().headers().cacheControl()
 		.and()
 		
 		.logout()
-				.logoutSuccessHandler(logoutSuccessHandler).logoutSuccessUrl("/")
+				.logoutSuccessUrl("/")
 				.deleteCookies("JSESSIONID", "CSRF-TOKEN").permitAll().and().csrf().disable();
 		
 
