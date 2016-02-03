@@ -41,10 +41,8 @@ public class ProjectDaoHibernate implements ProjectDao {
 		EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 				.setParameter("id", userId)
 				.getSingleResult();
-		project.setTechId(endUser);
-		
-		em.persist(project);
-		
+		project.setTechId(endUser);	
+		em.persist(project);	
 	}
 
 	/**

@@ -17,20 +17,16 @@
             report.project = {'projectId': 1},
             report.reportStatus = {'report' : 1};
             
-            var lineItems = []
-           			{
-            			value:25
-           			}
-           				
-                	    lineItems.report = {'reportId': 1},
-                	    lineItems.type = {'typeId' : 1};
-                	]	
-           			[
-        				lineItems.value = 15,
-             	   	 	lineItems.report = {'reportId': 1},
-             	    	lineItems.type = {'typeId' : 2};
-             		]		
-                };
+            report.lineItems = [
+					{
+					value:35,
+					type : {'typeId' : 3}
+					},
+					{
+					value: 15,
+				 	type : {'typeId' : 4}
+					}		
+				]	
          
             $.ajax({
                 url : '/reports',
@@ -43,7 +39,7 @@
                 $("#errorMsgs").text(errors);
             });
             
-            $.ajax({
+            /* $.ajax({
                 url : '/lineitems',
                 method : 'POST',
                 data : JSON.stringify(lineItems),
@@ -53,7 +49,7 @@
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });
-
+ */
         });
 
     });
