@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/index');
 	
 	$stateProvider.state("index", {
 		url: '/index',

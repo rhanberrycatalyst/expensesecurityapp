@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController{
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String login()
-	{
+	public String login(){
 		return "/login.html";
 	}
 	
-	
+//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+//	public String index(){
+//		return "/index.html";
+//	}
 	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String projectHome() {

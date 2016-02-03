@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -77,6 +76,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/")
 				.permitAll()
+				.defaultSuccessUrl("/index.html")
 				.usernameParameter("username")
 				.passwordParameter("password")
 				.failureHandler(authenticationFailureHandler)
