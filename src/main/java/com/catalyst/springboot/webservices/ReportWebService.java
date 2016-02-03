@@ -39,10 +39,7 @@ public class ReportWebService {
 	
 	@RequestMapping(value="/reportlist/{id}", method=RequestMethod.GET)
 	public Report getReportByID(@PathVariable Integer id) throws InvalidInputException{ 
-		Report report  = reportService.getByReportId(id);
-		report.setEndUser(null);
-		report.setProject(null);
-		return report;
+		return reportService.getByReportId(id);
 	}
 
 	@RequestMapping(value="/reports/{id}", method = RequestMethod.PUT)
