@@ -5,11 +5,8 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = '';
 		$scope.cost = '';
-		console.log($scope.itemList);
 	};
 	$scope.typeDisplay = function(typeID){
-		console.log("test");
-		console.log(typeID);
 		if(typeID == 1){
 			return "Mileage";
 		}
@@ -41,7 +38,6 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	};
 	$scope.sendReport = function() {
         var lineItemsList = $scope.itemList;
-        console.log(lineItemsList);
 		var userData = angular.toJson({
 				endUser:{"userId":5}, //TODO make a meaningful variable
         		name:reportName.value,
@@ -50,7 +46,6 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
         		reportStatus:{"reportStatusId":1}, //TODO make a meaningful variable
         		lineItems:lineItemsList
             })
-            console.log(userData)
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log(data);
