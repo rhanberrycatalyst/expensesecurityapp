@@ -1,10 +1,10 @@
 <div>
 	<label for="reportName">Report Name: </label>
-	<input id="reportName" name="reportName" type="text"/>
+	<input id="reportName" name="reportName" maxlength=255 type="text"/>
 </div>
 <div>
-	<label for="note">Note</label>
-	<textarea id="note" name="note" ng-model="note">
+	<label for="note">Note: </label>
+	<textarea id="note" name="note" maxlength=255 ng-model="note">
 	</textarea>
 </div>
 <form class="form-horizontal" role="form" ng-submit="addRow()">
@@ -28,7 +28,7 @@
 	<div class="form-group">
 		<label class="col-md-2 control-label">Cost</label>
 		<div class="col-md-4">
-			<input type="text" class="form-control" name="cost"
+			<input type="number" class="form-control" name="cost"
 				ng-model="cost"/>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 		</tr>
 		<tr ng-repeat="items in itemList">
 			<td>
-				{{typeDisplay(items.typeid)}}
+				{{typeDisplay(items.type.typeId)}}
 			</td>
 			<td>
 				{{items.value | currency}}

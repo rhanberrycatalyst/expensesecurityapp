@@ -17,7 +17,7 @@ public class UserWebServiceTest {
 	public void createuserWebService() throws Exception {
 		mockuserService = mock(EndUserService.class);
 		userWebService = new EndUserWebService();
-		userWebService.setuserService(mockuserService);
+		userWebService.setUserService(mockuserService);
 	}
 
 	@Test
