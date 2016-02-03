@@ -43,6 +43,7 @@ public class ProjectWebService {
 	
 	/**
 	 * This method maps the value of projects for GET requests of all projects.
+	 * @return List<Project>
 	 */
 	@RequestMapping(value="/projects", method = RequestMethod.GET)
 	public List<Project> getProjects(){
@@ -51,7 +52,8 @@ public class ProjectWebService {
 	
 	/**
 	 * This method maps the value of projects for GET requests of single project with 
-	 * @param id.
+	 * @param id
+	 * @return Project
 	 */
 	@RequestMapping(value="/projects/{id}", method=RequestMethod.GET)
 	public Project getProjectByID(@PathVariable Integer id) throws InvalidInputException{ 
@@ -70,6 +72,7 @@ public class ProjectWebService {
 	/**
 	 * This method maps the value of projects for GET requests of single project with 
 	 * @param name
+	 * @return Project
 	 */
 	@RequestMapping(value="/projectname/{name}", method=RequestMethod.GET)
 	public Project getProjectByName(@PathVariable String name) throws InvalidInputException{ 

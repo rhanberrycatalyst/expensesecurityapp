@@ -15,11 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
- * The class below creates @Entity in database with:
- * 		Auto-generated projectId
- * 		Unique name
- * 		JoinColumn for Technical Lead
- * Entity also connects to, and sets, JoinTable projectdevs for tracking developers on project.
+ * An object representing individual project of the application.
  * @author ldahlberg
  * @author gwalpole
  */
@@ -45,36 +41,66 @@ public class Project {
 			)
 	private Collection<EndUser> endUsers;
 	
-	
+	/**
+	 * Generic getter for Collection<EndUser>
+	 * @return Collection<EndUser>
+	 */
 	public Collection<EndUser> getEndUsers() {
 		return endUsers;
 	}
-
+	
+	/**
+	 * Generic setter for Collection<EndUser>
+	 * @param endUsers
+	 */
 	public void setEndUsers(Collection<EndUser> endUsers) {
 		this.endUsers = endUsers;
 	}
 
+	/**
+	 * Generic getter for techId
+	 * @return EndUser
+	 */
 	public EndUser getTechId() {
 		return techId;
 	}
 
+	/**
+	 * Generic setter for techUser
+	 * @param techId
+	 */
 	public void setTechId(EndUser techId) {
 		this.techId = techId;
 	}
 	
-
+	/**
+	 * Generic getter for projectId
+	 * @return Integer
+	 */
 	public Integer getProjectId() {
 		return projectId;
 	}
 
+	/**
+	 * Generic setter for projectId
+	 * @param projectId
+	 */
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
 
+	/**
+	 * Generic getter for name
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Generic setter for name
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

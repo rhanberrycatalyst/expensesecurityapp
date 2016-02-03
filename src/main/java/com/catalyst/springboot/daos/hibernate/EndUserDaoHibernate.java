@@ -24,7 +24,7 @@ public class EndUserDaoHibernate implements EndUserDao{
 	private EntityManager em;
 	
 	/**
-	 * Sets the entity manager
+	 * Sets the EntityManager
 	 * @param em
 	 */
 	public void setEm(EntityManager em) {

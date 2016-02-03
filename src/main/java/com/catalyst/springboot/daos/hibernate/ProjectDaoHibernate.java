@@ -25,15 +25,16 @@ public class ProjectDaoHibernate implements ProjectDao {
 	private EntityManager em;
 	
 	/**
-	 * Sets EntityManager for ProjectDaoHibernate
+	 * Sets EntityManager
+	 * @param em
 	 */
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
 	
 	/**
-	 * Adds Project information to storage.
-	 * @param project contains userId; userId is used to get EndUser then set EndUser for JoinColumn connection.
+	 * Creates a new row in the Project table in the database and updates references to Technical Lead.
+	 * @param project
 	 */
 	@Override
 	public void add(Project project) {
@@ -47,6 +48,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 
 	/**
 	 * Method returns list of all available projects.
+	 * @return List<Project>
 	 */
 	@Override
 	public List<Project> getAllProjects() {
@@ -57,6 +59,8 @@ public class ProjectDaoHibernate implements ProjectDao {
 	
 	/**
 	 * Method obtains specific project by searching database with @param projectId.
+	 * @param projectId
+	 * @return project
 	 */
 	@Override
 	public Project getByProjectId(Integer projectId) {	
@@ -67,6 +71,8 @@ public class ProjectDaoHibernate implements ProjectDao {
 
 	/**
 	 * Method obtains specific project by searching database with @param projectName.
+	 * @param projectName
+	 * @return project
 	 */
 	@Override
 	public Project getProjectByProjectName(String projectName){
@@ -77,6 +83,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 	
 	/**
 	 * Method updates entire project in database with @param project.
+	 * @param project.
 	 */
 	@Override
 	public void update(Project project) { 

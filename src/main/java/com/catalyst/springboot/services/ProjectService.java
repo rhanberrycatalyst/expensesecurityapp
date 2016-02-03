@@ -5,8 +5,7 @@ import java.util.List;
 import com.catalyst.springboot.entities.Project;
 
 /**
- * The methods declared in this interface are to provide basic CRUD functionality 
- * related to Project Services.
+ * The methods declared in this interface are to provide basic WebService functionality 
  * @author ldahlberg
  * @author gwalpole
  */
@@ -28,11 +27,6 @@ public interface ProjectService {
 
 	/**
 	 * Retrieve all projects from the application.
-	 * 
-	 * @param isActive
-	 *            - optional parameter. If supplied, will only retrieve
-	 *            projects with matching values. If null, all projects are
-	 *            returned.
 	 * @return
 	 */
 	List<Project> getProjects();

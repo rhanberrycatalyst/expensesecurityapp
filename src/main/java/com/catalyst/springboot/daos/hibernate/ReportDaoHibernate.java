@@ -17,6 +17,11 @@ import com.catalyst.springboot.entities.Report;
 import com.catalyst.springboot.entities.ReportStatus;
 import com.catalyst.springboot.entities.Type;
 
+/**
+ * The hibernate functionality for the Report's Database access
+ * @author ldahlberg
+ * @author gwalpole
+ */
 @Transactional
 @Component
 public class ReportDaoHibernate implements ReportDao {
@@ -24,10 +29,17 @@ public class ReportDaoHibernate implements ReportDao {
 	@PersistenceContext
 	private EntityManager em;
 	
+	/**
+	 * Sets EntityManager.
+	 */
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
+	/**
+	 * Creates a new row in the Report table in the database and updates EndUser and Project tables.
+	 * LineItem feature then loops through LineItems and adds new rows to Line Item tables in database.
+	 * @param report
+	 */
 	@Override
 	public void add(Report report) {
 		Integer userId = report.getEndUser().getUserId();
@@ -68,6 +80,10 @@ public class ReportDaoHibernate implements ReportDao {
 		}
 	}
 
+	/**
+	 * @return all Reports assigned to a user with
+	 * @param userId
+	 */
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
 		
@@ -76,6 +92,10 @@ public class ReportDaoHibernate implements ReportDao {
 				.getResultList();
 	}
 
+	/**
+	 * @return single Report with
+	 * @param reportId
+	 */
 	@Override
 	public Report getByReportId(Integer reportId) {
 		return em.createQuery("SELECT r FROM Report r WHERE reportId = :id", Report.class)
@@ -83,6 +103,10 @@ public class ReportDaoHibernate implements ReportDao {
 				.getSingleResult(); 
 	}
 
+	/**
+	 * @return single Report with
+	 * @param reportName
+	 */
 	@Override
 	public Report getReportByReportname(String reportname){
 		return em.createQuery("SELECT r FROM Report r WHERE r.name = :reportname", Report.class)
@@ -90,6 +114,10 @@ public class ReportDaoHibernate implements ReportDao {
 				 .getSingleResult();
 	}
 
+	/**
+	 * update Report in database with
+	 * @param report
+	 */
 	@Override
 	public void update(Report report) { 
 		em.merge(report);

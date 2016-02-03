@@ -30,7 +30,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	/**
-	 * Method gets List of Project and returns List
+	 * Method returns
+	 * @return List<Project>
 	 */
 	@Override
 	public List<Project> getProjects() {
@@ -39,7 +40,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	/**
-	 * Method adds @param project.
+	 * Method adds 
+	 * @param project.
 	 */
 	@Override
 	public void add(Project project) {
@@ -47,7 +49,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	/**
-	 * Method updates @param project.
+	 * Method updates single project
+	 * @param project.
 	 */
 	@Override
 	public void update(Project project) {
@@ -55,8 +58,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	/**
-	 * Method gets single project by @param projectId. 
-	 * If projectId is null or negative value, method throws InvalidInputException.
+	 * Method gets single project with
+	 * @param projectId. 
+	 * If projectId is null or negative value, method 
+	 * @throws InvalidInputException.
+	 * @return Project
 	 */
 	@Override
 	public Project getByProjectId(Integer projectId) throws InvalidInputException {
@@ -67,8 +73,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	/**
-	 * Method gets single project by @param projectName. 
-	 * If projectId is null or empty, method throws InvalidInputException.
+	 * Method gets single project with
+	 * @param projectName. 
+	 * If projectId is null or empty, method 
+	 * @throws InvalidInputException.
+	 * @return Project
 	 */
 	@Override
 	public Project getProjectByProjectName(String projectName) throws InvalidInputException {

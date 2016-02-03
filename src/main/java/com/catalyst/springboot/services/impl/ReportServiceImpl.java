@@ -10,15 +10,28 @@ import com.catalyst.springboot.entities.Report;
 import com.catalyst.springboot.services.InvalidInputException;
 import com.catalyst.springboot.services.ReportService;
 
+/**
+ * The methods below implements the ReportService interface
+ * @author ldahlberg
+ * @author gwalpole
+ */
 @Service
 public class ReportServiceImpl implements ReportService {
 	@Autowired
 	private ReportDao reportDao;
 
+	/**
+	 * Sets ReportDao
+	 */
 	public void setreportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
 	}
 
+	/**
+	 * Method gets List<Report> with
+	 * @param userId. 
+	 * @return List<Report>
+	 */
 	@Override
 	public List<Report> getReportsByUserId(Integer userId) {
 
@@ -26,16 +39,30 @@ public class ReportServiceImpl implements ReportService {
 		return reports;
 	}
 
+	/**
+	 * Method adds single report with
+	 * @param report 
+	 */
 	@Override
 	public void add(Report report) {
 		reportDao.add(report);
 	}
 
+	/**
+	 * Method updates single report with
+	 * @param reportId. 
+	 */
 	@Override
 	public void update(Report report) {
 		reportDao.update(report);
 	}
 
+	/**
+	 * Method gets single report with
+	 * @param reportId. 
+	 * @throws InvalidInputException for null
+	 * @return Report
+	 */
 	@Override
 	public Report getByReportId(Integer reportId) throws InvalidInputException {
 		if (reportId == null || reportId < 0) {
@@ -44,9 +71,14 @@ public class ReportServiceImpl implements ReportService {
 		return reportDao.getByReportId(reportId);
 	}
 
+	/**
+	 * Method gets single report with
+	 * @param reportName. 
+	 * @return Report
+	 */
 	@Override
-	public Report getReportByReportname(String reportname) {
-		return reportDao.getReportByReportname(reportname);
+	public Report getReportByReportname(String reportName) {
+		return reportDao.getReportByReportname(reportName);
 
 	}
 }

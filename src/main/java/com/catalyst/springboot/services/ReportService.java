@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.catalyst.springboot.entities.Report;
 
+/**
+ * The methods declared in this interface are to provide basic WebService functionality 
+ * @author ldahlberg
+ * @author gwalpole
+ */
 public interface ReportService {
 
 	/**
@@ -23,11 +28,6 @@ public interface ReportService {
 
 	/**
 	 * Retrieve all reports from the application.
-	 * 
-	 * @param isActive
-	 *            - optional parameter. If supplied, will only retrieve
-	 *            reports with matching values. If null, all reports are
-	 *            returned.
 	 * @return
 	 */
 	List<Report> getReportsByUserId(Integer userId);

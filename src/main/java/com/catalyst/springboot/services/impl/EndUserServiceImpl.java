@@ -12,6 +12,11 @@ import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.services.EndUserService;
 import com.catalyst.springboot.services.InvalidInputException;
 
+/**
+ * The methods declared in this implementation provide basic WebService functionality 
+ * @author ldahlberg
+ * @author gwalpole
+ */
 @Service
 public class EndUserServiceImpl implements EndUserService {
 
@@ -39,10 +44,6 @@ public class EndUserServiceImpl implements EndUserService {
 
 	/**
 	 * Retrieve all users from the application.
-	 * @param isActive
-	 *            - optional parameter. If supplied, will only retrieve
-	 *            users with matching values. If null, all users are
-	 *            returned.
 	 * @return
 	 */
 	@Override
