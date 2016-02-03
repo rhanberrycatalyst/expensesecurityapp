@@ -6,14 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Report {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer reportId;
+	@NotNull
 	private String name;
-
+	private String note;
+	
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private EndUser endUser;
@@ -30,11 +33,9 @@ public class Report {
 	@JoinColumn(name="projectid")
 	private Project project;
 	
-	
-
 	@ManyToOne
 	@JoinColumn(name="statusid")
-	private ReportStatus status;
+	private ReportStatus reportstatus;
 	
 	public Integer getReportId() {
 		return reportId;
@@ -61,10 +62,18 @@ public class Report {
 	}
 
 	public ReportStatus getStatus() {
-		return status;
+		return reportstatus;
 	}
 
 	public void setReportStatus(ReportStatus status) {
-		this.status = status;
+		this.reportstatus = status;
+	}
+	
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 }

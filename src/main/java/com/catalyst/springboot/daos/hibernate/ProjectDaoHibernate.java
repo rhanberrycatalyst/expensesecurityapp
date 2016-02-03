@@ -29,6 +29,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 		.setParameter("id", userId)
 		.getSingleResult();
 		project.setTechId(endUser);
+		
 		em.persist(project);
 		
 	}
@@ -48,7 +49,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 	}
 
 	@Override
-	public Project getProjectByProjectname(String projectname){
+	public Project getProjectByProjectName(String projectname){
 		return em.createQuery("SELECT p FROM project p WHERE p.projectname = :projectname", Project.class)
 				 .setParameter("projectname", projectname)
 				 .getSingleResult();

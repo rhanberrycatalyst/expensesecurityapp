@@ -14,6 +14,7 @@
 
             project.name = $("#firstname").val();
             project.techId = {'userId': 1};
+            project.endUsers = [{'userId': 3}, {'userId': 4}];
          
             $.ajax({
                 url : '/projects',

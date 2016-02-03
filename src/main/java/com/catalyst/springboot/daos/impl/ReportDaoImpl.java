@@ -27,7 +27,7 @@ public class ReportDaoImpl implements ReportDao{
 	
 	
 	@Override
-	public List<Report> getAllReports() { 
+	public List<Report> getAllReportsByUserId(Integer userId) { 
 		return reports;
 	}
 	

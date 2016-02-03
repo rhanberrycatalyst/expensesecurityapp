@@ -22,7 +22,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	
 
 	@Autowired
-	private CustomAuthenticationFailureHandler authenticationFailureHandler;
+	private CustomAuthenticationFailureHandler authFailure;
 
 	@Bean
 	CustomAuthenticationFailureHandler authenticationHandler() {
@@ -34,12 +34,26 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 *            the authFailure to set
 	 */
 	public void setAuthFailure(CustomAuthenticationFailureHandler authFailure) {
-		this.authenticationFailureHandler = authFailure;
+		this.authFailure = authFailure;
 	}
 
 	
 
-	
+	@Autowired
+	private CustomLogOutSuccessHandler logoutSuccessHandler;
+
+	@Bean
+	CustomLogOutSuccessHandler logoutSuccessHandler() {
+		return new CustomLogOutSuccessHandler();
+	}
+
+	/**
+	 * @param logoutSuccess
+	 *            the logoutSuccess to set
+	 */
+	public void setLogOutSuccess(CustomLogOutSuccessHandler logoutSuccess) {
+		this.logoutSuccessHandler = logoutSuccess;
+	}
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,25 +61,25 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
-						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");// this
-																																								// fakes
-																																								// a
-																																								// user
-																																								// role
+						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");
+						
+																																							
+					
+		
+																																								
+																																								
  
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/").permitAll()
-				.usernameParameter("username").passwordParameter("password").loginProcessingUrl("/login")
-			.failureHandler(authenticationFailureHandler).and().headers().cacheControl()
-		.and()
-		
-		.logout()
-				.logoutSuccessUrl("/")
-				.deleteCookies("JSESSIONID", "CSRF-TOKEN").permitAll().and().csrf().disable();
-		
+		http.authorizeRequests().antMatchers("/**").authenticated()
+	    .and().formLogin().loginPage("/").permitAll().loginProcessingUrl("/login")
+	    .usernameParameter("username").passwordParameter("password").failureHandler(authFailure)
+	    .and().logout().logoutSuccessUrl("/")
+		.deleteCookies("JSESSIONID", "CSRF-TOKEN").permitAll()
+		.and().csrf().disable();
+	    		
 
 
 	}
