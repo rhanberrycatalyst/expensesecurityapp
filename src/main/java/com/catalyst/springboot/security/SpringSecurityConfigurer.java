@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -102,11 +103,11 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	/**
 	 * Tells the Websecurity to ignore the css, js, and pics folders.
 	 */
-//	 @Override
-//	 public void configure(WebSecurity web) throws Exception {
-//	 web.ignoring().antMatchers("/css/**", "/js/**", "/pics/**");
-//	
-//	 }
+	 @Override
+	 public void configure(WebSecurity web) throws Exception {
+	 web.ignoring().antMatchers("resources/css/**", "resources/js/**", "resources/pics/**");
+	
+	 }
 
 	@Autowired
 	private DataSource datasource;
