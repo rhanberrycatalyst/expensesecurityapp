@@ -1,1 +1,1 @@
-angular.module('loginModule', ['ui.router', 'ngRoute','loginController']);
+angular.module('loginModule', ['ngRoute','loginController']);
