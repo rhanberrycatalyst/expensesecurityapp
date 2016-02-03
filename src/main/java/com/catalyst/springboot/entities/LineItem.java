@@ -33,10 +33,6 @@ public class LineItem {
 		this.lineItemId = lineItemId;
 	}
 
-	public Report getReport() {
-		return report;
-	}
-
 	public void setReport(Report report) {
 		this.report = report;
 	}

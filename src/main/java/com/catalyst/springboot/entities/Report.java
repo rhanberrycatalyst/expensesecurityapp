@@ -75,7 +75,7 @@ public class Report {
 		this.project = project;
 	}
 
-	public ReportStatus getStatus() {
+	public ReportStatus getReportStatus() {
 		return reportStatus;
 	}
 

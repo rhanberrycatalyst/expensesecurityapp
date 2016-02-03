@@ -9,32 +9,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#submit").click(function() {
-
-            var report = {};
-
-            report.name = $("#firstname").val();
-            report.endUser = {'userId': 1},
-            report.project = {'projectId': 1},
-            report.reportStatus = {'report' : 1};
-            
-            report.lineItems = [
-					{
-					value:35,
-					type : {'typeId' : 3}
-					},
-					{
-					value: 15,
-				 	type : {'typeId' : 4}
-					}		
-				]	
          
             $.ajax({
-                url : '/reports',
-                method : 'POST',
-                data : JSON.stringify(report),
-                contentType : 'application/json'
-            }).then(function() {
-            	console.log(report);
+                url : '/reportlist/1',
+                method : 'GET',
+            }).then(function(data) {
+            	console.log(data);
             }, function(errors) {
                 $("#errorMsgs").text(errors);
             });

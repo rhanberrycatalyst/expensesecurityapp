@@ -33,9 +33,9 @@ public class ReportDaoImpl implements ReportDao{
 	
 	@Override
 	public Report getByReportId(Integer reportId) {
-		for(Report p : reports){
-			if(p.getReportId().equals(reportId)){
-				return p;
+		for(Report r : reports){
+			if(r.getReportId().equals(reportId)){
+				return r;
 			}
 		}
 		return null;

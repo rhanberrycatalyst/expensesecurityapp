@@ -28,7 +28,8 @@ public interface ReportDao {
 		List<Report> getAllReportsByUserId(Integer userId);
 		
 		/**
-		 * Retrieve information about a single report from storage with a matching reportId
+		 * Retrieves report and corresponding lineItem(s) in report with reportId.
+		 * 
 		 * @param reportId
 		 * @return
 		 */
@@ -41,4 +42,12 @@ public interface ReportDao {
 		 * @return
 		 */
 		Report getReportByReportname(String reportName);
+
+		/**
+		 * Retrieves lineItem(s) in report with corresponding id.
+		 * 
+		 * @param reportId
+		 * @return
+		 */
+
 }
