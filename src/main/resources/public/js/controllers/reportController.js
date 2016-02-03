@@ -37,11 +37,11 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 		$scope.itemList.splice(index, 1);
 	};
 	$scope.sendReport = function() {
-        var lineItems = $scope.itemList;
-        var reportData = [{name:reportName.value, note:note.value}, lineItems];
-        console.log(reportData);
+        var lineItemsList = $scope.itemList;
 		var userData = JSON.stringify({
-        		reportData
+        		name:reportName.value,
+        		note:note.value,
+        		lineItems:lineItemsList
             })
             console.log(userData)
             $http.post("/reports", userData).
