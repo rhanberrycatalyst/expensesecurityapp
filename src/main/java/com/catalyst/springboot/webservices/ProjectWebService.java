@@ -25,10 +25,8 @@ public class ProjectWebService {
 	
 	@RequestMapping(value="/projects", method=RequestMethod.POST)
 	public void addProject(@RequestBody Project project){
-		System.out.println(project.getTechId().getUserId());
 		projectService.add(project);
 	} 
-		
 		
 	@RequestMapping(value="/projects", method = RequestMethod.GET)
 	public List<Project> getProjects(){
@@ -43,5 +41,10 @@ public class ProjectWebService {
 	@RequestMapping(value="/projects/{id}", method = RequestMethod.PUT)
 	public void updateuser(@PathVariable Integer id, @RequestBody Project project){
 		projectService.update(project);
+	}
+	
+	@RequestMapping(value="/projectname/{name}", method=RequestMethod.GET)
+	public Project getProjectByName(@PathVariable String name) throws InvalidInputException{ 
+		return projectService.getProjectByProjectName(name);
 	}
 }

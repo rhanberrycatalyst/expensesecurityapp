@@ -17,7 +17,6 @@ import com.catalyst.springboot.entities.Type;
 @Transactional
 @Component 
 public class LineItemDaoHibernate implements LineItemDao {
-
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -47,22 +46,23 @@ public class LineItemDaoHibernate implements LineItemDao {
 	}
 
 	@Override
-	public List<LineItem> getAllLineItems() {
+	public List<LineItem> getAllLineItemsByReportId(Integer reportId) {
 		
-		return em.createQuery("SELECT l FROM LineItem l", LineItem.class).
-				getResultList();
+		return em.createQuery("SELECT l FROM LineItem l WHERE l.reportId = :id", LineItem.class)
+				.setParameter("id", reportId)
+				.getResultList();
 	}
 
 	@Override
 	public LineItem getByLineItemId(Integer lineItemId) {	
-		return em.createQuery("SELECT e FROM LineItem e WHERE e.userId = :id", LineItem.class)
+		return em.createQuery("SELECT l FROM LineItem l WHERE l.userId = :id", LineItem.class)
 				.setParameter("id", lineItemId)
 				.getSingleResult();	 
 	}
 
 	@Override
 	public LineItem getLineItemByLineItemname(String lineItemname){
-		return em.createQuery("SELECT e FROM lineItem e WHERE e.lineItemname = :lineItemname", LineItem.class)
+		return em.createQuery("SELECT l FROM lineItem l WHERE l.lineItemname = :lineItemname", LineItem.class)
 				 .setParameter("lineItemname", lineItemname)
 				 .getSingleResult();
 	}
@@ -73,7 +73,7 @@ public class LineItemDaoHibernate implements LineItemDao {
 
 	@Override
 	public void delete(Integer lineItemId) {
-		LineItem lineItem = em.createQuery("SELECT e FROM lineItem e WHERE e.lineItemname = :lineItemname", LineItem.class)
+		LineItem lineItem = em.createQuery("SELECT l FROM lineItem l WHERE l.lineItemname = :lineItemname", LineItem.class)
 				 .setParameter("lineItemname", lineItemId)
 				 .getSingleResult();
 		em.remove(lineItem);

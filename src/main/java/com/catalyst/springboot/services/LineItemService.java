@@ -42,7 +42,7 @@ public interface LineItemService {
 	 */
 	
 	
-	List<LineItem> getLineItems();
+	List<LineItem> getAllLineItemsByReportId(Integer reportId);
 
 	/**
 	 * Retrieve a single lineItem's information if that lineItem's lineItemId

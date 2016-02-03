@@ -1,10 +1,8 @@
 package com.catalyst.springboot.entities;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -16,20 +14,26 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
+
 public class EndUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
+	@NotNull
 	private String firstname;
+	@NotNull
 	private String lastname;
+	@NotNull
 	private String email;
+	@NotNull
 	private String password;
+	@NotNull
 	private Boolean isActive;
 	 
 	@JoinTable(name = "user_project_roles")
@@ -37,12 +41,8 @@ public class EndUser {
 	@ElementCollection
 	private Map<Project,Role> roleByproject = new HashMap<>();
 	
-	@OneToMany(targetEntity = Project.class)
-	private List<Project> projects;
-	
-	
-	@ManyToMany
-	private Set<Project> userProjects = new HashSet<>();
+	@ManyToMany(mappedBy="endUsers")
+	private Collection<Project> project;
 	
 	@ManyToOne
 	@JoinColumn(name="springroleid")

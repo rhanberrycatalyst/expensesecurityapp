@@ -25,7 +25,7 @@ public interface ReportDao {
 		 * Retrieves all reports currently in storage.
 		 * @return
 		 */
-		List<Report> getAllReports();
+		List<Report> getAllReportsByUserId(Integer userId);
 		
 		/**
 		 * Retrieve information about a single report from storage with a matching reportId

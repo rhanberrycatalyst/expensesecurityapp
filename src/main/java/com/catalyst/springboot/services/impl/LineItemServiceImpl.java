@@ -22,9 +22,9 @@ public class LineItemServiceImpl implements LineItemService{
 	}
 
 	@Override
-	public List<LineItem> getLineItems() {
+	public List<LineItem> getAllLineItemsByReportId(Integer reportId) {
 
-		List<LineItem> lineItems = lineItemDao.getAllLineItems();
+		List<LineItem> lineItems = lineItemDao.getAllLineItemsByReportId(reportId);
 		return lineItems;
 	}
 

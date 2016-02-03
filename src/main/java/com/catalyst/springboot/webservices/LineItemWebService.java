@@ -30,9 +30,9 @@ public class LineItemWebService implements LineItemService {
 	} 
 		
 		
-	@RequestMapping(value="/lineitems", method = RequestMethod.GET)
-	public List<LineItem> getLineItems(){
-		return lineItemService.getLineItems();
+	@RequestMapping(value="/lineitems/{reportId}", method = RequestMethod.GET)
+	public List<LineItem> getAllLineItemsByReportId(@PathVariable Integer reportId){
+		return lineItemService.getAllLineItemsByReportId(reportId);
 	}	
 	
 	@RequestMapping(value="/lineitems/{id}", method=RequestMethod.GET)
