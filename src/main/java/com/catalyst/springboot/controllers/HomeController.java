@@ -5,13 +5,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController {
+public class HomeController{
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return employeeIndex();
+	public String login(){
+		return "/login.html";
 	}
 
+//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+//	public String index(){
+//		return "/index.html";
+//	}
+	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String projectHome() {
 		return "/project-create.html";
@@ -52,4 +57,6 @@ public class HomeController {
 	public String employeeDelete() {
 		return "/employee-delete.html";
 	}
+
+
 }

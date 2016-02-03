@@ -47,6 +47,7 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public List<EndUser> getAllEndUsers() {
+
 		return em.createQuery("SELECT e FROM EndUser e", EndUser.class).
 				getResultList();
 	}

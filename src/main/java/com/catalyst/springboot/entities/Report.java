@@ -49,8 +49,8 @@ public class Report {
 
 	@ManyToOne
 	@JoinColumn(name="statusid")
-	private ReportStatus reportStatus;
-	
+	private ReportStatus reportstatus;
+
 	public Integer getReportId() {
 		return reportId;
 	}

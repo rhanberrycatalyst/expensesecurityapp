@@ -58,7 +58,7 @@ public class EndUserWebService {
      */
 
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
-	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{
+	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{ 
 		return userService.getByUserId(id);
 	}
 

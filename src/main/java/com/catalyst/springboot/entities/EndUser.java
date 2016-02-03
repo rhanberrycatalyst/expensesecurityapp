@@ -25,6 +25,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @author gwalpole
  */
 @Entity
+<<<<<<< HEAD
+=======
+
+>>>>>>> Sprint_1
 public class EndUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +55,7 @@ public class EndUser {
 	@ManyToOne
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
+<<<<<<< HEAD
 
 	/**
 	 * Generic setter for userId
@@ -63,6 +68,12 @@ public class EndUser {
 	 * Generic getter for userId
 	 * @return
 	 */
+=======
+	
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+>>>>>>> Sprint_1
 
 	public Integer getUserId() {
 		return userId;
@@ -96,6 +107,7 @@ public class EndUser {
 		this.lastname = lastname;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Generic setter for password
 	 * @param password
@@ -114,6 +126,37 @@ public class EndUser {
 	 * Generic getter for email
 	 * @return
 	 */
+=======
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	@Override
+	public int hashCode() {
+		HashCodeBuilder builder = new HashCodeBuilder(31, 17);
+		builder.append(userId);
+		return builder.toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof EndUser)){
+			return false;
+		}
+		EndUser user = (EndUser) obj;
+
+		EqualsBuilder builder = new EqualsBuilder();
+		builder.append(this.userId, user.userId);
+		return builder.isEquals();
+
+	}
+>>>>>>> Sprint_1
 
 	public String getEmail() {
 		return email;
@@ -125,10 +168,14 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+<<<<<<< HEAD
 	/**
 	 * Generic getter for isActive
 	 * @return
 	 */
+=======
+	
+>>>>>>> Sprint_1
 	public Boolean getIsActive() {
 		return isActive;
 	}
