@@ -43,7 +43,7 @@ public class EndUserDaoImpl implements EndUserDao {
 	}
 
 	@Override
-	public EndUser getEndUserByEndUsername(String username) {
+	public EndUser getEndUserByEndUsername(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
