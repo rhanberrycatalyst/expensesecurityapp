@@ -5,7 +5,8 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 	
 	$stateProvider.state("index", {
 		url: '/',
-		templateUrl: 'index.html'
+		templateUrl: 'templates/homeView.html',
+		controller: 'homeController'
 		})
 		.state("login", {
 			url: '/loginpage',
@@ -34,7 +35,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state("detailView", {
 			url: '/detailView',
-			templateUrl: 'templates/detail.html',
+			templateUrl: 'templates/detailView.html',
 			controller: 'detailController'
 	});
 }]);
