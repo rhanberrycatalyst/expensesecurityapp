@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -35,11 +36,12 @@ public class Report {
 
 	@ManyToOne
 	@JoinColumn(name="statusid")
+
 	private ReportStatus reportStatus;
-	
+
 	@OneToMany
 	private Collection<LineItem> lineItems;
-	
+
 	/**
 	 * Generic getter for LineItems
 	 * @return Collection<LineItem>
@@ -101,6 +103,7 @@ public class Report {
 	 * Generic getter for project
 	 * @return Project
 	 */
+
 	public Project getProject() {
 		return project;
 	}

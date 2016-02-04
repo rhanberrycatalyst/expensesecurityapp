@@ -10,13 +10,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 @Controller
-public class HomeController {
+public class HomeController{
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		return employeeIndex();
 	}
 
+=======
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(){
+		return "/scripts/app/account/login/login.html";
+	}
+	
+//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+//	public String index(){
+//		return "/index.html";
+//	}
+	
+>>>>>>> origin/AngularAuthenticationIssue
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String projectHome() {
 		return "/project-create.html";
@@ -57,4 +70,6 @@ public class HomeController {
 	public String employeeDelete() {
 		return "/employee-delete.html";
 	}
+	
+	
 }

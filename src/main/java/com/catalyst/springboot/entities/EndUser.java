@@ -16,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * An object representing individual users of the application.
  * @author ldahlberg
@@ -41,14 +44,14 @@ public class EndUser {
 	@MapKeyJoinColumn(name = "projects")
 	@ElementCollection
 	private Map<Project,Role> roleByproject = new HashMap<>();
-	
+
 	@ManyToMany(mappedBy="endUsers")
 	private Collection<Project> project;
-	
+
 	@ManyToOne
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
-	
+
 	/**
 	 * Generic setter for userId
 	 * @param userId
@@ -60,6 +63,7 @@ public class EndUser {
 	 * Generic getter for userId
 	 * @return
 	 */
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -91,6 +95,7 @@ public class EndUser {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+
 	/**
 	 * Generic setter for password
 	 * @param password
@@ -109,6 +114,7 @@ public class EndUser {
 	 * Generic getter for email
 	 * @return
 	 */
+
 	public String getEmail() {
 		return email;
 	}
@@ -119,10 +125,12 @@ public class EndUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
 	 * Generic getter for isActive
 	 * @return
 	 */
+
 	public Boolean getIsActive() {
 		return isActive;
 	}

@@ -1,17 +1,22 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/index');
 	
 	$stateProvider.state("index", {
+<<<<<<< HEAD
 		url: '/',
 		templateUrl: 'templates/homeView.html',
 		controller: 'homeController'
+=======
+		url: '/index',
+		templateUrl: 'index.html'
+>>>>>>> origin/AngularAuthenticationIssue
 		})
 		.state("login", {
-			url: '/loginpage',
-			templateUrl: 'templates/login.html',
-			controller: 'loginController'
+			url: '/',
+			templateUrl: '/login.html',
+			controller: 'LoginJs/loginController'
 		})
 		.state("home", {
 			url: '/home',

@@ -39,8 +39,8 @@ public class EndUserWebService {
 	@RequestMapping(value="/users", method=RequestMethod.POST)
 	public void adduser(@RequestBody EndUser user){
 		userService.add(user);
-	} 
-		
+	}
+
 	/**
 	 * Returns a list of all the end users.
 	 * @return List<EndUser>
@@ -48,8 +48,8 @@ public class EndUserWebService {
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public List<EndUser> getusers(){
 		return userService.getUsers();
-	}	
-	
+	}
+
     /**
      * Returns the information for an End User corresponding to the passed-in id.
      * @param id
@@ -57,10 +57,11 @@ public class EndUserWebService {
      * @throws InvalidInputException
      */
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
+
 	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{
 		return userService.getByUserId(id);
 	}
-	
+
 	/**
 	 * Edits an existing user in the EndUser table
 	 * @param id
