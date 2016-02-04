@@ -68,7 +68,11 @@ public class EndUserDaoImpl implements EndUserDao {
 	 * @param userName
 	 */
 	@Override
+<<<<<<< HEAD
+	public EndUser getEndUserByEndUsername(String email) {
+=======
 	public EndUser getEndUserByEndUsername(String userName) {
+>>>>>>> aa09ee45488e30c6352a163524648ee82d75946e
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -68,9 +68,11 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 * @return EndUser
 	 */
 	@Override
-	public EndUser getEndUserByEndUsername(String lastname){
-		return em.createQuery("SELECT e FROM endUser e WHERE e.lastname = :endUsername", EndUser.class)
-				 .setParameter("lastname", lastname)
+
+	public EndUser getEndUserByEndUsername(String email){
+
+		return em.createQuery("SELECT e FROM EndUser e WHERE e.email = :email", EndUser.class)
+				 .setParameter("email", email)
 				 .getSingleResult();
 	}
 
