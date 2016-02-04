@@ -23,7 +23,8 @@ public interface ReportDao {
 		void update(Report report);
 		
 		/**
-		 * Retrieves all reports currently in database.
+		 * Retrieves all reports currently in database for user with 
+		 * @param userId
 		 * @return
 		 */
 		List<Report> getAllReportsByUserId(Integer userId);
