@@ -49,16 +49,22 @@ public class EndUser {
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
 	/**
-	 * Generic get for springrole
-	 * @param  springrole
+
+
+	 * Generic getter for springrole
+	 * @param springrole
 	 */
-	
 	public SpringRole getSpringrole() {
 		return springrole;
 	}
-	//public void setSpringrole(SpringRole springrole) {
-		//this.springrole = springrole;
-	//}
+	/**
+	 * Generic setter for springrole
+	 * @param springrole
+	 */
+	public void setSpringrole(SpringRole springrole) {
+		this.springrole = springrole;
+	}
+
 	/**
 	 * Generic setter for userId
 	 * @param userId

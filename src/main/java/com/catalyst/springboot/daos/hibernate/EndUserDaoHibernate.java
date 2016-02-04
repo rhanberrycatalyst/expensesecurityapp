@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.catalyst.springboot.daos.EndUserDao;
 import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.entities.SpringRole;
 
 /**
  * The hibernate functionality for the End User table's Database access
@@ -37,6 +38,9 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public void add(EndUser endUser) {
+		SpringRole springRole = em.createQuery("SELECT s FROM SpringRole s WHERE s.roleId = 2", SpringRole.class)
+				.getSingleResult();
+		endUser.setSpringrole(springRole);
 		em.persist(endUser);
 	}
 

@@ -1,7 +1,5 @@
-
 package com.catalyst.springboot.security;
  
-
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import java.io.IOException;
 
@@ -11,11 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.AuthenticationException;
 
-
 /**
  * Error handler for Authentication failures.
  * */
-
 public class CustomAuthenticationFailureHandler  implements AuthenticationFailureHandler{
 
 	/**
@@ -25,10 +21,9 @@ public class CustomAuthenticationFailureHandler  implements AuthenticationFailur
 	 * @param exception
 	  */
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-			   AuthenticationException exception) throws IOException, ServletException {
+		AuthenticationException exception) throws IOException, ServletException {
 			  
-			  response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authentication failed");
-			  
-}
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authentication failed");  
+	}
 }
 
