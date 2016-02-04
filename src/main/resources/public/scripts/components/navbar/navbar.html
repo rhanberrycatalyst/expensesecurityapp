@@ -16,8 +16,20 @@
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="hidden-sm">Home</span>
                     </a>
+                    <a ui-sref="createreport">
+                    <span>CreateReport</span>
+                    </a>
+                    <a ui-sref="viewreport">
+                    <span>viewreport</span>
+                    </a>
+                    <a ui-sref="homeview">
+                    <span>homeview</span>
+                    </a>
+                    <a ui-sref="createproject">
+                    <span>createproject</span>
+                    </a>
                 </li>
-                <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+               
                 <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <span>
@@ -69,7 +81,6 @@
                             &#xA0;<span>Configuration</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
                             &#xA0;<span>Audits</span></a></li>                        
-                        <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                     </ul>
                 </li>
             </ul>
