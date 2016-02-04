@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomAuthenticationFailureHandler authenticationFailureHandler;
+	private CustomAuthenticationFailureHandler authFailure;
 
 	@Bean
 	CustomAuthenticationFailureHandler authenticationHandler() {
@@ -32,7 +32,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 *            the authFailure to set
 	 */
 	public void setAuthFailure(CustomAuthenticationFailureHandler authFailure) {
-		this.authenticationFailureHandler = authFailure;
+		this.authFailure = authFailure;
 	}
 
 	@Autowired
@@ -59,19 +59,24 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
-						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");// this
-																																								// fakes
-																																								// a
-																																								// user
-																																								// role
+
+						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");
+						
+																																							
+					
+		
+																																								
+																																								
+ 
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
 		http
 			.authorizeRequests()
-				.antMatchers("/resources/**").permitAll()
+				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -80,18 +85,20 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/index.html")
 				.usernameParameter("username")
 				.passwordParameter("password")
-				.failureHandler(authenticationFailureHandler)
+				.failureHandler(authFailure)
 				.and()
 			.headers()
 				.cacheControl()
 				.and()
 			.logout()
-				.logoutSuccessHandler(logoutSuccessHandler)
+				
 				.logoutSuccessUrl("/")
 				.deleteCookies("JSESSIONID", "CSRF-TOKEN")
 				.permitAll()
 				.and()
 			.csrf().disable();
+
+
 
 	}
 
@@ -103,6 +110,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	/**
 	 * Tells the Websecurity to ignore the css, js, and pics folders.
 	 */
+
 	@Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
@@ -110,6 +118,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
             .antMatchers("/bower_components/**")
             .antMatchers("/test/**");
     }
+ 
 
 	@Autowired
 	private DataSource datasource;

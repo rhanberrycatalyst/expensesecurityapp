@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.catalyst.springboot.entities.EndUser;
 
+/**
+ * The methods declared in this interface are to provide basic WebService functionality 
+ * @author ldahlberg
+ * @author gwalpole
+ */
 public interface EndUserService {
 
 	/**
@@ -51,6 +56,6 @@ public interface EndUserService {
 	 * @param username
 	 * @return
 	 */
-	EndUser getUserByUsername(String username);
+	EndUser getUserByUsername(String email);
 
 }

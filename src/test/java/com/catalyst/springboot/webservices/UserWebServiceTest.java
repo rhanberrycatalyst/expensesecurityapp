@@ -13,12 +13,12 @@ public class UserWebServiceTest {
 	private EndUserService mockuserService;
 	private EndUserWebService userWebService;
 
-	@Before
+	/*@Before
 	public void createuserWebService() throws Exception {
 		mockuserService = mock(EndUserService.class);
 		userWebService = new EndUserWebService();
 		userWebService.setuserService(mockuserService);
-	}
+	}*/
 
 	@Test
 	public void testAdduser() throws Exception {
