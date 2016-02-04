@@ -68,8 +68,8 @@ public class EndUserServiceImpl implements EndUserService {
 	}
 
 	@Override
-	public EndUser getUserByUsername(String username) {
-		return endUserDao.getEndUserByEndUsername(username);
+	public EndUser getUserByUsername(String email) {
+		return endUserDao.getEndUserByEndUsername(email);
 
 	}
 

@@ -51,6 +51,6 @@ public interface EndUserService {
 	 * @param username
 	 * @return
 	 */
-	EndUser getUserByUsername(String username);
+	EndUser getUserByUsername(String email);
 
 }
