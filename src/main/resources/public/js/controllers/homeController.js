@@ -7,8 +7,14 @@ angular.module('expenseApp').controller('homeController', ['$scope', '$state', '
 				  console.log(success.data);
 				  return success.data;
 			  },function(error){
-				  console.log("Bad");  
+				  console.log(error);  
 			  }
 			  );
+	
+	
+	$scope.loadView = function(id){
+		getReportService.setReport(id);
+		window.location = "#/detailView"
+	}
 	
 }]);
