@@ -38,12 +38,17 @@ public class ProjectDaoHibernate implements ProjectDao {
 	 */
 	@Override
 	public void add(Project project) {
-		Integer userId = project.getTechId().getUserId();
-		EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
-				.setParameter("id", userId)
-				.getSingleResult();
-		project.setTechId(endUser);	
-		em.persist(project);	
+		try {
+			Integer userId = project.getTechId().getUserId();
+			EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
+					.setParameter("id", userId)
+					.getSingleResult();
+			project.setTechId(endUser);	
+			em.persist(project);	
+		} finally {
+			em.close();
+		}
+		
 	}
 
 	/**
@@ -52,9 +57,12 @@ public class ProjectDaoHibernate implements ProjectDao {
 	 */
 	@Override
 	public List<Project> getAllProjects() {
-		
-		return em.createQuery("SELECT p FROM project p", Project.class).
+		try{
+			return em.createQuery("SELECT p FROM project p", Project.class).
 				getResultList();
+		} finally {
+			em.close();
+		}
 	}
 	
 	/**
@@ -63,10 +71,14 @@ public class ProjectDaoHibernate implements ProjectDao {
 	 * @return project
 	 */
 	@Override
-	public Project getByProjectId(Integer projectId) {	
-		return em.createQuery("SELECT p FROM project p WHERE p.projectId = :id", Project.class)
-				.setParameter("id", projectId)
-				.getSingleResult();	 
+	public Project getByProjectId(Integer projectId) {
+		try{
+			return em.createQuery("SELECT p FROM project p WHERE p.projectId = :id", Project.class)
+					.setParameter("id", projectId)
+					.getSingleResult();	
+		} finally {
+			em.close();
+		}	 
 	}
 
 	/**
