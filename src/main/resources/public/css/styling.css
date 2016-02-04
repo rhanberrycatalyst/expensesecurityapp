@@ -1,0 +1,10 @@
+header {
+	background-color:green;
+	height: 15%;
+	position: absolute;
+}
+
+h1 {
+	padding: 25px;
+	margin-top: 0;
+}
