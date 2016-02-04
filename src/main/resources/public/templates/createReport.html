@@ -1,4 +1,10 @@
 <div>
+	<label for="projectName">Project Name: </label>
+	<select id="projectName" name="projectName">
+		<option ng-repeat="datum in data.data" ng-value="{{datum.projectId}}">{{datum.name}}</option>
+	</select>
+</div>
+<div>
 	<label for="reportName">Report Name: </label>
 	<input id="reportName" name="reportName" type="text"/>
 </div>

@@ -1,4 +1,10 @@
 angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', function($scope, $state, $http, createLineItemService){
+	
+	$http.get('/projects').then(function(data){
+		$scope.data = data;
+		console.log(data);
+	});
+	
 	$scope.itemList = [];
 	
 	$scope.addRow = function(){
@@ -42,7 +48,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 				endUser:{"userId":1}, //TODO make a meaningful variable
         		name:reportName.value,
         		note:note.value,
-        		project:{"projectId":1}, //TODO make a meaningful variable
+        		project:{"projectId":projectName.value}, //TODO make a meaningful variable
         		reportStatus:{"reportStatusId":1}, //TODO make a meaningful variable
         		lineItems:lineItemsList
             })
