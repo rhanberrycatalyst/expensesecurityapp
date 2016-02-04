@@ -135,4 +135,18 @@ public class EndUser {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+	/**
+	 * Generic getter for Spring Role
+	 * @return
+	 */
+	public SpringRole getSpringrole() {
+		return springrole;
+	}
+	/**
+	 * Generic setter for Spring Role
+	 * @param springrole
+	 */
+	public void setSpringrole(SpringRole springrole) {
+		this.springrole = springrole;
+	}
 }
