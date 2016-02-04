@@ -26,7 +26,6 @@ public class EndUserDaoImpl implements EndUserDao {
 		user.setUserId(nextId);
 		nextId++;
 		users.add(user);
-		
 	}
 	
 	/**
