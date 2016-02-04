@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.catalyst.springboot.entities.Project;
 
+/**
+ * The methods declared in this interface are to provide basic WebService functionality 
+ * @author ldahlberg
+ * @author gwalpole
+ */
 public interface ProjectService {
 	/**
 	 * Add a new project to the application.
@@ -22,11 +27,6 @@ public interface ProjectService {
 
 	/**
 	 * Retrieve all projects from the application.
-	 *
-	 * @param isActive
-	 *            - optional parameter. If supplied, will only retrieve
-	 *            projects with matching values. If null, all projects are
-	 *            returned.
 	 * @return
 	 */
 	List<Project> getProjects();
