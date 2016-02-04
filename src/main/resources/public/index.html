@@ -24,6 +24,12 @@
 </head>
 
 <body ng-app="expenseApp">
+<select onchange="window.location = this.value;"><!-- Temporary site navigation. Put real navbar later. -->
+  <option value="#/">Home</option>
+  <option value="#/createProject">Create Project</option>
+  <option value="#/createReport">Create Report</option>
+  <option value="#/register">Register</option>
+</select><br/>
 	<div id="mainView">
 		<ui-view></ui-view>
 	</div>
