@@ -14,7 +14,11 @@ angular.module('expenseApp').controller('homeController', ['$scope', '$state', '
 	
 	$scope.loadView = function(id){
 		getReportService.setReport(id);
-		window.location = "#/detailView"
-	}
+		window.location = "#/detailView";
+	};
+	
+	$scope.loadCreate = function(){
+		window.location = "#/createReport";
+	};
 	
 }]);

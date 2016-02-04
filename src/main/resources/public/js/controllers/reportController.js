@@ -2,7 +2,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	$scope.itemList = [];
 	
 	$scope.addRow = function(){
-		$scope.itemList.push({'typeid':$scope.itemType, 'value':$scope.cost});
+		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = '';
 		$scope.cost = '';
 	};
@@ -37,13 +37,15 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 		$scope.itemList.splice(index, 1);
 	};
 	$scope.sendReport = function() {
-        var lineItems = $scope.itemList;
-        var reportData = [{name:reportName.value, note:note.value}, lineItems];
-        console.log(reportData);
-		var userData = JSON.stringify({
-        		reportData
+        var lineItemsList = $scope.itemList;
+		var userData = angular.toJson({
+				endUser:{"userId":1}, //TODO make a meaningful variable
+        		name:reportName.value,
+        		note:note.value,
+        		project:{"projectId":1}, //TODO make a meaningful variable
+        		reportStatus:{"reportStatusId":1}, //TODO make a meaningful variable
+        		lineItems:lineItemsList
             })
-            console.log(userData)
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log(data);
@@ -51,5 +53,6 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             error(function(data, status, headers, config){
             	console.log("fail");
             });
+		window.location="#/";
     };
 }]);

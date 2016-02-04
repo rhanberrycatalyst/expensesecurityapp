@@ -50,7 +50,7 @@
 		</tr>
 		<tr ng-repeat="items in itemList">
 			<td>
-				{{typeDisplay(items.typeid)}}
+				{{typeDisplay(items.type.typeId)}}
 			</td>
 			<td>
 				{{items.value | currency}}
@@ -61,4 +61,4 @@
 		</tr>
 	</table>
 </div>
-<button ng-click="sendReport()">Submit Report</button>
+<button ng-show="itemList.length > 0" ng-click="sendReport()">Save Report</button>
