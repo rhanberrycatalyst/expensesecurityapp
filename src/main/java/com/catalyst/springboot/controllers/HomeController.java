@@ -12,11 +12,7 @@ public class HomeController{
 	{
 		return "/login.html";
 	}
-	@RequestMapping(value = "/indexpage", method = RequestMethod.GET)
-	public String indexHome()
-	{
-		return "/index.html";
-	}
+	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String projectHome() {
 		return "/project-create.html";

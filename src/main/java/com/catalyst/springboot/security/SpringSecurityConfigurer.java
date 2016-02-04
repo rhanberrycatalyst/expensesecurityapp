@@ -74,7 +74,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/about-us").hasAuthority("ROLE_ADMIN")
+		http.authorizeRequests().antMatchers("/**").authenticated()
 	    .and() .formLogin().loginPage("/").permitAll().loginProcessingUrl("/login")
 	    .usernameParameter("username").passwordParameter("password").failureHandler(authFailure)
 	    .and().logout().logoutSuccessUrl("/")
