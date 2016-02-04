@@ -48,7 +48,20 @@ public class EndUser {
 	@ManyToOne
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
-	
+	/**
+	 * Generic getter for springrole
+	 * @param springrole
+	 */
+	public SpringRole getSpringrole() {
+		return springrole;
+	}
+	/**
+	 * Generic setter for springrole
+	 * @param springrole
+	 */
+	public void setSpringrole(SpringRole springrole) {
+		this.springrole = springrole;
+	}
 	/**
 	 * Generic setter for userId
 	 * @param userId
@@ -134,19 +147,5 @@ public class EndUser {
 	 */
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}
-	/**
-	 * Generic getter for Spring Role
-	 * @return
-	 */
-	public SpringRole getSpringrole() {
-		return springrole;
-	}
-	/**
-	 * Generic setter for Spring Role
-	 * @param springrole
-	 */
-	public void setSpringrole(SpringRole springrole) {
-		this.springrole = springrole;
 	}
 }

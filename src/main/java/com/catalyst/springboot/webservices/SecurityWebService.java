@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.services.EndUserService;
-
+/**
+ * Web Service to get the current user who is logged in.
+ * @author apaulose
+ *
+ */
 @RestController
 public class SecurityWebService {
 	@Autowired
@@ -19,12 +23,12 @@ public class SecurityWebService {
 	{
 		this. endUserService=endUserService;
 	}
+	
 	@RequestMapping(value="/security/current",method=RequestMethod.GET)
-	//public Principal currentUser(Principal principal){
+	
 		public EndUser currentUser(Principal principal){
-		//return principal;
 		System.out.println("principal"+principal);
-		
+		System.out.println("principalname"+principal.getName());
 		return  endUserService.getUserByUsername(principal.getName());
 	}
 	
