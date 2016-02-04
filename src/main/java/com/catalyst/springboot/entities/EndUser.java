@@ -48,7 +48,17 @@ public class EndUser {
 	@ManyToOne
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
+	/**
+	 * Generic get for springrole
+	 * @param  springrole
+	 */
 	
+	public SpringRole getSpringrole() {
+		return springrole;
+	}
+	//public void setSpringrole(SpringRole springrole) {
+		//this.springrole = springrole;
+	//}
 	/**
 	 * Generic setter for userId
 	 * @param userId
