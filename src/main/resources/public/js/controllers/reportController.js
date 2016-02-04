@@ -51,5 +51,6 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             error(function(data, status, headers, config){
             	console.log("fail");
             });
+		window.location="#/";
     };
 }]);
