@@ -26,6 +26,9 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	CustomAuthenticationFailureHandler authenticationHandler() {
 		return new CustomAuthenticationFailureHandler();
 	}
+	
+	@Autowired
+    CustomSuccessHandler customSuccessHandler;
 
 	/**
 	 * @param authFailure
