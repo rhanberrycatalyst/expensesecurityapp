@@ -7,7 +7,7 @@ angular.module('expensereportApp')
                 parent: 'entity',
                 url: '/viewreport',
                 data: {
-                    authorities: [],
+                    authorities: ["ROLE_USER"],
                     pageTitle: 'Viewreport'
                 },
                 views: {

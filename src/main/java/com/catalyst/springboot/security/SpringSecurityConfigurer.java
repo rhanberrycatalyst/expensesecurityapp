@@ -51,10 +51,10 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		this.logoutSuccessHandler = logoutSuccess;
 	}
 
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.inMemoryAuthentication().withUser("user").password("root").authorities("user");
+		auth.inMemoryAuthentication().withUser("user").password("root").authorities("ROLE_USER");
 
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
@@ -77,6 +77,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/viewreport").access("hasRole('USER')")
 		.anyRequest().authenticated()
 		.and()
 	.formLogin()
