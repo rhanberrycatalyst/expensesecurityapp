@@ -4,15 +4,13 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>DEFAULT LANDING PAGE</h1>
-            <p class="lead">This is a placeholder</p>
+            <h1>Expense Report Application</h1>
+            <p class="lead">Please sign in below.</p>
 
             <div ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true">
                     You are logged in as user "{{account.login}}".
                 </div>
-
-               
 
                 <div class="alert alert-warning" ng-switch-when="false">
                     You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
