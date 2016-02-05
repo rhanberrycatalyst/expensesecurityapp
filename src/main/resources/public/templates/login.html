@@ -1,9 +1,9 @@
 <head>
 </head>
 
-<body>
-	<label for="userName">User: </label>
-	<input id="userName" type="text" />
+<body ng-app ="expenseApp">
+	<label for="userName" >User: </label>
+	<input id="userName" type="text" ng-bind="username"/>
 	<label for="passWord">Password: </label>
 	<input id="passWord" type="text" />
 	<button>Login</button>
