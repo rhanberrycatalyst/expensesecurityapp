@@ -68,6 +68,9 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 		super.configure(http);
 		http
+			.authorizeRequests()
+				.anyRequest().authenticated()
+				.and()
 			.logout()
 				.deleteCookies("JSESSIONID", "CSRF-TOKEN")
 				.and()

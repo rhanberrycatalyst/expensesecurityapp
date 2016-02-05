@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+form, #mainView {
+	
+	margin: 150px;
+}
 header {
 	background-color:green;
 	height: 15%;
@@ -8,7 +11,6 @@ header {
 h1 {
 	padding: 25px;
 	margin-top: 0;
-=======
 .content {
     margin-top: 7em;
 }
@@ -50,9 +52,4 @@ h1 {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-#username {
-	background-color:green;
->>>>>>> origin/EWW-39
 }

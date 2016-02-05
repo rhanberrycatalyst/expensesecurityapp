@@ -1,5 +1,6 @@
-angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', function($scope, $state, $http, createLineItemService){
+angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
 	
+	$scope.getCurrentUser = currentUserService.getCurrentUser();
 	$http.get('/projects').then(function(data){
 		$scope.data = data;
 		console.log(data);
@@ -45,11 +46,11 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	$scope.sendReport = function() {
         var lineItemsList = $scope.itemList;
 		var userData = angular.toJson({
-				endUser:{"userId":1}, //TODO make a meaningful variable
+				endUser:{"userId":$scope.getCurrentUser.userId},
         		name:reportName.value,
         		note:note.value,
-        		project:{"projectId":projectName.value}, //TODO make a meaningful variable
-        		reportStatus:{"reportStatusId":1}, //TODO make a meaningful variable
+        		project:{"projectId":projectName.value},
+        		reportStatus:{"reportStatusId":1},
         		lineItems:lineItemsList
             })
             $http.post("/reports", userData).
