@@ -7,7 +7,7 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
 		}).then(function (data) {
 	          callback(data);
 	     });
-	}
+	};
 	function someFunctionCallback(param){
 		console.log(param);
 	}
@@ -19,8 +19,8 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
                 password:passWord.value,
                 firstname:firstName.value,
                 lastname:lastName.value
-            })
-            console.log(userData)
+            });
+            console.log(userData);
             $http.post("/users", userData).
             success(function(data, status, headers, config){
             	console.log(data);

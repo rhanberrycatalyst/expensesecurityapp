@@ -12,4 +12,4 @@ angular.module("expenseApp").service("createLineItemService", function(){
 		addItem: addItem,
 		getItem: getItems
 	};
-})
+});

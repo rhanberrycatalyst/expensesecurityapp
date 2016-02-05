@@ -52,7 +52,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
         		project:{"projectId":projectName.value},
         		reportStatus:{"reportStatusId":1},
         		lineItems:lineItemsList
-            })
+            });
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log(data);

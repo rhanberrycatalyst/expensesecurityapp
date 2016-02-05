@@ -26,7 +26,7 @@ angular.module('loginModule').controller('loginController', ['$routeProvider', '
 			callback && callback(false);
 		});
 
-	}
+	};
 
 	authenticate();
 
@@ -34,12 +34,12 @@ angular.module('loginModule').controller('loginController', ['$routeProvider', '
 	$scope.login = function() {
 		authenticate($scope.credentials, function(authenticated) {
 			if (authenticated) {
-				console.log("Login succeeded")
+				console.log("Login succeeded");
 				$location.path("/");
 				$scope.error = false;
 				$rootScope.authenticated = true;
 			} else {
-				console.log("Login failed")
+				console.log("Login failed");
 				$location.path("/login");
 				$scope.error = true;
 				$rootScope.authenticated = false;
@@ -52,7 +52,7 @@ angular.module('loginModule').controller('loginController', ['$routeProvider', '
 			$rootScope.authenticated = false;
 			$location.path("/");
 		}).error(function(data) {
-			console.log("Logout failed")
+			console.log("Logout failed");
 			$rootScope.authenticated = false;
 		});
 	}

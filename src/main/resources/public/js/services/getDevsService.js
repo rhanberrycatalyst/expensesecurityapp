@@ -12,4 +12,4 @@ angular.module("expenseApp").service("getDevsService", function(){
 		addDev: addDev,
 		getDev: getDevs
 	};
-})
+});

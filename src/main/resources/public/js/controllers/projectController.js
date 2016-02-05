@@ -18,15 +18,15 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 		}).then(function (data) {
 	          callback(data);
 	    });
-	}
+	};
 	$scope.sendProject = function() {
     	console.log(projectName.value);
     	console.log(techLead.value);
         var userData = JSON.stringify({
         		name:projectName.value,
                 techId:{"userId":techLead.value}
-            })
-            console.log(userData)
+            });
+            console.log(userData);
             $http.post("/projects", userData).
             success(function(data, status, headers, config){
             	console.log(data);
