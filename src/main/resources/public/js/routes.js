@@ -3,16 +3,7 @@
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/index');
 	
-	$stateProvider.state("index", {
-<<<<<<< HEAD
-		url: '/',
-		templateUrl: 'templates/homeView.html',
-		controller: 'homeController'
-=======
-		url: '/index',
-		templateUrl: 'index.html'
->>>>>>> origin/EWW-39
-		})
+	$stateProvider
 		.state("login", {
 			url: '/',
 			templateUrl: '/login.html',

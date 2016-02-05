@@ -59,9 +59,19 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
-
 						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");
 
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		super.configure(http);
+		http
+			.logout()
+				.deleteCookies("JSESSIONID", "CSRF-TOKEN")
+				.and()
+			.csrf().disable();
 	}
 
 	@Bean
@@ -69,18 +79,6 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	/**
-	 * Tells the Websecurity to ignore the css, js, and pics folders.
-	 */
-
-	@Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-            .antMatchers("/scripts/**/*.{js,html}")
-            .antMatchers("/bower_components/**")
-            .antMatchers("/test/**");
-    }
- 
 
 	@Autowired
 	private DataSource datasource;

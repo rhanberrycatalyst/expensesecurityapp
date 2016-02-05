@@ -1,8 +1,9 @@
-angular.module('expenseApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService', function($scope, $state, $http, getReportService){
+angular.module('expenseApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
 	
-	console.log($state);
+	$scope.getCurrentUser = currentUserService.getCurrentUser();
+	console.log($scope.getCurrentUser);
 	$scope.reportList = {};
-	getReportService.dbGetAll(1).then(
+	getReportService.dbGetAll($scope.getCurrentUser.userId).then(
 			  function(success){
 				  $scope.reportList = success.data;
 				  console.log(success.data);
