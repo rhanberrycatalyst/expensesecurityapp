@@ -18,17 +18,19 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("root")
-                .authorities("user");
+    @Autowired
+    private DataSource datasource;
 
+    public void setDatasource(DataSource datasource){
+        this.datasource = datasource;
+    }
+
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(datasource)
                 .passwordEncoder(encoder())
-                .usersByUsernameQuery("SELECT username, password, is_active FROM employee WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, 'USER' FROM employee WHERE username=?");//this fakes a user role
+                .usersByUsernameQuery("SELECT email, password, isactive FROM enduser WHERE email=?")
+                .authoritiesByUsernameQuery("SELECT email, 'USER' FROM enduser WHERE email=?");
     }
 
     @Override
@@ -42,12 +44,6 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    private DataSource datasource;
-
-    public void setDatasource(DataSource datasource){
-        this.datasource = datasource;
-    }
 
 
 }

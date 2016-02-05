@@ -49,6 +49,12 @@ public class EndUser {
 	@JoinColumn(name="springroleid")
 	private SpringRole springrole;
 	
+	public SpringRole getSpringrole() {
+		return springrole;
+	}
+	public void setSpringrole(SpringRole springrole) {
+		this.springrole = springrole;
+	}
 	/**
 	 * Generic setter for userId
 	 * @param userId

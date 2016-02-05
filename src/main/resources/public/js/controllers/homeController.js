@@ -1,5 +1,6 @@
 angular.module('expenseApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService', function($scope, $state, $http, getReportService){
 	
+	console.log($state);
 	$scope.reportList = {};
 	getReportService.dbGetAll(1).then(
 			  function(success){
