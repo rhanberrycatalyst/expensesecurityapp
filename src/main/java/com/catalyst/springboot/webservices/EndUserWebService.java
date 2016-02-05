@@ -57,10 +57,9 @@ public class EndUserWebService {
      * @throws InvalidInputException
      */
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
-	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{
+	public EndUser getUserByID(@PathVariable Integer id) throws InvalidInputException{ 
 		return userService.getByUserId(id);
 	}
-	
 	/**
 	 * Edits an existing user in the EndUser table
 	 * @param id
@@ -70,5 +69,4 @@ public class EndUserWebService {
 	public void updateuser(@PathVariable Integer id, @RequestBody EndUser user){
 		userService.update(user);
 	}
-
 }

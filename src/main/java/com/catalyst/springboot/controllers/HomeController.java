@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 @Controller
-public class HomeController {
+public class HomeController{
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return employeeIndex();
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(){
+		return "/scripts/app/account/login/login.html";
 	}
-
+	
+//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+//	public String index(){
+//		return "/index.html";
+//	}
+	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String projectHome() {
 		return "/project-create.html";
@@ -43,18 +48,5 @@ public class HomeController {
 		return "/index.html";
 	}
 
-	@RequestMapping(value = "/employee/create", method = RequestMethod.GET)
-	public String employeeCreate() {
-		return "/employee-create.html";
-	}
-	@RequestMapping(value = "/employee/update", method = RequestMethod.GET)
-	public String employeeUpdate() {
-		return "/employee-update.html";
-	}
-
-
-	@RequestMapping(value = "/employee/delete", method = RequestMethod.GET)
-	public String employeeDelete() {
-		return "/employee-delete.html";
-	}
+	
 }

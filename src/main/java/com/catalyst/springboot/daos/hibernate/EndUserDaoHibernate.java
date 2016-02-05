@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.catalyst.springboot.daos.EndUserDao;
 import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.entities.SpringRole;
 
 /**
  * The hibernate functionality for the End User table's Database access
@@ -22,6 +23,7 @@ public class EndUserDaoHibernate implements EndUserDao{
 
 	@PersistenceContext
 	private EntityManager em;
+
 	/**
 	 * Sets the EntityManager
 	 * @param em
@@ -36,6 +38,9 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public void add(EndUser endUser) {
+		SpringRole springRole = em.createQuery("SELECT s FROM SpringRole s WHERE s.roleId = 2", SpringRole.class)
+				.getSingleResult();
+		endUser.setSpringrole(springRole);
 		em.persist(endUser);
 	}
 
@@ -67,9 +72,11 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 * @return EndUser
 	 */
 	@Override
-	public EndUser getEndUserByEndUsername(String lastname){
-		return em.createQuery("SELECT e FROM endUser e WHERE e.lastname = :endUsername", EndUser.class)
-				 .setParameter("lastname", lastname)
+
+	public EndUser getEndUserByEndUsername(String email){
+
+		return em.createQuery("SELECT e FROM EndUser e WHERE e.email = :email", EndUser.class)
+				 .setParameter("email", email)
 				 .getSingleResult();
 	}
 
@@ -79,9 +86,7 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 * @param endUser
 	 */
 	@Override
-
 	public void update(EndUser endUser) {
 		em.merge(endUser);
 	}
-
 }

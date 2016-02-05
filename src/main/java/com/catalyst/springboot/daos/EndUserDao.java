@@ -43,5 +43,5 @@ public interface EndUserDao {
 	 * @return
 	 */
 	EndUser getEndUserByEndUsername(String endUsername);
-	
+
 }

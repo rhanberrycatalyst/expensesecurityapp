@@ -26,7 +26,6 @@ public class EndUserDaoImpl implements EndUserDao {
 		user.setUserId(nextId);
 		nextId++;
 		users.add(user);
-		
 	}
 	
 	/**
@@ -68,7 +67,7 @@ public class EndUserDaoImpl implements EndUserDao {
 	 * @param userName
 	 */
 	@Override
-	public EndUser getEndUserByEndUsername(String userName) {
+	public EndUser getEndUserByEndUsername(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}

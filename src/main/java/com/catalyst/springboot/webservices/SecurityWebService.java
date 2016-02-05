@@ -1,29 +1,36 @@
 package com.catalyst.springboot.webservices;
 
-import com.catalyst.springboot.entities.EndUser;
-import com.catalyst.springboot.services.EndUserService;
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-
+import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.services.EndUserService;
 /**
- * Created by rhanberry on 1/25/2016.
+ * Web Service to get the current user who is logged in.
+ * @author apaulose
+ *
  */
-
 @RestController
 public class SecurityWebService {
-    @Autowired
-    private EndUserService userService;
+	@Autowired
+	private EndUserService endUserService;
+	public void setEmployeeService(EndUserService endUserService)
+	{
+		this. endUserService=endUserService;
+	}
+	
+	@RequestMapping(value="/security/current",method=RequestMethod.GET)
+	
+		public EndUser currentUser(Principal principal){
+		System.out.println("principal"+principal);
+		System.out.println("principalname"+principal.getName());
+		return  endUserService.getUserByUsername(principal.getName());
+	}
+	
 
-    public void setuserService(EndUserService userService) {
-        this.userService = userService;
-    }
-
-    @RequestMapping(value="/security/current", method=RequestMethod.GET)
-    public EndUser currentUser(Principal principal){
-        return userService.getUserByUsername(principal.getName());
-    }
 }

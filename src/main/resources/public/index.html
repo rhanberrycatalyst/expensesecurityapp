@@ -1,17 +1,21 @@
+
+<html>
 <head>
 	<title>Expense Report Project</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+	<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> 
 	<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="./css/styling.css">
+	<link rel="stylesheet" type="text/css" href="/css/styling.css">
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 	<script src="js/app.js"></script>
-	<script src="js/routes.js"></script>
+    <script src="js/routes.js"></script>
 	<script src="js/controllers/detailController.js"></script>
+	<script src="js/controllers/navigationController.js"></script>
 	<script src="js/controllers/homeController.js"></script>
-	<script src="js/controllers/loginController.js"></script>
+<!-- 	<script src="js/controllers/LoginJs/loginController.js"></script> -->
 	<script src="js/controllers/projectController.js"></script>
 	<script src="js/controllers/registerController.js"></script>
 	<script src="js/controllers/reportController.js"></script>
@@ -19,18 +23,44 @@
 	<script src="js/services/getDevsService.js"></script>
 	<script src="js/services/getUsersService.js"></script>
 	<script src="js/services/createLineItemService.js"></script>
-  <script src="js/services/getReportService.js"></script>
-	
+  	<script src="js/services/getReportService.js"></script>
+	<script src="js/services/currentUserService.js"></script> 
+	<script src="js/services/getCurrentUserService.js"></script> 
 </head>
 
-<body ng-app="expenseApp">
-<select onchange="window.location = this.value;"><!-- Temporary site navigation. Put real navbar later. -->
-  <option value="#/">Home</option>
-  <option value="#/createProject">Create Project</option>
-  <option value="#/createReport">Create Report</option>
-  <option value="#/register">Register</option>
-</select><br/>
+<body ng-app='expenseApp'>
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" >
+    <div class="container">
+        <div class="navbar-header">
+            <div class="a navbar-brand">
+               Expense Report
+            </div>
+        </div>
+        <div class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref="home">Home</a>
+                </li>
+                <li>
+                	<a ui-sref="createReport" ng-show="!admin">Create New Report</a>
+         		</li>
+        	 	<li>
+            		<a ui-sref="detailView" ng-show="!admin">View My Reports</a>
+          		</li>
+          		<li>
+           			 <a ui-sref="createProject" ng-show="admin">Create Project</a>
+          		</li>
+             	  
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>
+             
+    </ul>
+        </div>
+    </div>
+</div>
 	<div id="mainView">
 		<ui-view></ui-view>
 	</div>
 </body>
+</html>
