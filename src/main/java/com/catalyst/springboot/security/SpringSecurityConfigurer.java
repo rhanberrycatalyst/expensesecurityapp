@@ -80,7 +80,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/")
+				.loginPage("/login")
 				.permitAll()
 				.defaultSuccessUrl("/index.html")
 				.usernameParameter("username")
@@ -110,11 +110,15 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	/**
 	 * Tells the Websecurity to ignore the css, js, and pics folders.
 	 */
- @Override
-	 public void configure(WebSecurity web) throws Exception {
-      web.ignoring().antMatchers("/css/**", "/js/**", "/pics/**");
 
-	 }
+	@Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+            .antMatchers("/scripts/**/*.{js,html}")
+            .antMatchers("/bower_components/**")
+            .antMatchers("/test/**");
+    }
+ 
 
 	@Autowired
 	private DataSource datasource;
