@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Create</title>
+<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#submit").click(function() {
+
+            var user = {};
+
+            user.firstname = $("#firstname").val();
+            user.lastname = $("#lastname").val();
+            user.password = $("#password").val();
+            user.email = $("#username").val();
+            user.isActive = true;
+
+            $.ajax({
+                url : '/users',
+                method : 'POST',
+                data : JSON.stringify(user),
+                contentType : 'application/json'
+            }).then(function() {
+                window.location.href = "/employee/index";
+            }, function(errors) {
+                $("#errorMsgs").text(errors);
+            });
+
+        });
+
+    });
+</script>
+</head>
+<body>
+
+     <h1>Employee Create</h1>
+     <div class="navbar">
+
+          <div>
+               <a href="/employee/index">Employee Index</a>
+          </div>
+          <div>
+               <a href="/employee/create">Employee Create</a>
+          </div>
+          <div>
+               <a href="/employee/update">Employee Update</a>
+          </div>
+          <div>
+               <a href="/employee/delete">Employee Delete</a>
+          </div>
+          <div>
+               <a href="/logout"> Logout</a>
+          </div>
+     </div>
+
+     <div id="errorMsgs" class="error"></div>
+
+     <div class="container">
+
+          <div>
+               <label for="firstname">firstname</label>
+               <input id="firstname" type="text" value="" />
+          </div>
+          <div>
+               <label for="lastname">lastname</label>
+               <input id="lastname" type="text" value="" />
+          </div>
+          <div>
+               <label for="username">Email: </label>
+               <input id="username" type="text" value="" />
+          </div>
+          <div>
+               <label for="password">Password: </label>
+               <input id="password" type="password" value="" />
+          </div>
+          <div>
+               <button id="submit" type="button">Submit</button>
+          </div>
+     </div>
+
+</body>
+</html>
