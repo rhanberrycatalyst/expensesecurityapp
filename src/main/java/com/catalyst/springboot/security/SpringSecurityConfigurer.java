@@ -57,7 +57,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.inMemoryAuthentication().withUser("user").password("root").authorities("ROLE_USER");
+		auth.inMemoryAuthentication().withUser("user").password("root").roles("USER");
 
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
@@ -85,6 +85,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.and()
 	.formLogin()
 		.loginPage("/login")
+		.successHandler(customSuccessHandler)
 		.permitAll()
 		.defaultSuccessUrl("/index.html")
 		.usernameParameter("username")
