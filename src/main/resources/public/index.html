@@ -28,7 +28,7 @@
 	<script src="js/services/getCurrentUserService.js"></script> 
 </head>
 
-<body ng-app="expensereportApp">
+<body ng-app="expenseApp">
 	<div ui-view="navbar" ng-cloak=""></div>
     <div class="container">
         <div class="navbar-header">
@@ -55,6 +55,9 @@
 		<div class="footer">
         	<p translate="footer" class="text-center">2016 Will Wheaties</p>
         </div>
+   	</div>
+   	<div>
+   		<ui-view></ui-view>
    	</div>
 </body>
 </html>
