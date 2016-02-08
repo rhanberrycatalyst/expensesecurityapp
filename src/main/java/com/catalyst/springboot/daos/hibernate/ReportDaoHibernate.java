@@ -25,10 +25,10 @@ import com.catalyst.springboot.entities.Type;
 @Transactional
 @Component
 public class ReportDaoHibernate implements ReportDao {
-	
+
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	/**
 	 * Sets EntityManager.
 	 */
@@ -42,42 +42,47 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public void add(Report report) {
-		Integer userId = report.getEndUser().getUserId();
-		EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
-		.setParameter("id", userId)
-		.getSingleResult();
-		
-		Integer projectId = report.getProject().getProjectId();
-		Project project = em.createQuery("SELECT p FROM Project p WHERE p.projectId = :id", Project.class)
-		.setParameter("id", projectId)
-		.getSingleResult();
-		
-		ReportStatus reportStatus = em.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 1", ReportStatus.class)
-		.getSingleResult();
-		
-		report.setEndUser(endUser);
-		report.setProject(project);
-		report.setReportStatus(reportStatus);
-		em.persist(report);
-		
-		Integer reportValue = report.getReportId();
-		Collection<LineItem> lineItems = report.getLineItems();
-		for (LineItem item: lineItems){
-			Integer reportId = reportValue;
-			Report lineReport = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
-			.setParameter("id", reportId)
+		try {
+			Integer userId = report.getEndUser().getUserId();
+			EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
+			.setParameter("id", userId)
 			.getSingleResult();
-			
-			Integer typeId = item.getType().getTypeId();
-			System.out.println(typeId);
-			Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
-			.setParameter("id", typeId)
+
+			Integer projectId = report.getProject().getProjectId();
+			Project project = em.createQuery("SELECT p FROM Project p WHERE p.projectId = :id", Project.class)
+			.setParameter("id", projectId)
 			.getSingleResult();
-			
-			item.setReport(lineReport);
-			item.setType(type);
-			em.persist(item);		
+
+			ReportStatus reportStatus = em.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 1", ReportStatus.class)
+			.getSingleResult();
+
+			report.setEndUser(endUser);
+			report.setProject(project);
+			report.setReportStatus(reportStatus);
+			em.persist(report);
+
+			Integer reportValue = report.getReportId();
+			Collection<LineItem> lineItems = report.getLineItems();
+			for (LineItem item: lineItems){
+				Integer reportId = reportValue;
+				Report lineReport = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
+				.setParameter("id", reportId)
+				.getSingleResult();
+
+				Integer typeId = item.getType().getTypeId();
+				System.out.println(typeId);
+				Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
+				.setParameter("id", typeId)
+				.getSingleResult();
+
+				item.setReport(lineReport);
+				item.setType(type);
+				em.persist(item);
+			}
+		} finally {
+			em.close();
 		}
+
 	}
 
 	/**
@@ -86,10 +91,19 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
-		
-		return em.createQuery("SELECT r FROM Report r WHERE r.endUser.userId = :id", Report.class)
-				.setParameter("id", userId)
-				.getResultList();
+		try{
+			return em.createQuery("SELECT r FROM Report r WHERE r.userId = :id", Report.class)
+					.setParameter("id", userId)
+					.getResultList();
+		} finally {
+			em.close();
+		}
+
+
+		//return em.createQuery("SELECT r FROM Report r WHERE r.endUser.userId = :id", Report.class)
+				//.setParameter("id", userId)
+			//	.getResultList();
+
 	}
 
 	/**
@@ -98,9 +112,14 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public Report getByReportId(Integer reportId) {
-		return em.createQuery("SELECT r FROM Report r WHERE reportId = :id", Report.class)
-				.setParameter("id", reportId)
-				.getSingleResult(); 
+		try{
+			return em.createQuery("SELECT r FROM Report r WHERE reportId = :id", Report.class)
+					.setParameter("id", reportId)
+					.getSingleResult();
+		} finally {
+			em.close();
+		}
+
 	}
 
 	/**
@@ -109,9 +128,14 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public Report getReportByReportname(String reportname){
-		return em.createQuery("SELECT r FROM Report r WHERE r.name = :reportname", Report.class)
-				 .setParameter("reportname", reportname)
-				 .getSingleResult();
+		try {
+			return em.createQuery("SELECT r FROM Report r WHERE r.name = :reportname", Report.class)
+					 .setParameter("reportname", reportname)
+					 .getSingleResult();
+		} finally {
+			em.close();
+		}
+
 	}
 
 	/**
@@ -119,7 +143,7 @@ public class ReportDaoHibernate implements ReportDao {
 	 * @param report
 	 */
 	@Override
-	public void update(Report report) { 
+	public void update(Report report) {
 		em.merge(report);
 	}
 
