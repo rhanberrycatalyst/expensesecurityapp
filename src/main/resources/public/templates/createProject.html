@@ -1,25 +1,29 @@
-<div>
-	<label for="projectName">Project: </label>
+<form class="form-horizontal">
+<div class="form-group">
+	<label for="projectName" class="col-sm-2 control-label">Project: </label>
 	<input id="projectName" name="projectName" type="text" required/>
 </div>
-<div>
-	<label for="techLead">Tech Lead: </label>
+<div class="form-group">
+	<label for="techLead" class="col-sm-2 control-label">Tech Lead: </label>
 	<select id="techLead" name="techLead">
 		<option ng-repeat="datum in data.data" ng-value="{{datum.userId}}">{{datum.firstname + " " + datum.lastname}}</option>
 	</select>
 </div>
-<div>
-	<label for="developers">Developers: </label>
+<div class="form-group">
+	<label for="developers" class="col-sm-2 control-label">Developers: </label>
 	<select id="developers" name="developers" ng-model="devList">
 		<option name="devi" ng-repeat="datus in data.data">{{datus.firstname + " " + datus.lastname}}</option>
 	</select>
 	<span><button ng-click=(addDev(devList))>Add</button></span>
-	<ul>
-		<li ng-repeat="dev in devLists">
-			{{dev}}
-		</li>
-	</ul>
+	<table class="table table-condensed">
+		<tr ng-repeat="dev in devLists">
+			<td>{{dev}}</td>
+		</tr>
+	</table>
 </div>
+</form>
+
+
 <button ng-click=(sendProject())>Create Project</button>
 <p ng-show="worked">Project Created</p>
 <p ng-show="error">Project failed to create</p>
