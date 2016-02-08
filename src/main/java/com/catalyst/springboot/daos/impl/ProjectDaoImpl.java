@@ -72,4 +72,10 @@ public class ProjectDaoImpl implements ProjectDao{
 		}
 		return null;
 	}
+
+	@Override
+	public List<Project> getProjectsByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

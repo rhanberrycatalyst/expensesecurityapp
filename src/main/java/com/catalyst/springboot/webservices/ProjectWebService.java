@@ -50,6 +50,12 @@ public class ProjectWebService {
 		return projectService.getProjects();
 	}	
 	
+	@RequestMapping(value="/projectsusers/{userId}", method = RequestMethod.GET)
+	public List<Project> getProjectsByUserId(@PathVariable Integer userId){
+		System.out.println(userId);
+		return projectService.getProjectsByUserId(userId);
+	}
+	
 	/**
 	 * This method maps the value of projects for GET requests of single project with 
 	 * @param id
