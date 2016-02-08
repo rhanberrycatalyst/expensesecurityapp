@@ -1,5 +1,17 @@
 angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
 	
+//	$scope.typetype = {
+//		    availableOptions: [
+//		      {typeId: '1', value: 'Mileage'},
+//		      {typeId: '2', value: 'Per Diem'},
+//		      {typeId: '3', value: 'Lodgin'},
+//		      {typeId: '4', value: 'Travel'},
+//		      {typeId: '5', value: 'Meals'},
+//		      {typeId: '6', value: 'Entertainment'},
+//		      {typeId: '7', value: 'Parking'},
+//		      {typeId: '8', value: 'Other'}
+//		    ]};
+	
 	$scope.getCurrentUser = currentUserService.getCurrentUser();
 	$http.get('/projects').then(function(data){
 		$scope.data = data;
@@ -7,10 +19,12 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	});
 	
 	$scope.itemList = [];
-	
+	$scope.itemType = 1;
+	$scope.cost = '';
+		
 	$scope.addRow = function(){
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
-		$scope.itemType = '';
+		$scope.itemType = 1;
 		$scope.cost = '';
 	};
 	$scope.typeDisplay = function(typeID){
@@ -45,6 +59,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	};
 	$scope.sendReport = function() {
         var lineItemsList = $scope.itemList;
+        $scope.error = false;
 		var userData = angular.toJson({
 				endUser:{"userId":$scope.getCurrentUser.userId},
         		name:reportName.value,
@@ -55,11 +70,12 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             })
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
-            	console.log(data);
+            	console.log("succss");
+            	window.location="#/home";
             }).
             error(function(data, status, headers, config){
             	console.log("fail");
+            	$scope.error = true;
             });
-		window.location="#/";
     };
 }]);

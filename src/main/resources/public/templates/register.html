@@ -28,7 +28,7 @@
 	<input id="lastName" name="lastName" type="text" ng-model="formData.lastName" required/>
 	<span ng-show="myForm.lastName.$error.required && myForm.lastName.$dirty">Last name is required</span>
 </div>
-	<button ng-disabled="!myForm.$valid" ng-click=(sendPost())>Submit</button>
+	<button ng-disabled="!myForm.$valid" ng-click="sendPost()">Submit</button>
 	<button ng-click="changeView('/')">Cancel</button>
 	<button ng-click=(usernameAvailable())>Check</button>
 </form>

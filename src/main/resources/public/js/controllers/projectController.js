@@ -20,6 +20,8 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 	    });
 	}
 	$scope.sendProject = function() {
+		$scope.worked = false;
+		$scope.error = false;
     	console.log(projectName.value);
     	console.log(techLead.value);
         var userData = JSON.stringify({
@@ -29,10 +31,13 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
             console.log(userData)
             $http.post("/projects", userData).
             success(function(data, status, headers, config){
-            	console.log(data);
+            	console.log("success");
+            	$scope.worked = true;
             }).
             error(function(data, status, headers, config){
             	console.log("fail");
+            	$scope.error = true;
             });
+        //TO-DO will need a second post for the list of devs
     }
 }]);
