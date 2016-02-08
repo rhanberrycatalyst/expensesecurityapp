@@ -3,14 +3,10 @@
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/index');
 	
-	$stateProvider.state("index", {
-		url: '/index',
-		templateUrl: 'index.html'
-		})
-		.state("login", {
+	$stateProvider
+		.state("index", {
 			url: '/',
-			templateUrl: '/login.html',
-			controller: 'LoginJs/loginController'
+			templateUrl: '/index.html'
 		})
 		.state("home", {
 			url: '/home',
@@ -34,7 +30,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state("detailView", {
 			url: '/detailView',
-			templateUrl: 'templates/detail.html',
+			templateUrl: 'templates/detailView.html',
 			controller: 'detailController'
 	});
 }]);

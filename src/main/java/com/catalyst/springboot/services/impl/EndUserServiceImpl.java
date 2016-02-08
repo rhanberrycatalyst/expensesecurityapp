@@ -23,16 +23,16 @@ public class EndUserServiceImpl implements EndUserService {
 	@Autowired
 	private EndUserDao endUserDao;
 
-	@Autowired
+	/*@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	/**
+	*//**
 	 * Sets an encoder object
 	 * @param encoder
-	 */
+	 *//*
 	public void setEncoder(BCryptPasswordEncoder encoder) {
 		this.encoder = encoder;
-	}
+	}*/
 
 	/**
 	 * Sets the userDAO object
@@ -60,8 +60,8 @@ public class EndUserServiceImpl implements EndUserService {
 	@Override
 	public void add(EndUser user) {
 
-		String encryptedPass = encoder.encode(user.getPassword());
-		user.setPassword(encryptedPass);
+		/*String encryptedPass = encoder.encode(user.getPassword());
+		user.setPassword(encryptedPass);*/
 		endUserDao.add(user);
 	}
 
@@ -72,7 +72,7 @@ public class EndUserServiceImpl implements EndUserService {
 	 */
 	@Override
 	public void update(EndUser user) {
-		String oldPassword = endUserDao.getByEndUserId(user.getUserId()).getPassword();
+		/*String oldPassword = endUserDao.getByEndUserId(user.getUserId()).getPassword();
 		String newPassword = user.getPassword();
 
 		if (StringUtils.isEmpty(newPassword) || newPassword.equals(oldPassword)) {
@@ -81,7 +81,7 @@ public class EndUserServiceImpl implements EndUserService {
 			user.setPassword(encoder.encode(newPassword));
 		} else {
 			user.setPassword(oldPassword);
-		}
+		}*/
 		endUserDao.update(user);
 	}
 

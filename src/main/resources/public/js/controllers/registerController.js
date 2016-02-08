@@ -18,7 +18,8 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
         		email:userName.value,
                 password:passWord.value,
                 firstname:firstName.value,
-                lastname:lastName.value
+                lastname:lastName.value,
+                isActive:true
             })
             console.log(userData)
             $http.post("/users", userData).
