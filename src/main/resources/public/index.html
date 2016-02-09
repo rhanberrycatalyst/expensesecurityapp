@@ -12,9 +12,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 	<script src="js/app.js"></script>
     <script src="js/routes.js"></script>
+    <script src="js/controllers/adminController.js"></script>
 	<script src="js/controllers/detailController.js"></script>
 	<script src="js/controllers/navigationController.js"></script>
-	<script src="js/controllers/homeController.js"></script>
+	<script src="js/controllers/userHomeController.js"></script>
+	<script src="js/controllers/adminHomeController.js"></script>
 <!-- 	<script src="js/controllers/LoginJs/loginController.js"></script> -->
 	<script src="js/controllers/projectController.js"></script>
 	<script src="js/controllers/registerController.js"></script>
@@ -29,13 +31,13 @@
 </head>
 
 <body ng-app="expenseApp">
-    <div class="container" ng-controller="homeController">
+    <div class="container">
         <div class="navbar-header">
             <div class="a navbar-brand">
                Expense Report
             </div>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" ng-controller="adminController">
             <ul class="nav navbar-nav">
                 <li>
                     <a ui-sref="home">Home</a>

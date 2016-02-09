@@ -11,12 +11,12 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		.state("home", {
 			url: '/home',
 			templateUrl: 'templates/userHomeView.html',
-			controller: 'homeController'
+			controller: 'userHomeController'
 		})
 		.state("adminHome", {
 			url: '/admin',
 			templateUrl: 'templates/adminHomeView.html',
-			controller: 'homeController'
+			controller: 'adminHomeController'
 		})
 		.state("register", {
 			url: '/register',
