@@ -29,8 +29,7 @@
 </head>
 
 <body ng-app="expenseApp">
-	<div ui-view="navbar" ng-cloak=""></div>
-    <div class="container">
+    <div class="container" ng-controller="homeController">
         <div class="navbar-header">
             <div class="a navbar-brand">
                Expense Report
@@ -50,14 +49,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
              <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>      
-    </ul>
-    <div class="well" ui-view="content"></div>
-		<div class="footer">
-        	<p translate="footer" class="text-center">2016 Will Wheaties</p>
-        </div>
+    		</ul>
+    	</div>
    	</div>
    	<div>
    		<ui-view></ui-view>
    	</div>
+   	<div class="footer">
+        	<p translate="footer" class="text-center">2016 Will Wheaties</p>
+    </div>
 </body>
 </html>

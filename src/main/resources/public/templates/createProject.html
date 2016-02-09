@@ -1,6 +1,6 @@
 <form class="form-horizontal">
 <div class="form-group">
-	<label for="projectName" class="col-sm-2 control-label">Project: </label>
+	<label for="projectName" class="col-sm-2 control-label text-">Project: </label>
 	<input id="projectName" name="projectName" type="text" required/>
 </div>
 <div class="form-group">
@@ -10,12 +10,12 @@
 	</select>
 </div>
 <div class="form-group">
-	<label for="developers" class="col-sm-2 control-label">Developers: </label>
+	<label for="developers" class="col-sm-2 control-label">Developers:</label>
 	<select id="developers" name="developers" ng-model="devList">
 		<option name="devi" ng-repeat="datus in data.data">{{datus.firstname + " " + datus.lastname}}</option>
 	</select>
 	<span><button ng-click=(addDev(devList))>Add</button></span>
-	<table class="table table-condensed">
+	<table class="table">
 		<tr ng-repeat="dev in devLists">
 			<td>{{dev}}</td>
 		</tr>
@@ -24,6 +24,6 @@
 </form>
 
 
-<button ng-click=(sendProject())>Create Project</button>
+<button ng-click=(sendProject()) class="center-block">Create Project</button>
 <p ng-show="worked">Project Created</p>
 <p ng-show="error">Project failed to create</p>

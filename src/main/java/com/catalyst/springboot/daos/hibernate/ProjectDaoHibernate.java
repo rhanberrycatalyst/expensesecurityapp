@@ -58,8 +58,8 @@ public class ProjectDaoHibernate implements ProjectDao {
 	@Override
 	public List<Project> getAllProjects() {
 		try{
-			return em.createQuery("SELECT p FROM project p", Project.class).
-				getResultList();
+			return em.createQuery("SELECT p FROM Project p", Project.class)
+					.getResultList();
 		} finally {
 			em.close();
 		}
@@ -73,7 +73,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 	@Override
 	public Project getByProjectId(Integer projectId) {
 		try{
-			return em.createQuery("SELECT p FROM project p WHERE p.projectId = :id", Project.class)
+			return em.createQuery("SELECT p FROM Project p WHERE p.projectId = :id", Project.class)
 					.setParameter("id", projectId)
 					.getSingleResult();	
 		} finally {
@@ -88,7 +88,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 	 */
 	@Override
 	public Project getProjectByProjectName(String projectName){
-		return em.createQuery("SELECT p FROM project p WHERE p.name = :projectname", Project.class)
+		return em.createQuery("SELECT p FROM Project p WHERE p.name = :projectname", Project.class)
 				 .setParameter("projectname", projectName)
 				 .getSingleResult();
 	}
