@@ -12,11 +12,25 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 //		      {typeId: '8', value: 'Other'}
 //		    ]};
 	
-	$scope.getCurrentUser = currentUserService.getCurrentUser();
-	$http.get('/projects').then(function(data){
+	$scope.getCurrentUser = {"userId":2}; //currentUserService.getCurrentUser();
+	$scope.projectList = [];
+	$http.get('/projectsusers/' + 3).then(function(data){
 		$scope.data = data;
-		console.log(data);
+		$scope.curProject = {};
+		angular.forEach($scope.data.data, function(value, key){
+			$scope.curProject = value;
+			angular.forEach(value.endUsers, function(value, key){
+				if(value.userId == $scope.getCurrentUser.userId){
+					//console.log(value.userId);
+					//console.log($scope.getCurrentUser.userId);
+					$scope.projectList.push($scope.curProject);
+				}
+			});
+		});
+		console.log($scope.projectList);
 	});
+	
+
 	
 	$scope.itemList = [];
 	$scope.itemType = 1;

@@ -86,4 +86,9 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		return projectDao.getProjectByProjectName(projectName);
 	}
+
+	@Override
+	public List<Project> getProjectsByUserId(Integer userId) {
+		return projectDao.getProjectsByUserId(userId);
+	}
 }
