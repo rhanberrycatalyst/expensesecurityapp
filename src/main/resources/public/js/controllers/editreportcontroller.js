@@ -1,8 +1,20 @@
-angular.module('expenseApp').controller('editreportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
+angular.module('expenseApp').controller('editreportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', 'getReportService', function($scope, $state, $http, createLineItemService, currentUserService, getReportService){
 	
 
+	$scope.reportToEdit = {};
+	$scope.reportId = getReportService.curReport;
+	getReportService.dbCall($scope.reportId).then(
+			  function(success){
+				  $scope.reportToEdit = success.data;
+				  console.log(success.data);
+				  return success.data;
+			  },function(error){
+				  console.log(error);  
+			  }
+			  );
 	
-	$scope.getCurrentUser = {"userId":2}; //currentUserService.getCurrentUser();
+	
+	$scope.getCurrentUser = {"userId":3}; //currentUserService.getCurrentUser();
 	$scope.projectList = [];
 	$http.get('/projectsusers/' + 3).then(function(data){
 		$scope.data = data;

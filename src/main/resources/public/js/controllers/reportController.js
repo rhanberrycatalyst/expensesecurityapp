@@ -12,7 +12,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 //		      {typeId: '8', value: 'Other'}
 //		    ]};
 	
-	$scope.getCurrentUser = {"userId":2}; //currentUserService.getCurrentUser();
+	$scope.getCurrentUser = {"userId":3}; //currentUserService.getCurrentUser();
 	$scope.projectList = [];
 	$http.get('/projectsusers/' + 3).then(function(data){
 		$scope.data = data;

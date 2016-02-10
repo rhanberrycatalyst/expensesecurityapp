@@ -32,5 +32,10 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			url: '/detailView',
 			templateUrl: 'templates/detailView.html',
 			controller: 'detailController'
+		})
+		.state("editReport", {
+			url: '/editReport',
+			templateUrl: 'templates/editReport.html',
+			controller: 'editreportController'
 	});
 }]);
