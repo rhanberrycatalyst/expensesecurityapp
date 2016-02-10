@@ -31,6 +31,11 @@ public class SecurityWebService {
 		System.out.println("principalname"+principal.getName());
 		return  endUserService.getUserByUsername(principal.getName());
 	}
+	@RequestMapping("/user")
+	  public Principal user(Principal user) {
+	    return user;
+	  }
+	
 //	
 //	@RequestMapping(value="/authentication", method=RequestMethod.POST)
 //	public EndUser loggingUser(@RequestBody String email, String password){
