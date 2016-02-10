@@ -42,7 +42,6 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public void add(Report report) {
-		try {
 			Integer userId = report.getEndUser().getUserId();
 			EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 			.setParameter("id", userId)
@@ -79,10 +78,6 @@ public class ReportDaoHibernate implements ReportDao {
 				item.setType(type);
 				em.persist(item);		
 			}
-		} finally {
-			em.close();
-		}
-		
 	}
 
 	/**
@@ -91,13 +86,9 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
-		try{
 			return em.createQuery("SELECT r FROM Report r WHERE r.userId = :id", Report.class)
 					.setParameter("id", userId)
 					.getResultList();
-		} finally {
-			em.close();
-		}
 		
 	}
 
@@ -107,14 +98,9 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public Report getByReportId(Integer reportId) {
-		try{
 			return em.createQuery("SELECT r FROM Report r WHERE reportId = :id", Report.class)
 					.setParameter("id", reportId)
-					.getSingleResult(); 
-		} finally {
-			em.close();
-		}
-		
+					.getSingleResult(); 		
 	}
 
 	/**
@@ -123,13 +109,9 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public Report getReportByReportname(String reportname){
-		try {
 			return em.createQuery("SELECT r FROM Report r WHERE r.name = :reportname", Report.class)
 					 .setParameter("reportname", reportname)
 					 .getSingleResult();
-		} finally {
-			em.close();
-		}
 		
 	}
 

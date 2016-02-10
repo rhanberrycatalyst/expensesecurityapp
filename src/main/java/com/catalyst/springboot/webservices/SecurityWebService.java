@@ -3,7 +3,7 @@ package com.catalyst.springboot.webservices;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +31,10 @@ public class SecurityWebService {
 		System.out.println("principalname"+principal.getName());
 		return  endUserService.getUserByUsername(principal.getName());
 	}
-	
+//	
+//	@RequestMapping(value="/authentication", method=RequestMethod.POST)
+//	public EndUser loggingUser(@RequestBody String email, String password){
+//		return endUserService.getUserByUsername(email);
+//	}
 
 }
