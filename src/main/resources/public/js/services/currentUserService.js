@@ -1,4 +1,4 @@
-angular.module('expenseApp').service('currentUserService', function(){
+angular.module('expenseApp').service('currentUserService', [function(){
     var user = {};
     
     function getCurrentUser(){
@@ -12,7 +12,7 @@ angular.module('expenseApp').service('currentUserService', function(){
     function getAdmin() {
     	return true;
     }
-
+    
     return {
         getCurrentUser : getCurrentUser,
         setCurrentUser : setCurrentUser,
@@ -20,4 +20,4 @@ angular.module('expenseApp').service('currentUserService', function(){
     };
 
 
-});
+}]);
