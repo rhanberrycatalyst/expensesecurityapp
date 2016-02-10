@@ -1,28 +1,35 @@
 angular.module('expenseApp').controller('userHomeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
 	
+	$scope.statView = 1;
 	//$scope.getCurrentUser = currentUserService.getCurrentUser();
 	$scope.currentUser = {"userId":2}; //TEMP. REMOVE WHEN UNCOMMENTING ABOVE LINE.
 	$scope.admin = currentUserService.getAdmin();
-	//$scope.isTechAdmin = {"val":false};
 	$scope.projectList = [];
     $http.get('/projects')
     .then(function(returnedObject){
   		angular.forEach(returnedObject.data, function(value, key){
-			//console.log(value.techId.userId + " == " + $scope.currentUser.userId + "?");
    			if (value.techId.userId == $scope.currentUser.userId)
    		    {
    			    $scope.projectList.push(value); 
    		    }
    		});
    	});
-	$scope.reportList = {};
+	$scope.savReportList = [];
+	$scope.subReportList = [];
 	getReportService.dbGetAll($scope.currentUser.userId).then(
 		function(success){
-			$scope.reportList = success.data;
-				//console.log(success.data);
-				return success.data;
-			},function(error){
-				console.log(error);  
+			angular.forEach(success.data, function(value){
+				if(value.reportStatus.reportStatusId == 1)
+				{
+				  $scope.savReportList.push(value);
+				}
+				if(value.reportStatus.reportStatusId == 2)
+				{
+				  $scope.subReportList.push(value);					
+				}
+			});
+		  },function(error){
+		  console.log(error);  
 		});
 	
 	$scope.loadView = function(id){
