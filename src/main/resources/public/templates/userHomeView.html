@@ -1,0 +1,8 @@
+<div style="text-align:center"> <!-- update this with stylesheet once merge is ready -->
+
+	<h3>List of open reports:</h3>
+	<div ng-repeat="report in reportList">
+ 	 <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+	</div>
+
+</div>
