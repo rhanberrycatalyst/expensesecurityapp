@@ -54,8 +54,6 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.inMemoryAuthentication().withUser("user").password("root").authorities("user");
-
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
@@ -66,6 +64,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
+		.csrf().disable()
 		.authorizeRequests()
 			.anyRequest().authenticated()
 	    	.and()
@@ -85,9 +84,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.logoutSuccessHandler(logoutSuccessHandler) 
 		.logoutSuccessUrl("/")
 		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
-		.permitAll()
-		.and()
-	.csrf().disable();
+		.permitAll();
 	}
 
 	@Bean

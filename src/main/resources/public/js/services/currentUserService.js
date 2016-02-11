@@ -1,4 +1,4 @@
-angular.module('expenseApp').service('currentUserService', function(){
+angular.module('loginApp').service('currentUserService', function(){
     var user = {};
     
     function getCurrentUser(){

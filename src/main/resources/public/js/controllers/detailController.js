@@ -1,4 +1,4 @@
-angular.module('expenseApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService', function($scope, $state, $http, getReportService){
+angular.module('loginApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService', function($scope, $state, $http, getReportService){
 	$scope.reportToView = {};
 	$scope.reportId = getReportService.curReport;
 	getReportService.dbCall($scope.reportId).then(

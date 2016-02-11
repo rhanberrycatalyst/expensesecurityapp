@@ -1,4 +1,4 @@
-angular.module('expenseApp').service('getCurrentUserService', ['$http', 'currentUserService', function($http, currentUserService)
+angular.module('loginApp').service('getCurrentUserService', ['$http', 'currentUserService', function($http, currentUserService)
 {
 	
 	 //Requests the current users information

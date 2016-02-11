@@ -1,4 +1,4 @@
-angular.module("expenseApp").service("createLineItemService", function(){
+angular.module("loginApp").service("createLineItemService", function(){
 	var itemList = [];
 	var addItem = function(newItem){
 		itemList.push(newItem);

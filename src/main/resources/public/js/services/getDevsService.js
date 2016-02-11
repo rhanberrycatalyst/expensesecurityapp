@@ -1,4 +1,4 @@
-angular.module("expenseApp").service("getDevsService", function(){
+angular.module("loginApp").service("getDevsService", function(){
 	var devList = [];
 	var addDev = function(newDev){
 		devList.push(newDev);
