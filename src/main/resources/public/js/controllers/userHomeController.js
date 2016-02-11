@@ -22,17 +22,30 @@ angular.module('expenseApp').controller('userHomeController', ['$scope', '$state
    	});
 	$scope.savReportList = [];
 	$scope.subReportList = [];
+	/*//FOR FUTURE CARDS
+	$scope.appReportList = [];
+	$scope.rejReportList = [];
+	 */
 	getReportService.dbGetAll($scope.currentUser.userId).then(
 		function(success){
 			angular.forEach(success.data, function(value){
-				if(value.reportStatus.reportStatusId == 1)
+				if(value.reportStatus.reportStatus == "Not Submitted")
 				{
 				  $scope.savReportList.push(value);
 				}
-				if(value.reportStatus.reportStatusId == 2)
+				if(value.reportStatus.reportStatus == "Submitted")
 				{
 				  $scope.subReportList.push(value);					
 				}
+				/*//FOR FUTURE CARDS
+				if(value.reportStatus.reportStatus == "Approved")
+				{
+				  $scope.appReportList.push(value);					
+				}
+				if(value.reportStatus.reportStatus == "Rejected")
+				{
+				  $scope.rejReportList.push(value);					
+				}*/
 			});
 		  },function(error){
 		  console.log(error);  

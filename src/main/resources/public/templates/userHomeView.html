@@ -6,6 +6,9 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" ng-class="{active:statView == 1}" ng-click="statView=1"><a role="tab">Saved</a></li>
     <li role="presentation" ng-class="{active:statView == 2}" ng-click="statView=2"><a role="tab">Submitted</a></li>
+    <!-- DO NOT DELETE. THIS IS FOR FUTURE SPRINT CARDS. -->
+    <!--li role="presentation" ng-class="{active:statView == 3}" ng-click="statView=3"><a role="tab">Approved</a></li>
+    <li role="presentation" ng-class="{active:statView == 4}" ng-click="statView=4"><a role="tab">Rejected</a></li-->
   </ul>
 
   <!-- Tab panes -->
@@ -22,11 +25,24 @@
         <a ng-click="loadView(report.reportId)">{{report.name}}</a>
       </div>
     </div>
+    <!-- DO NOT DELETE. THIS IS FOR FUTURE SPRINT CARDS. -->
+    <!--div role="tabpanel" class="tab-pane active" ng-show="statView == 3">
+      <h3>List of Approved reports:</h3>
+      <div ng-repeat="report in appReportList">
+        <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active" ng-show="statView == 4">
+      <h3>List of Rejected reports:</h3>
+      <div ng-repeat="report in rejReportList">
+        <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+      </div>
+    </div-->
   </div>
 
 </div>
-<hr/>
 <div ng-show="techReportList.length > 0">
+<hr/>
 	<h3>Submission Inbox:</h3>
 	      <div ng-repeat="report in techReportList">
         <a ng-click="loadView(report.reportId)">{{report.name}}</a>
