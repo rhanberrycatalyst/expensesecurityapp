@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.catalyst.springboot.daos.ReportDao;
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 import com.catalyst.springboot.services.InvalidInputException;
 import com.catalyst.springboot.services.ReportService;
@@ -80,5 +81,16 @@ public class ReportServiceImpl implements ReportService {
 	public Report getReportByReportname(String reportName) {
 		return reportDao.getReportByReportname(reportName);
 
+	}
+
+	/**
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList
+	 * @return
+	 */
+	@Override
+	public List<Report> getSubmittedReportsByProjects(Project[] projectList)
+	{
+	  return reportDao.getSubmittedReportsByProjects(projectList);	
 	}
 }

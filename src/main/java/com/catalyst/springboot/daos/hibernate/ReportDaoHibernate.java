@@ -142,5 +142,28 @@ public class ReportDaoHibernate implements ReportDao {
 		em.merge(report);
 	}
 
-
+	/**
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList 
+	 * @return
+	 */
+	@Override
+	public List<Report> getSubmittedReportsByProjects(Project[] projectList)
+	{
+		String projects = "";
+		for(Project proj : projectList)
+		{
+		  projects = projects + "" + proj.getProjectId() + ",";
+		}
+		if(projects.length() > 0)
+		{ //cut off trailing comma
+		  projects = projects.substring(0, projects.length()-1); 
+		}
+		try {
+			return em.createQuery("SELECT r FROM Report r WHERE r.project.projectId IN(" + projects + ") AND r.reportStatus.reportStatus = 'Submitted'", Report.class)
+					 .getResultList();
+		} finally {
+			em.close();
+		}
+	}
 }

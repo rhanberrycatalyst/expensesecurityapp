@@ -5,6 +5,7 @@ angular.module('expenseApp').controller('userHomeController', ['$scope', '$state
 	$scope.currentUser = {"userId":2}; //TEMP. REMOVE WHEN UNCOMMENTING ABOVE LINE.
 	$scope.admin = currentUserService.getAdmin();
 	$scope.projectList = [];
+	$scope.techReportList = {};
     $http.get('/projects')
     .then(function(returnedObject){
   		angular.forEach(returnedObject.data, function(value, key){
@@ -13,6 +14,11 @@ angular.module('expenseApp').controller('userHomeController', ['$scope', '$state
    			    $scope.projectList.push(value); 
    		    }
    		});
+  	    getReportService.dbGetAllByProjects($scope.projectList).then(
+  	  		function(success){
+  	  		  $scope.techReportList = success.data;
+  	    	  //console.log($scope.techReportList);
+  	  		});
    	});
 	$scope.savReportList = [];
 	$scope.subReportList = [];

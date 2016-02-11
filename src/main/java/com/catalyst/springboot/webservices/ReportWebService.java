@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 import com.catalyst.springboot.services.ReportService;
 import com.catalyst.springboot.services.InvalidInputException;
@@ -69,5 +70,15 @@ public class ReportWebService {
 	@RequestMapping(value="/reports/{id}", method = RequestMethod.PUT)
 	public void updatereport(@PathVariable Integer id, @RequestBody Report report){
 		reportService.update(report);
+	}
+	
+	/**
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList
+	 * @return List<Report>
+	 */	
+	@RequestMapping(value="/reportsbyprojects", method = RequestMethod.POST)
+	public List<Report> getSubmittedReportsByProjects(@RequestBody Project[] projectList){
+		return reportService.getSubmittedReportsByProjects(projectList);
 	}
 }

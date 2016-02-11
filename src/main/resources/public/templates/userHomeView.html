@@ -25,6 +25,12 @@
   </div>
 
 </div>
-	<!--div ng-show="projectList.length > 0"></div-->
+<hr/>
+<div ng-show="techReportList.length > 0">
+	<h3>Submission Inbox:</h3>
+	      <div ng-repeat="report in techReportList">
+        <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+      </div>
+	</div>
 
 </div>
