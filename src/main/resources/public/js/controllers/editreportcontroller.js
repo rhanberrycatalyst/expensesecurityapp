@@ -1,6 +1,7 @@
 angular.module('expenseApp').controller('editreportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', 'getReportService', function($scope, $state, $http, createLineItemService, currentUserService, getReportService){
 	
 
+	//Selects report to edit from database
 	$scope.reportToEdit = {};
 	$scope.reportId = getReportService.curReport;
 	getReportService.dbCall($scope.reportId).then(
@@ -33,6 +34,8 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 	});
 	
 
+	//below is the controller functionality for creating a report.  
+	//The above code selects the correct project, below code provides functionality to edit it.  
 	
 	$scope.itemList = [];
 	$scope.itemType = 1;
@@ -86,11 +89,11 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
             })
             $http.put("/reports", userData).
             success(function(data, status, headers, config){
-            	console.log("succss");
+            	console.log("editsuccess");
             	window.location="#/home";
             }).
             error(function(data, status, headers, config){
-            	console.log("fail");
+            	console.log("editfail");
             	$scope.error = true;
             });
     };

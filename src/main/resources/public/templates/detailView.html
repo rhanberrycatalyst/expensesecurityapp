@@ -3,17 +3,17 @@
 <table>
   <tr>
     <td>Name:&nbsp;</td>
-    <td colspan="3"><input type="text" ng-value="reportToView.name" disabled></td>
+    <td colspan="3"><input type="text" ng-value="reportToView.name" onfocus="this.blur();"></td>
   </tr>
   <tr>
     <td>Notes:&nbsp;</td>
-    <td colspan="3"><textarea disabled>{{reportToView.note}}</textarea></td>
+    <td colspan="3"><textarea onfocus="this.blur();">{{reportToView.note}}</textarea></td>
   </tr>
   <tr ng-repeat="lineItem in reportToView.lineItems">
     <td>Expense Type:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.type.type" disabled></td>
+    <td><input type="text" ng-value="lineItem.type.type" onfocus="this.blur();"></td>
     <td>Expense Amount:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.value | currency" disabled></td>
+    <td><input type="text" ng-value="lineItem.value | currency" onfocus="this.blur();"></td>
   </tr>
 </table>
 <div class="form-group">

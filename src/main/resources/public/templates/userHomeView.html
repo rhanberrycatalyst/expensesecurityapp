@@ -1,0 +1,30 @@
+<div style="text-align:center"> <!-- update this with stylesheet once merge is ready -->
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ng-class="{active:statView == 1}" ng-click="statView=1"><a role="tab">Saved</a></li>
+    <li role="presentation" ng-class="{active:statView == 2}" ng-click="statView=2"><a role="tab">Submitted</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" ng-show="statView == 1">
+      <h3>List of Saved reports:</h3>
+      <div ng-repeat="report in savReportList">
+        <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active" ng-show="statView == 2">
+      <h3>List of Submitted reports:</h3>
+      <div ng-repeat="report in subReportList">
+        <a ng-click="loadView(report.reportId)">{{report.name}}</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+	<!--div ng-show="projectList.length > 0"></div-->
+
+</div>

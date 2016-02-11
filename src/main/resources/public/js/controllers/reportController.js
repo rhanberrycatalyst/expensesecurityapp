@@ -14,7 +14,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	
 	$scope.getCurrentUser = {"userId":3}; //currentUserService.getCurrentUser();
 	$scope.projectList = [];
-	$http.get('/projectsusers/' + 3).then(function(data){
+	$http.get('/projects').then(function(data){
 		$scope.data = data;
 		$scope.curProject = {};
 		angular.forEach($scope.data.data, function(value, key){
