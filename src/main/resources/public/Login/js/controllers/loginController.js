@@ -11,7 +11,7 @@ angular.module('loginApp').controller('loginController', ['$scope', '$state', '$
 			}
 		})
 		.success(function(data, status, headers, config){
-			$state.go("index")
+			$state.go("index");
 		})
 		.error(function(data, status, headers, config){
 			console.log("fail");
