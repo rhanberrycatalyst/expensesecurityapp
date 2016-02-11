@@ -1,4 +1,4 @@
-
+<h1>Edit Report</h1>
 <form class="form-horizontal" role="form" ng-submit="addRow()">
 <div class="form-group">
 	<label for="projectName" class="col-sm-2">Project Name: </label>
@@ -64,3 +64,24 @@
 <button ng-show="itemList.length > 0" ng-click="sendReport()">Save Report</button>
 <p ng-show="error">Report failed to create</p>
 </form>
+
+<div>
+
+<table>
+  <tr>
+    <td>Name:&nbsp;</td>
+    <td colspan="3"><input type="text" ng-value="reportToEdit.name" onfocus="this.blur();"></td>
+  </tr>
+  <tr>
+    <td>Notes:&nbsp;</td>
+    <td colspan="3"><textarea onfocus="this.blur();">{{reportToEdit.note}}</textarea></td>
+  </tr>
+  <tr ng-repeat="lineItem in reportToEdit.lineItems">
+    <td>Expense Type:&nbsp;</td>
+    <td><input type="text" ng-value="lineItem.type.type" onfocus="this.blur();"></td>
+    <td>Expense Amount:&nbsp;</td>
+    <td><input type="text" ng-value="lineItem.value | currency" onfocus="this.blur();"></td>
+  </tr>
+</table>
+
+</div>

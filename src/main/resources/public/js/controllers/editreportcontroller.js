@@ -1,18 +1,27 @@
 angular.module('expenseApp').controller('editreportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', 'getReportService', function($scope, $state, $http, createLineItemService, currentUserService, getReportService){
 	
 
-	//Selects report to edit from database
 	$scope.reportToEdit = {};
 	$scope.reportId = getReportService.curReport;
-	getReportService.dbCall($scope.reportId).then(
+	if($scope.reportId == 0)
+	{
+	  //If the page was refreshed and we lost the reportId, (it will default back to 0)
+	  //then go back a page.
+	  //This should also have the side benefit of recalling the various stored info
+	  //on the previous page.
+	  history.go(-1);
+	}
+	else{
+	  getReportService.dbCall($scope.reportId).then(
 			  function(success){
 				  $scope.reportToEdit = success.data;
 				  console.log(success.data);
 				  return success.data;
 			  },function(error){
-				  console.log(error);  
+				  console.log(error);
 			  }
 			  );
+	}
 	
 	
 	$scope.getCurrentUser = {"userId":3}; //currentUserService.getCurrentUser();
