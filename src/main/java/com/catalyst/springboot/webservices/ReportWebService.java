@@ -46,7 +46,7 @@ public class ReportWebService {
 	 * @param userId
 	 * @return List<Report>
 	 */	
-	@RequestMapping(value="/reports/{userid}", method = RequestMethod.GET)
+	@RequestMapping(value="/reports/{userId}", method = RequestMethod.GET)
 	public List<Report> getReports(@PathVariable Integer userId){
 		return reportService.getReportsByUserId(userId);
 	}	
@@ -70,4 +70,15 @@ public class ReportWebService {
 	public void updatereport(@PathVariable Integer id, @RequestBody Report report){
 		reportService.update(report);
 	}
+	
+	
+	/**
+	 * Updates ReportStatus To Submit with
+	 	 * @return Report
+	 */	
+	@RequestMapping(value="/reportsubmitted/{id}", method = RequestMethod.PUT)
+	public void updateReportToSubmit(@PathVariable Integer id){
+		System.out.println("WebService id"+id);
+		reportService.updateToSubmit(id);
+	} 
 }

@@ -26,10 +26,11 @@
   	<script src="js/services/getReportService.js"></script>
 	<script src="js/services/currentUserService.js"></script> 
 	<script src="js/services/getCurrentUserService.js"></script> 
+	<script src="js/services/reportStatusService.js"></script> 
 </head>
 
-<body ng-app="expenseApp">
-	<div ui-view="navbar" ng-cloak=""></div>
+<body ng-app='expenseApp'>
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" >
     <div class="container">
         <div class="navbar-header">
             <div class="a navbar-brand">
@@ -44,20 +45,22 @@
                 <li>
                 	<a ui-sref="createReport" ng-show="!admin">Create New Report</a>
          		</li>
+        	 	
           		<li>
            			 <a ui-sref="createProject" ng-show="admin">Create Project</a>
-          		</li>  
+          		</li>
+             	  
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>      
+             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>
+             
     </ul>
-    <div class="well" ui-view="content"></div>
-		<div class="footer">
-        	<p translate="footer" class="text-center">2016 Will Wheaties</p>
         </div>
-   	</div>
-   	<div>
-   		<ui-view></ui-view>
-   	</div>
+    </div>
+</div>
+	<div id="mainView">
+	<div></div>
+		<ui-view></ui-view>
+	</div>
 </body>
 </html>

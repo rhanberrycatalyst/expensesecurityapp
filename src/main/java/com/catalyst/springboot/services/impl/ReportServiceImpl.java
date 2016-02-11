@@ -81,4 +81,15 @@ public class ReportServiceImpl implements ReportService {
 		return reportDao.getReportByReportname(reportName);
 
 	}
+	/**
+	 * Method updates single reportstatus  to submit with
+	 * @param reportId. i
+	 */
+	@Override
+	public void updateToSubmit(Integer id) {
+		
+		reportDao.updateToSubmit(id);
+	
+	
+}
 }

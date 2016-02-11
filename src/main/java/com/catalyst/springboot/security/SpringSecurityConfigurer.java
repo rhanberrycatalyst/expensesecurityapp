@@ -75,26 +75,29 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-		.authorizeRequests()
+		.authorizeRequests().antMatchers("/register").permitAll()
 		.and()
-	.formLogin()
-		.loginPage("/login")
+	    .formLogin()
+		.loginPage("/").loginProcessingUrl("/login")
 		.permitAll()
-		.defaultSuccessUrl("/index.html")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.failureHandler(authFailure)
-		.and()
+	
+	.and()
 	.headers()
 		.cacheControl()
 		.and()
 	.logout()
-		.logoutSuccessHandler(logoutSuccessHandler)
-		.logoutSuccessUrl("/")
+		
+	
+	.logoutSuccessUrl("/")
 		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
 		.permitAll()
 		.and()
 	.csrf().disable();
+		
+		
 
 
 

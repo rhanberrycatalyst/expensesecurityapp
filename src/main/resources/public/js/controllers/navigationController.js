@@ -2,7 +2,7 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
 
 	getCurrentUserService.currentUser().then(function(success){
         currentUserService.setCurrentUser(success.data);
-        $scope.currentUser = currentUserService.getCurrentUser();
+         $scope.currentUser = currentUserService.getCurrentUser();
         $scope.admin = $scope.currentUser.springrole.springRole === 'ROLE_ADMIN';
     });
 

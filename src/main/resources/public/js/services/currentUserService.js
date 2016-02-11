@@ -8,7 +8,7 @@ angular.module('expenseApp').service('currentUserService', function(){
     function setCurrentUser(user){
         this.user = user;
     }
-
+ 
     return {
         getCurrentUser : getCurrentUser,
         setCurrentUser : setCurrentUser

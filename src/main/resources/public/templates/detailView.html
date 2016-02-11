@@ -1,6 +1,8 @@
 <div>
+{{message}}
 <h1>View Report</h1>
 <table>
+
   <tr>
     <td>Name:&nbsp;</td>
     <td colspan="3"><input type="text" ng-value="reportToView.name" disabled></td>
@@ -16,4 +18,6 @@
     <td><input type="text" ng-value="lineItem.value | currency" disabled></td>
   </tr>
 </table>
+<button ng-click="submitx()">Submit</button>
+
 </div>
