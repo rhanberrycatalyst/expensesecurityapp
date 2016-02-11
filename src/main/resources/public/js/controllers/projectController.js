@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('projectController', ['$scope', '$state', '$http', 'getUsersService', 'getDevsService', function($scope, $state, $http, getUsersService, getDevsService){
+angular.module('expenseApp').controller('projectController', ['$scope', '$state', '$http', 'getUsersService', 'getDevsService', function($scope, $state, $http, getUsersService, getDevsService){
 	$http.get('/users').then(function(data){
 		$scope.data = data;
 	

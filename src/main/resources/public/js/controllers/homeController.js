@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
+angular.module('expenseApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
 	
 	$scope.getCurrentUser = currentUserService.getCurrentUser();
 	console.log($scope.getCurrentUser);

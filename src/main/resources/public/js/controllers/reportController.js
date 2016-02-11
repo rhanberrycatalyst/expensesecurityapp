@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
+angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
 	
 //	$scope.typetype = {
 //		    availableOptions: [
