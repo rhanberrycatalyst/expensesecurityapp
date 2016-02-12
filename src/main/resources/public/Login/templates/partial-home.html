@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="navbar-header">
+    	<div class="a navbar-brand">
+               Expense Report
+        </div>
+    </div>
+    <div class="navbar-collapse collapse" >
+    	<ul class="nav navbar-nav">
+        	<li>
+            	<a ui-sref="home">Home</a>
+            </li>
+            <li>
+             	<a ui-sref="home.createReport" ng-show="admin">Create New Report</a>
+         	</li>
+          	<li>
+           		<a ui-sref="home.createProject" ng-show="!admin">Create Project</a>
+          	</li>  
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>      
+	   </ul>
+    </div>
+    <div>
+   		<ui-view></ui-view>
+   	</div>
+	<div class="footer">
+      	<p translate="footer" class="text-center">2016 Will Wheaties</p>
+    </div>
