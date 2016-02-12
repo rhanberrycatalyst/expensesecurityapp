@@ -1,4 +1,4 @@
-angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
+angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'getCurrentUserService', function($scope, $state, $http, createLineItemService, getCurrentUserService){
 	
 //	$scope.typetype = {
 //		    availableOptions: [
@@ -11,23 +11,26 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 //		      {typeId: '7', value: 'Parking'},
 //		      {typeId: '8', value: 'Other'}
 //		    ]};
-	
-	$scope.getCurrentUser = {"userId":3}; //TO-DO make current user object when available //currentUserService.getCurrentUser();
-	$scope.projectList = [];
-	$http.get('/projects/').then(function(data){
-		$scope.data = data;
-		$scope.curProject = {};
-		angular.forEach($scope.data.data, function(value, key){
-			$scope.curProject = value;
-			angular.forEach(value.endUsers, function(value, key){
-				if(value.userId == $scope.getCurrentUser.userId){
-					//console.log(value.userId);
-					//console.log($scope.getCurrentUser.userId);
-					$scope.projectList.push($scope.curProject);
-				}
+
+	getCurrentUserService.currentUser()
+	.then(function(data){
+		$scope.projectList = [];
+		$scope.getCurrentUser = data.data;
+		$http.get('/projects/').then(function(data){
+			$scope.data = data;
+			$scope.curProject = {};
+			angular.forEach($scope.data.data, function(value, key){
+				$scope.curProject = value;
+				angular.forEach(value.endUsers, function(value, key){
+					if(value.userId == $scope.getCurrentUser.userId){
+						//console.log(value.userId);
+						//console.log($scope.getCurrentUser.userId);
+						$scope.projectList.push($scope.curProject);
+					}
+				});
 			});
+			console.log($scope.projectList);
 		});
-		console.log($scope.projectList);
 	});
 	
 

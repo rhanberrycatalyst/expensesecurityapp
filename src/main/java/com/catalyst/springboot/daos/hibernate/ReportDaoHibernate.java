@@ -86,7 +86,7 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
-			return em.createQuery("SELECT r FROM Report r WHERE r.userId = :id", Report.class)
+			return em.createQuery("SELECT r FROM Report r WHERE r.endUser.userId = :id", Report.class)
 					.setParameter("id", userId)
 					.getResultList();
 		
