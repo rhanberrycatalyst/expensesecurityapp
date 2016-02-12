@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController{
-
+/**
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){
 		return "/login.html";
@@ -20,5 +20,6 @@ public class HomeController{
 	public String signin(){
 		return "/index.html";
 	}
+	**/
 	
 }

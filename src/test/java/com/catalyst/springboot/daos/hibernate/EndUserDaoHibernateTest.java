@@ -16,29 +16,40 @@ import javax.persistence.TypedQuery;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.stubbing.Answer;
 
 import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.entities.SpringRole;
+
+
 
 public class EndUserDaoHibernateTest {
 
 	private EndUserDaoHibernate target;
-
+	private EndUser mockEndUser;
+    private SpringRole mockSpringRole;
 	private EntityManager mockEm;
 
 	@Before
 	public void setup() {
 		target = new EndUserDaoHibernate();
+		mockSpringRole=new SpringRole();
 		mockEm = mock(EntityManager.class);
+		mockEndUser=new EndUser();
 		target.setEm(mockEm);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testAdd() {
 		
+		
+		
+		
 		target.add(null);
-	
-		//We have nothing we can assert. So use verify to check how many times a dependency's method was called.
 		verify(mockEm, times(1)).persist(null);
+		//We have nothing we can assert. So use verify to check how many times a dependency's method was called.
+		//verify(mockEm, times(1)).persist(expected);
 	}
 
 	@Test

@@ -19,7 +19,7 @@ import com.catalyst.springboot.services.EndUserService;
 public class SecurityWebService {
 	@Autowired
 	private EndUserService endUserService;
-	public void setEmployeeService(EndUserService endUserService)
+	public void setEndUserService(EndUserService endUserService)
 	{
 		this. endUserService=endUserService;
 	}
@@ -27,10 +27,11 @@ public class SecurityWebService {
 	@RequestMapping(value="/security/current",method=RequestMethod.GET)
 	
 		public EndUser currentUser(Principal principal){
-		System.out.println("principal"+principal);
-		System.out.println("principalname"+principal.getName());
+		//System.out.println("principal"+principal);
+		//System.out.println("principalname"+principal.getName());
 		return  endUserService.getUserByUsername(principal.getName());
 	}
+
 	
 
 }
