@@ -2,6 +2,7 @@ package com.catalyst.springboot.daos;
 
 import java.util.List;
 
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 /**
  * The methods declared in this interface are to provide basic CRUD functionality related to report objects.
@@ -44,5 +45,20 @@ public interface ReportDao {
 		 * @return
 		 */
 		Report getReportByReportname(String reportName);
+		/**
+		 * Updates the status of a report already in database.
+		 * @param id
+		 */
+		 
+		
+		void updateToSubmit(Integer id);
+		
 
+
+		/**
+	     * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+		 * @param projectList
+		 * @return
+		 */
+		List<Report> getSubmittedReportsByProjects(Project[] projectList);
 }

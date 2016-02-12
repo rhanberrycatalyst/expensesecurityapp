@@ -22,7 +22,16 @@ $urlRouterProvider.otherwise('/login');
 			url: '/homeView',
 			templateUrl: 'templates/homeView.html',
 			controller: 'homeController'
+/*=======
+			templateUrl: 'templates/userHomeView.html',
+			controller: 'userHomeController'*/
 		})
+/*		.state("adminHome", {
+			url: '/admin',
+			templateUrl: 'templates/adminHomeView.html',
+			controller: 'adminHomeController'
+>>>>>>> origin/mynewbranch
+		})*/
 		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',

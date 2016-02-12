@@ -12,9 +12,14 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 //		      {typeId: '8', value: 'Other'}
 //		    ]};
 	
-	$scope.getCurrentUser = {"userId":3}; //TO-DO make current user object when available //currentUserService.getCurrentUser();
+	$scope.getCurrentUser =currentUserService.getCurrentUser();// {"userId":2}; 
+	console.log("geee"+$scope.getCurrentUser);
 	$scope.projectList = [];
-	$http.get('/projects/').then(function(data){
+
+	//$http.get('/projectsusers/' + $scope.getCurrentUser.userId).then(function(data){
+
+	$http.get('/projects').then(function(data){
+
 		$scope.data = data;
 		$scope.curProject = {};
 		angular.forEach($scope.data.data, function(value, key){

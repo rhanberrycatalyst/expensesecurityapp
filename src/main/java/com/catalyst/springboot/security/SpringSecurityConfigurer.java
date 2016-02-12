@@ -89,7 +89,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
 		.permitAll();
 	}
-
+	
 	@Bean
 	public BCryptPasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();

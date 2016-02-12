@@ -19,11 +19,9 @@ public class HomeController{
 
 	@Autowired
 	private EndUserService userService;
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String index(){
-//		return "index.html";
-//	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+
 	public String login(){
 		return "index.html";
 	}
@@ -33,9 +31,5 @@ public class HomeController{
 		userService.add(user);
 		return "Login/loginIndex.html";
 	} 
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public void auth(@RequestBody String username, String password){
-//		System.out.println(username + password);
-//	}
 	
 }
