@@ -1,36 +1,36 @@
 'use strict';
 
-angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/index');
+angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+$urlRouterProvider.otherwise('/login');
 	
 	$stateProvider
-		.state("index", {
-			url: '/',
-			templateUrl: '/index.html'
-		})
-		.state("home", {
-			url: '/home',
-			templateUrl: 'templates/homeView.html',
-			controller: 'homeController'
+		.state("login", {
+			url: '/login',
+			templateUrl: 'Login/templates/login.html',
+			controller: 'loginController'
 		})
 		.state("register", {
 			url: '/register',
-			templateUrl: 'templates/register.html',
+			templateUrl: 'Login/templates/register.html',
 			controller: 'registerController'
 		})
-		.state("createProject", {
-			url: '/createProject',
-			templateUrl: 'templates/createProject.html',
-			controller: 'projectController'
+		.state("home", {
+			url: '/home',
+			templateUrl: 'templates/userView.html'
 		})
-		.state("createReport", {
+		.state("home.view", {
+			url: '/homeView',
+			templateUrl: 'templates/homeView.html',
+			controller: 'homeController'
+		})
+		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',
 			controller: 'reportController'
 		})
-		.state("detailView", {
-			url: '/detailView',
-			templateUrl: 'templates/detailView.html',
-			controller: 'detailController'
-	});
+		.state("home.createProject", {
+			url: '/createProject',
+			templateUrl: 'templates/createProject.html',
+			controller: 'projectController'
+		})
 }]);

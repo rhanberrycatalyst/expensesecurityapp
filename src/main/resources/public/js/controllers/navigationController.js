@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', function($scope, currentUserService, getCurrentUserService, $state) {
+angular.module('expenseApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', function($scope, currentUserService, getCurrentUserService, $state) {
 
 	getCurrentUserService.currentUser().then(function(success){
         currentUserService.setCurrentUser(success.data);

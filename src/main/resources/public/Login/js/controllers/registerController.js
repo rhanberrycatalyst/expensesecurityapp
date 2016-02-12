@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('registerController', ['$scope', '$state', '$http', function($scope, $state, $http){
+angular.module('expenseApp').controller('registerController', ['$scope', '$state', '$http', function($scope, $state, $http){
 
 	function someFunctionCallback(param){
 		console.log(param);

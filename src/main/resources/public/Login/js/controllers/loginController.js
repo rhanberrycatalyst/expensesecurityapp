@@ -1,4 +1,4 @@
-angular.module('loginApp').controller('loginController', ['$scope', '$state', '$http', '$location', function($scope, $state, $http, $location){
+angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location', function($scope, $state, $http, $location){
 	
 	$scope.login = function(){
 		console.log($scope.userName);

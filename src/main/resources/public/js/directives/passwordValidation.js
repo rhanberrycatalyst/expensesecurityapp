@@ -1,4 +1,4 @@
-angular.module("loginApp").directive("pwCheck", function(){
+angular.module("expenseApp").directive("pwCheck", function(){
 	return{
 		require: 'ngModel',
         link: function (scope, elem, attrs, model) {
