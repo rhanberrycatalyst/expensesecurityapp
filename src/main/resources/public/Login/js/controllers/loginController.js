@@ -1,10 +1,6 @@
-angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location', function($scope, $state, $http, $location){
+angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location','authService', function($scope, $state, $http, $location, authService){
 	
 	$scope.login = function(){
-		console.log($scope.userName);
-		console.log($scope.passWord);
-		console.log({email:$scope.userName, password:$scope.passWord});
-		//var headers = {authorization : "Basic " + btoa($scope.userName + ":" + $scope.passWord)};
 		$http.post('/loginPage', "username="+$scope.userName+"&password="+$scope.passWord, {
 			headers: {'Content-Type':'application/x-www-form-urlencoded', 
 				'My-Header': 'value'
