@@ -58,8 +58,8 @@ public class ProjectDaoHibernate implements ProjectDao {
 	@Override
 	public List<Project> getAllProjects() {
 		try{
-			return em.createQuery("SELECT p FROM Project p", Project.class).
-				getResultList();
+			return em.createQuery("SELECT p FROM Project p", Project.class)
+					.getResultList();
 		} finally {
 			em.close();
 		}

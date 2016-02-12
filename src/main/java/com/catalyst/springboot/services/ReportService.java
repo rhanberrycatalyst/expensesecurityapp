@@ -2,6 +2,7 @@ package com.catalyst.springboot.services;
 
 import java.util.List;
 
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 
 /**
@@ -68,4 +69,10 @@ public interface ReportService {
 
 
 
+	/**
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList
+	 * @return
+	 */
+	List<Report> getSubmittedReportsByProjects(Project[] projectList);
 }

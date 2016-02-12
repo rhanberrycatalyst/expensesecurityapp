@@ -1,4 +1,4 @@
-angular.module('expenseApp').service('currentUserService', function(){
+angular.module('expenseApp').service('currentUserService', [function(){
     var user = {};
     
     function getCurrentUser(){
@@ -8,11 +8,20 @@ angular.module('expenseApp').service('currentUserService', function(){
     function setCurrentUser(user){
         this.user = user;
     }
+<<<<<<< HEAD
  
+=======
+    
+    function getAdmin() {
+    	return true;
+    }
+    
+>>>>>>> Sprint_2
     return {
         getCurrentUser : getCurrentUser,
-        setCurrentUser : setCurrentUser
+        setCurrentUser : setCurrentUser,
+        getAdmin : getAdmin
     };
 
 
-});
+}]);

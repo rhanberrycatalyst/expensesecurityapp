@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.catalyst.springboot.daos.ReportDao;
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.entities.Report;
 
 /**
@@ -74,6 +75,7 @@ public class ReportDaoImpl implements ReportDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+<<<<<<< HEAD
 	/**
 	 * Method calls ReportDao function updateToSubmit and sends 
 	 * @param id to ReportDaoHibernate
@@ -85,5 +87,19 @@ public class ReportDaoImpl implements ReportDao{
 	
 	}
 	
+=======
+	
+	/**
+ 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList
+	 * @return
+	 */
+	@Override
+	public List<Report> getSubmittedReportsByProjects(Project[] projectList)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> Sprint_2
 }
 
