@@ -1,4 +1,4 @@
-angular.module("expenseApp").service("getReportService", ["$http", function($http){
+ angular.module("expenseApp").service("getReportService", ["$http", function($http){
 	
 	return {
 	  dbCall: function(id){ return $http.get('/reportlist/'+id)},

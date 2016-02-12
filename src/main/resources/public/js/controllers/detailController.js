@@ -1,6 +1,7 @@
-angular.module('expenseApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService', function($scope, $state, $http, getReportService){
+angular.module('expenseApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService','reportStatusService', function($scope, $state, $http, getReportService,reportStatusService){
 	$scope.reportToView = {};
 	$scope.reportId = getReportService.curReport;
+
 	if($scope.reportId == 0)
 	{
 	  //If the page was refreshed and we lost the reportId, (it will default back to 0)
@@ -11,14 +12,42 @@ angular.module('expenseApp').controller('detailController', ['$scope', '$state',
 	}
 	else{
 	  getReportService.dbCall($scope.reportId).then(
-			  function(success){
+
+		  function(success){
 				  $scope.reportToView = success.data;
 				  console.log(success.data);
 				  return success.data;
 			  },function(error){
+
 				  console.log(error);
 			  }
 			  );
 	}
+
+			
+	
+	$scope.submitx=function()
+	{ 
+		reportStatusService.dbCallToChangeReportStatus($scope.reportId).then(
+
+
+				function(success)
+			    {	         
+
+				  $scope.message="Report Submitted";
+
+			     },	  
+				function(error)
+      		  	{
+	        	 
+					$scope.message="Couldnot submit.Try again";
+
+      		  	}
+        		
+				
+        		 
+    		  );};
+	
+
 	
 }]);
