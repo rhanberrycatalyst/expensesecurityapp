@@ -8,16 +8,15 @@
 </div>
 <div class="form-group">
 	<label for="reportName" class="col-sm-2">Report Name: </label>
-	<input id="reportName" name="reportName" type="text"/>
+	<input id="reportName" name="reportName" type="text" ng-value="reportToEdit.name"/>
 </div>
 <div class="form-group">
 	<label for="note" class="col-sm-2">Note</label>
-	<textarea id="note" name="note" ng-model="note">
-	</textarea>
+	<textarea id="note" name="note" >{{reportToEdit.note}}</textarea>
 </div>
 <div class="form-group">
 	<label for="itemType" class="col-sm-2">Type: </label>
-	<select name="itemType" ng-model="itemType" ng-required>
+	<select name="itemType" ng-model="lineItem.type.type" ng-value="lineItem.type.type">
  		<option value="1">Mileage</option>
 		<option value="2">Per Diem</option>
 		<option value="3">Lodging</option>
@@ -38,7 +37,7 @@
 	</div>
 </div>
 
-<div ng-show="itemList.length > 0">
+<div ng-show="reportToEdit.lineItems.length > 0">
 	<table class="table">
 		<tr>
 			<th>
@@ -50,7 +49,19 @@
 		</tr>
 		<tr ng-repeat="lineItem in reportToEdit.lineItems">
 			<td>
-				{{typeDisplay(lineItem.type.type)}}
+				<div class="form-group">
+					<label for="itemType" class="col-sm-2">Type: </label>
+					<select name="itemType" ng-model="lineItem.type.type" ng-value="lineItem.type.type">
+				 		<option value="1">Mileage</option>
+						<option value="2">Per Diem</option>
+						<option value="3">Lodging</option>
+						<option value="4">Travel</option>
+						<option value="5">Meals</option>
+						<option value="6">Entertainment</option>
+						<option value="7">Parking</option>
+						<option value="8">Other</option>
+					</select>
+				</div>
 			</td>
 			
 			<td>
@@ -82,10 +93,14 @@
     <td>Expense Amount:&nbsp;</td>
     <td><input type="text" ng-value="lineItem.value | currency" ></td>
     <td>
-		<a class="btn" ng-click="removeItem(items)">Remove</button>
+		<a class="btn" ng-click="removeItem(reportToEdit.lineItem)">Remove</button>
 	</td>
   </tr>
 </table>
-<button  ng-click="sendReport()">Save Report</button>
+<div class="form-group">
+	<div>
+		<input type="submit" value="Save Report" ng-click="sendEditedReport()" class="btn btn-primary"/>
+	</div>
+</div>
 <p ng-show="error">Report failed to create</p>
 </div>

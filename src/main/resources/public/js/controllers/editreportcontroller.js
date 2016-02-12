@@ -44,7 +44,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 	
 
 	//below is the controller functionality for creating a report.  
-	//The above code selects the correct project, below code provides functionality to edit it.  
+	//The above code selects the correct projects for a given user, below code provides functionality to edit the report.  
 	
 	$scope.itemList = [];
 	$scope.itemType = 1;
@@ -86,7 +86,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		$scope.itemList.splice(index, 1);
 	};
 	
-	$scope.sendReport = function() {
+	$scope.sendEditedReport = function() {
         var lineItemsList = $scope.itemList;
         $scope.error = false;
 		var userData = angular.toJson({
