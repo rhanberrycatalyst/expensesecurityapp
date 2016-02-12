@@ -85,6 +85,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		var index = $scope.itemList.indexOf(item);
 		$scope.itemList.splice(index, 1);
 	};
+	
 	$scope.sendReport = function() {
         var lineItemsList = $scope.itemList;
         $scope.error = false;
@@ -96,7 +97,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
         		reportStatus:{"reportStatusId":1},
         		lineItems:lineItemsList
             })
-            $http.put("/reports", userData).
+            $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log("editsuccess");
             	window.location="#/home";

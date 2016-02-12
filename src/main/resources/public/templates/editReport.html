@@ -52,6 +52,7 @@
 			<td>
 				{{typeDisplay(lineItem.type.type)}}
 			</td>
+			
 			<td>
 				{{lineItem.value | currency}}
 			</td>
@@ -61,8 +62,7 @@
 		</tr>
 	</table>
 </div>
-<button ng-show="itemList.length > 0" ng-click="sendReport()">Save Report</button>
-<p ng-show="error">Report failed to create</p>
+
 </form>
 
 <div>
@@ -70,18 +70,22 @@
 <table>
   <tr>
     <td>Name:&nbsp;</td>
-    <td colspan="3"><input type="text" ng-value="reportToEdit.name" onfocus="this.blur();"></td>
+    <td colspan="3"><input type="text" ng-value="reportToEdit.name"></td>
   </tr>
   <tr>
     <td>Notes:&nbsp;</td>
-    <td colspan="3"><textarea onfocus="this.blur();">{{reportToEdit.note}}</textarea></td>
+    <td colspan="3"><textarea >{{reportToEdit.note}}</textarea></td>
   </tr>
   <tr ng-repeat="lineItem in reportToEdit.lineItems">
     <td>Expense Type:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.type.type" onfocus="this.blur();"></td>
+    <td><input type="text" ng-value="lineItem.type.type" ></td>
     <td>Expense Amount:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.value | currency" onfocus="this.blur();"></td>
+    <td><input type="text" ng-value="lineItem.value | currency" ></td>
+    <td>
+		<a class="btn" ng-click="removeItem(items)">Remove</button>
+	</td>
   </tr>
 </table>
-
+<button  ng-click="sendReport()">Save Report</button>
+<p ng-show="error">Report failed to create</p>
 </div>
