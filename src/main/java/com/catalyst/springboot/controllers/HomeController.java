@@ -14,7 +14,11 @@ public class HomeController{
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){
-		return "index.html";
+		return "/login.html";
+	}
+	@RequestMapping(value = "/indexpage", method = RequestMethod.GET)
+	public String signin(){
+		return "/index.html";
 	}
 	
 }

@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/index');
+	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
 		.state("index", {
-			url: '/',
+			url: '/indexpage',
 			templateUrl: '/index.html'
 		})
+		 
 		.state("home", {
 			url: '/home',
 			templateUrl: 'templates/userHomeView.html',

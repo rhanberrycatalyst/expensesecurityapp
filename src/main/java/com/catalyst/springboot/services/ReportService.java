@@ -52,6 +52,22 @@ public interface ReportService {
 	 * @return
 	 */
 	Report getReportByReportname(String reportName);
+	
+	/**
+	 * Update the status in an existing report to submit. The reportId is used to
+	 * find the unique report's information.
+	 * 
+	 * @param id
+	 */
+	
+
+	void updateToSubmit(Integer id);
+
+	
+
+	
+
+
 
 	/**
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
