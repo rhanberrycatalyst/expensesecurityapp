@@ -8,11 +8,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			url: '/indexpage',
 			templateUrl: '/index.html'
 		})
-		 .state("adminHome", {
-           url: '/admin',
-          templateUrl: 'templates/adminHomeView.html',
-          controller: 'adminHomeController'
-          })
+		 
 		.state("home", {
 			url: '/home',
 			templateUrl: 'templates/userHomeView.html',

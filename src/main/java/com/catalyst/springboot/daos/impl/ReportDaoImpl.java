@@ -76,6 +76,7 @@ public class ReportDaoImpl implements ReportDao{
 		return null;
 	}
 
+
 	
 	/**
  	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
@@ -89,6 +90,7 @@ public class ReportDaoImpl implements ReportDao{
 		return null;
 	}
 
+
 	/**
 	 * Method calls ReportDao function updateToSubmit and sends 
 	 * @param id to ReportDaoHibernate
@@ -99,6 +101,7 @@ public class ReportDaoImpl implements ReportDao{
 		
 	
 	}
+
 
 }
 

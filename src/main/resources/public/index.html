@@ -32,8 +32,9 @@
 </head>
 
 
-<body ng-app='expenseApp'>
-<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" >
+
+<body ng-app="expenseApp">
+
 
     <div class="container">
         <div class="navbar-header">
@@ -44,7 +45,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a ui-sref="home">Home</a>
+                    <a ui-sref="home" ng-show="!admin">Home</a>
+                </li>
+                <li>
+                    <a ui-sref="adminHome" ng-show="admin">Home</a>
                 </li>
                 <li>
                     <a ui-sref="adminHome" ng-show="admin">Home</a>
@@ -60,18 +64,18 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
-             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>
-             
-    </ul>
-        </div>
-    </div>
-</div>
-	<div id="mainView">
-	<div></div>
-		<ui-view></ui-view>
-	</div>
-		<div class="footer">
+
+             <li><a href="/logout""><span class="glyphicon glyphicon-user"></span> Log Out</a></li>      
+    		</ul>
+    	</div>
+   	</div>
+   	<div id="mainView">
+   		<ui-view></ui-view>
+   	</div>
+   	<div class="footer">
         	<p translate="footer" class="text-center">2016 Will Wheaties</p>
     </div>
+
+</body>
 
 </html>

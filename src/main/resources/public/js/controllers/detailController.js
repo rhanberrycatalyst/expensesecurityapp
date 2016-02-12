@@ -1,3 +1,4 @@
+
 angular.module('expenseApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService','reportStatusService', function($scope, $state, $http, getReportService,reportStatusService){
 	$scope.reportToView = {};
 	$scope.reportId = getReportService.curReport;

@@ -15,11 +15,11 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	$scope.getCurrentUser =currentUserService.getCurrentUser();// {"userId":2}; 
 	console.log("geee"+$scope.getCurrentUser);
 	$scope.projectList = [];
-<<<<<<< HEAD
+
+//$http.get('/projectsusers/' + $scope.getCurrentUser.userId).then(function(data){
+
 	$http.get('/projects').then(function(data){
-=======
-	$http.get('/projectsusers/' + $scope.getCurrentUser.userId).then(function(data){
->>>>>>> mybranch
+
 		$scope.data = data;
 		$scope.curProject = {};
 		angular.forEach($scope.data.data, function(value, key){

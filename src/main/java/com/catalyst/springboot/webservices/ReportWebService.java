@@ -73,15 +73,6 @@ public class ReportWebService {
 	}
 	
 
-	/**
-	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
-	 * @param projectList
-	 * @return List<Report>
-	 */	
-	@RequestMapping(value="/reportsbyprojects", method = RequestMethod.POST)
-	public List<Report> getSubmittedReportsByProjects(@RequestBody Project[] projectList){
-		return reportService.getSubmittedReportsByProjects(projectList);
-	}
 
 	
 	/**
@@ -93,5 +84,17 @@ public class ReportWebService {
 		System.out.println("WebService id"+id);
 		reportService.updateToSubmit(id);
 	} 
+
+
+	/**
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList
+	 * @return List<Report>
+	 */	
+	@RequestMapping(value="/reportsbyprojects", method = RequestMethod.POST)
+	public List<Report> getSubmittedReportsByProjects(@RequestBody Project[] projectList){
+		return reportService.getSubmittedReportsByProjects(projectList);
+	}
+
 
 }

@@ -93,9 +93,12 @@ public class ReportDaoHibernate implements ReportDao {
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
 
-		try {
+
+		try{
 			return em.createQuery("SELECT r FROM Report r WHERE r.endUser.userId = :id", Report.class)
-					.setParameter("id", userId).getResultList();
+					.setParameter("id", userId)
+					.getResultList();
+
 
 		} finally {
 			em.close();
@@ -143,7 +146,9 @@ public class ReportDaoHibernate implements ReportDao {
 		em.merge(report);
 	}
 
-	/**
+	
+
+/**
 
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
 	 * @param projectList 
@@ -169,6 +174,7 @@ public class ReportDaoHibernate implements ReportDao {
 		}
 	}
 
+
 	/* * update ReportStatus To Submit in database with
 	 * 
 	 * @param report
@@ -186,6 +192,7 @@ public class ReportDaoHibernate implements ReportDao {
 		em.merge(report);
 
 	}
+
 
 
 }
