@@ -75,7 +75,7 @@ public class ReportDaoImpl implements ReportDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-<<<<<<< HEAD
+
 	/**
 	 * Method calls ReportDao function updateToSubmit and sends 
 	 * @param id to ReportDaoHibernate
@@ -87,7 +87,7 @@ public class ReportDaoImpl implements ReportDao{
 	
 	}
 	
-=======
+
 	
 	/**
  	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
@@ -100,6 +100,6 @@ public class ReportDaoImpl implements ReportDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
->>>>>>> Sprint_2
+
 }
 

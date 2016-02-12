@@ -82,7 +82,7 @@ public class ReportServiceImpl implements ReportService {
 		return reportDao.getReportByReportname(reportName);
 
 	}
-<<<<<<< HEAD
+
 	/**
 	 * Method updates single reportstatus  to submit with
 	 * @param reportId. i
@@ -94,7 +94,7 @@ public class ReportServiceImpl implements ReportService {
 	
 	
 }
-=======
+
 
 	/**
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
@@ -106,5 +106,5 @@ public class ReportServiceImpl implements ReportService {
 	{
 	  return reportDao.getSubmittedReportsByProjects(projectList);	
 	}
->>>>>>> Sprint_2
+
 }

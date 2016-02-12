@@ -72,7 +72,7 @@ public class ReportWebService {
 		reportService.update(report);
 	}
 	
-<<<<<<< HEAD
+
 	
 	/**
 	 * Updates ReportStatus To Submit with
@@ -83,7 +83,7 @@ public class ReportWebService {
 		System.out.println("WebService id"+id);
 		reportService.updateToSubmit(id);
 	} 
-=======
+
 	/**
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
 	 * @param projectList
@@ -93,5 +93,5 @@ public class ReportWebService {
 	public List<Report> getSubmittedReportsByProjects(@RequestBody Project[] projectList){
 		return reportService.getSubmittedReportsByProjects(projectList);
 	}
->>>>>>> Sprint_2
+
 }
