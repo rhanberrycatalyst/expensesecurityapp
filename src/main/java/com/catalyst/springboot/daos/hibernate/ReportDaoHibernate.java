@@ -124,27 +124,10 @@ public class ReportDaoHibernate implements ReportDao {
 		em.merge(report);
 	}
 
-	/**
-
-	 * update ReportStatus To Submit in database with
-	 * 
-	 * @param report
-	 */
-	@Override
-	public void updateToSubmit(Integer id) {
-
-		Report report = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
-				.setParameter("id", id).getSingleResult();
-
-		ReportStatus reportStatus = em
-				.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 2", ReportStatus.class)
-				.getSingleResult();
-		report.setReportStatus(reportStatus);
-		em.merge(report);
-
-	}
+	
 
 /**
+
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
 	 * @param projectList 
 	 * @return
@@ -168,5 +151,26 @@ public class ReportDaoHibernate implements ReportDao {
 			em.close();
 		}
 	}
+
+
+	/* * update ReportStatus To Submit in database with
+	 * 
+	 * @param report
+	 */
+	@Override
+	public void updateToSubmit(Integer id) {
+
+		Report report = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
+				.setParameter("id", id).getSingleResult();
+
+		ReportStatus reportStatus = em
+				.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 2", ReportStatus.class)
+				.getSingleResult();
+		report.setReportStatus(reportStatus);
+		em.merge(report);
+
+	}
+
+
 
 }
