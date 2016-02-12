@@ -1,6 +1,5 @@
 angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location','authService', function($scope, $state, $http, $location, authService){
 	$scope.logout = authService.getLogout();
-	console.log($scope.logout);
 	$scope.login = function(){
 		$http.post('/loginPage', "username="+$scope.userName+"&password="+$scope.passWord, {
 			headers: {'Content-Type':'application/x-www-form-urlencoded', 

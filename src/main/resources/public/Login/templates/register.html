@@ -1,4 +1,4 @@
-
+<h2> Registration Form</h2>
 <form name="myForm">
 <div>
 	<label for="userName">Username: </label>
@@ -29,6 +29,8 @@
 	<span ng-show="myForm.lastName.$error.required && myForm.lastName.$dirty">Last name is required</span>
 </div>
 	<button ng-disabled="!myForm.$valid" ng-click="sendPost()">Submit</button>
-	<button ng-click="changeView('/')">Cancel</button>
+	<a ui-sref="login">
+    	<button>Cancel</button>
+	</a>
 	<button ng-click=(usernameAvailable())>Check</button>
 </form>
