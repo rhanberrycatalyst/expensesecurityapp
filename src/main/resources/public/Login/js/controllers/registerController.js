@@ -15,7 +15,7 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
             console.log(userData)
             $http.post("/register", userData).
             success(function(data, status, headers, config){
-            	$state.go("login")
+            	console.log("success");
             }).
             error(function(data, status, headers, config){
             	console.log("fail");

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/home/homeView');
 	
 	$stateProvider
 		.state("login", {

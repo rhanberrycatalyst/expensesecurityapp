@@ -29,7 +29,7 @@ public class HomeController{
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String adduser(@RequestBody EndUser user){
 		userService.add(user);
-		return "Login/loginIndex.html";
+		return login();
 	} 
 	
 }
