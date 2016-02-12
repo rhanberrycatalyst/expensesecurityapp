@@ -18,20 +18,16 @@ $urlRouterProvider.otherwise('/login');
 			url: '/home',
 			templateUrl: 'templates/userView.html'
 		})
-		.state("home.view", {
+		.state("home.userView", {
 			url: '/homeView',
-			templateUrl: 'templates/homeView.html',
-			controller: 'homeController'
-/*=======
 			templateUrl: 'templates/userHomeView.html',
-			controller: 'userHomeController'*/
+			controller: 'userHomeController'
 		})
-/*		.state("adminHome", {
+		.state("home.adminHome", {
 			url: '/admin',
 			templateUrl: 'templates/adminHomeView.html',
 			controller: 'adminHomeController'
->>>>>>> origin/mynewbranch
-		})*/
+		})
 		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',

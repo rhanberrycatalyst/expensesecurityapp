@@ -7,7 +7,7 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 			}
 		})
 		.success(function(data, status, headers, config){
-			$state.go("home.view");
+			$state.go("home.userView");
 		})
 		.error(function(data, status, headers, config){
 			console.log("fail");
