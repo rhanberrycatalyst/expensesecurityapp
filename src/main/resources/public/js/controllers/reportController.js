@@ -16,6 +16,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 	$scope.projectList = [];
 	$http.get('/projects').then(function(data){
 		$scope.data = data;
+		console.log($scope.data);
 		$scope.curProject = {};
 		angular.forEach($scope.data.data, function(value, key){
 			$scope.curProject = value;
