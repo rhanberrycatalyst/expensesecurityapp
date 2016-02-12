@@ -47,3 +47,8 @@ button {
 #email {
 	margin-right: 25px;
 }
+
+#addedUser, #loggedOut {
+	color:green;
+	margin-top: 15px;
+}

@@ -26,10 +26,9 @@ public class HomeController{
 		return "index.html";
 	}
 	
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String adduser(@RequestBody EndUser user){
+	@RequestMapping(value="/user", method=RequestMethod.POST)
+	public void adduser(@RequestBody EndUser user){
 		userService.add(user);
-		return login();
 	} 
 	
 }
