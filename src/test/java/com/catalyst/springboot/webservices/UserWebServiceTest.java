@@ -20,11 +20,11 @@ public class UserWebServiceTest {
 		userWebService.setuserService(mockuserService);
 	}*/
 
-	@Test
+	/*@Test
 	public void testAdduser() throws Exception {
 		userWebService.adduser(null);
 		verify(mockuserService, times(1)).add(null);
-	}
+	}*/
 
 	/*@Test
 	public void testGetusers() throws Exception {

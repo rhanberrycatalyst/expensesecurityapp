@@ -38,15 +38,10 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public void add(EndUser endUser) {
-		try{
 			SpringRole springRole = em.createQuery("SELECT s FROM SpringRole s WHERE s.roleId = 2", SpringRole.class)
 				.getSingleResult();
 			endUser.setSpringrole(springRole);
-			em.persist(endUser);
-		} finally {
-			em.close();
-		}
-		
+			em.persist(endUser);		
 	}
 
 	/**
@@ -55,12 +50,8 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public List<EndUser> getAllEndUsers() {
-		try {
 			return em.createQuery("SELECT e FROM EndUser e", EndUser.class).
 					getResultList();
-		} finally {
-			em.close();
-		}
 		
 	}
 
@@ -71,13 +62,9 @@ public class EndUserDaoHibernate implements EndUserDao{
 	 */
 	@Override
 	public EndUser getByEndUserId(Integer endUserId) {
-		try {
 			return em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 					.setParameter("id", endUserId)
 					.getSingleResult();
-		} finally {
-			em.close();
-		}
 	}
 
 	/**
@@ -88,13 +75,9 @@ public class EndUserDaoHibernate implements EndUserDao{
 	@Override
 
 	public EndUser getEndUserByEndUsername(String email){
-		try{
 			return em.createQuery("SELECT e FROM EndUser e WHERE e.email = :email", EndUser.class)
 					 .setParameter("email", email)
 					 .getSingleResult();
-		} finally {
-			em.close();
-		}
 		
 	}
 

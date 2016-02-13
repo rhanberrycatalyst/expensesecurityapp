@@ -1,8 +1,6 @@
 angular.module('expenseApp').controller('homeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
 	
 	$scope.getCurrentUser = currentUserService.getCurrentUser();
-	//$scope.getCurrentUser = {"userId":2};
-	console.log($scope.getCurrentUser);
 	$scope.reportList = {};
 	getReportService.dbGetAll($scope.getCurrentUser.userId).then(
 			  function(success){

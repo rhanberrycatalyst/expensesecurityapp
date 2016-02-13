@@ -31,15 +31,6 @@ public class EndUserWebService {
 	public void setUserService(EndUserService userService) {
 		this.userService = userService;
 	}
-
-	/**
-	 * Adds a new user to the database.
-	 * @param user
-	 */
-	@RequestMapping(value="/users", method=RequestMethod.POST)
-	public void adduser(@RequestBody EndUser user){
-		userService.add(user);
-	} 
 		
 	/**
 	 * Returns a list of all the end users.

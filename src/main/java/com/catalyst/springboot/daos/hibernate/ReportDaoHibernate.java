@@ -46,7 +46,6 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public void add(Report report) {
-		try {
 			Integer userId = report.getEndUser().getUserId();
 			EndUser endUser = em.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)
 					.setParameter("id", userId).getSingleResult();
@@ -80,10 +79,6 @@ public class ReportDaoHibernate implements ReportDao {
 				item.setType(type);
 				em.persist(item);
 			}
-		} finally {
-			em.close();
-		}
-
 	}
 
 	/**
@@ -92,16 +87,9 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public List<Report> getAllReportsByUserId(Integer userId) {
-
-		try{
 			return em.createQuery("SELECT r FROM Report r WHERE r.endUser.userId = :id", Report.class)
 					.setParameter("id", userId)
 					.getResultList();
-
-		} finally {
-			em.close();
-		}
-
 	}
 
 	/**
@@ -110,13 +98,9 @@ public class ReportDaoHibernate implements ReportDao {
 	 */
 	@Override
 	public Report getByReportId(Integer reportId) {
-		try {
 			return em.createQuery("SELECT r FROM Report r WHERE reportId = :id", Report.class)
-					.setParameter("id", reportId).getSingleResult();
-		} finally {
-			em.close();
-		}
-
+					.setParameter("id", reportId)
+					.getSingleResult(); 		
 	}
 
 	/**
@@ -124,14 +108,10 @@ public class ReportDaoHibernate implements ReportDao {
 	 * @param reportName
 	 */
 	@Override
-	public Report getReportByReportname(String reportname) {
-		try {
+	public Report getReportByReportname(String reportname){
 			return em.createQuery("SELECT r FROM Report r WHERE r.name = :reportname", Report.class)
-					.setParameter("reportname", reportname).getSingleResult();
-		} finally {
-			em.close();
-		}
-
+					 .setParameter("reportname", reportname)
+					 .getSingleResult();
 	}
 
 	/**
@@ -144,27 +124,10 @@ public class ReportDaoHibernate implements ReportDao {
 		em.merge(report);
 	}
 
-	/**
-
-	 * update ReportStatus To Submit in database with
-	 * 
-	 * @param report
-	 */
-	@Override
-	public void updateToSubmit(Integer id) {
-
-		Report report = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
-				.setParameter("id", id).getSingleResult();
-
-		ReportStatus reportStatus = em
-				.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 2", ReportStatus.class)
-				.getSingleResult();
-		report.setReportStatus(reportStatus);
-		em.merge(report);
-
-	}
+	
 
 /**
+
 	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
 	 * @param projectList 
 	 * @return
@@ -188,5 +151,26 @@ public class ReportDaoHibernate implements ReportDao {
 			em.close();
 		}
 	}
+
+
+	/* * update ReportStatus To Submit in database with
+	 * 
+	 * @param report
+	 */
+	@Override
+	public void updateToSubmit(Integer id) {
+
+		Report report = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
+				.setParameter("id", id).getSingleResult();
+
+		ReportStatus reportStatus = em
+				.createQuery("SELECT s FROM ReportStatus s WHERE s.reportStatusId = 2", ReportStatus.class)
+				.getSingleResult();
+		report.setReportStatus(reportStatus);
+		em.merge(report);
+
+	}
+
+
 
 }

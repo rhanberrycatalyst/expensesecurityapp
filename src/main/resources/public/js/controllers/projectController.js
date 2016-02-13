@@ -6,8 +6,10 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 
 	});
 	$scope.addDev = function(newDev){
-		getDevsService.addDev(newDev);
-		console.log(newDev);
+		$scope.devName = document.getElementById('developers')[document.getElementById('developers').selectedIndex].text;
+		$scope.curDev = {"userId": newDev, "nomdeplume": $scope.devName};
+		getDevsService.addDev($scope.curDev);
+		console.log(newDev.userId);
 		$scope.devLists = getDevsService.getDev();
 		console.log(getDevsService.getDev());
 	};
@@ -26,7 +28,8 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
     	console.log(techLead.value);
         var userData = JSON.stringify({
         		name:projectName.value,
-                techId:{"userId":techLead.value}
+                techId:{"userId":techLead.value},
+        		endUsers: $scope.devLists
             })
             console.log(userData)
             $http.post("/projects", userData).

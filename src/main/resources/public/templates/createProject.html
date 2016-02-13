@@ -13,12 +13,12 @@
 <div class="form-group">
 	<label for="developers" class="col-sm-2 control-label textLeft">Developers:</label>
 	<select id="developers" name="developers" ng-model="devList">
-		<option name="dev" ng-repeat="datus in data.data">{{datus.firstname + " " + datus.lastname}}</option>
+		<option name="dev" ng-repeat="datus in data.data" ng-value="datus.userId">{{datus.firstname + " " + datus.lastname}}</option>
 	</select>
 	<span><button ng-click=(addDev(devList))>Add</button></span>
 	<table class="table">
 		<tr ng-repeat="dev in devLists">
-			<td>{{dev}}</td>
+			<td>{{dev.nomdeplume}}</td>
 		</tr>
 	</table>
 </div>
