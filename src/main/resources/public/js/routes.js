@@ -42,7 +42,7 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			url: '/editReport',
 			templateUrl: 'templates/editReport.html',
 			controller: 'editreportController'
-	});
+		})
 		.state("home.createProject", {
 			url: '/createProject',
 			templateUrl: 'templates/createProject.html',
