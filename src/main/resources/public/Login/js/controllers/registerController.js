@@ -17,8 +17,8 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
             success(function(){
             	registerService.setRegister(true);
             	$state.go("login");
-            }).
-            error(function(){
+            })
+            .error(function(){
             	console.log("Failed to Load Resource");
             });
     }

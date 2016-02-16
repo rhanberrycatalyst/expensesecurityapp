@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/home/homeView');
+	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
 		.state("login", {
@@ -38,4 +38,10 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			templateUrl: 'templates/createProject.html',
 			controller: 'projectController'
 		})
+		.state("home.detailView", {
+			url: '/detailView',
+			templateUrl: 'templates/detailView.html',
+			controller: 'detailController'
+	})
+
 }]);

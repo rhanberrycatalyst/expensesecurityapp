@@ -1,23 +1,29 @@
 <div>
 {{message}}
 <h1>View Report</h1>
-<table>
+<form class="form-horizontal">
 
-  <tr>
-    <td>Name:&nbsp;</td>
-    <td colspan="3"><input type="text" ng-value="reportToView.name" onfocus="this.blur();"></td>
-  </tr>
-  <tr>
-    <td>Notes:&nbsp;</td>
-    <td colspan="3"><textarea onfocus="this.blur();">{{reportToView.note}}</textarea></td>
-  </tr>
-  <tr ng-repeat="lineItem in reportToView.lineItems">
-    <td>Expense Type:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.type.type" onfocus="this.blur();"></td>
-    <td>Expense Amount:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.value | currency" onfocus="this.blur();"></td>
-  </tr>
-</table>
-<button ng-click="submitx()">Submit</button>
+  <div class="form-group">
+	<label for="reportName" class="col-sm-2 control-label textLeft">Name: </label>
+	<input  name="reportName" type="text" ng-value="reportToView.name" onfocus="this.blur();"/>
+</div>
+   
+ <div class="form-group">
+	<label for="Notes" class="col-sm-2 control-label textLeft">Notes: </label>
+	<textarea ng-value="reportToView.name" onfocus="this.blur();"/>{{reportToView.note}}</textarea>
+</div>
+   
+  <div class="form-group" ng-repeat="lineItem in reportToView.lineItems">
+	<label for="ExpenseType" class="col-sm-2 control-label textLeft">Expense Type: </label>
+	<input  name="ExpenseType" type="text" ng-value="lineItem.type.type" onfocus="this.blur();"/>
+</div>
+  
+    <div class="form-group" ng-repeat="lineItem in reportToView.lineItems">
+	<label for="ExpenseAmount" class="col-sm-2 control-label textLeft">Expense Amount: </label>
+	<input  name="ExpenseAmount" type="text" ng-value="lineItem.value | currency" onfocus="this.blur();"/>
+</div>
+</form>
+    
+<span><button ng-click="submitx()" ng-show="!submitted">Submit Report</button></span>
 
 </div>

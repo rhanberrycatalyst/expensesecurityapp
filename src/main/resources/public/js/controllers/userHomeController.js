@@ -1,8 +1,9 @@
 angular.module('expenseApp').controller('userHomeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
 	
 	$scope.statView = 1;
-	//$scope.getCurrentUser = currentUserService.getCurrentUser();
-	$scope.currentUser = {"userId":2}; //TEMP. REMOVE WHEN UNCOMMENTING ABOVE LINE.
+	$scope.currentUser = currentUserService.getCurrentUser();
+	console.log("$scope.currentUser"+ $scope.currentUser);
+	//$scope.currentUser = {"userId":2}; //TEMP. REMOVE WHEN UNCOMMENTING ABOVE LINE.
 	$scope.admin = currentUserService.getAdmin();
 	$scope.projectList = [];
 	$scope.techReportList = {};
@@ -53,11 +54,13 @@ angular.module('expenseApp').controller('userHomeController', ['$scope', '$state
 	
 	$scope.loadView = function(id){
 		getReportService.setReport(id);
-		window.location = "#/detailView";
+		//window.location = "#/detailView";
+		$state.go('home.detailView');
 	};
 	
 	$scope.loadCreate = function(){
-		window.location = "#/createReport";
+		//window.location = "#/createReport";
+		$state.go('home.createReport');
 	};
 	
 }]);

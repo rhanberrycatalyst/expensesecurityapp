@@ -1,11 +1,11 @@
-angular.module('expenseApp').controller('adminHomeController', ['$scope', '$state', '$http', 'getReportService','currentUserService', function($scope, $state, $http, getReportService, currentUserService){
+angular.module('expenseApp').controller('adminHomeController', ['$scope', '$state', '$http', 'getProjectsService','currentUserService', function($scope, $state, $http, getProjectsService, currentUserService){
 	
-	//$scope.getCurrentUser = currentUserService.getCurrentUser();
-	$scope.admin = currentUserService.getAdmin();
-	$scope.reportList = {};
-	getReportService.dbGetAll(1).then(
+	$scope.getCurrentUser = currentUserService.getCurrentUser();
+	//$scope.admin = currentUserService.getAdmin();
+	$scope.projectList = {};
+	getProjectsService.getAllProjects().then(
 		function(success){
-			$scope.reportList = success.data;
+			$scope.projectList = success.data;
 				console.log(success.data);
 				return success.data;
 			},function(error){
@@ -13,12 +13,12 @@ angular.module('expenseApp').controller('adminHomeController', ['$scope', '$stat
 		});
 	
 	$scope.loadView = function(id){
-		getReportService.setReport(id);
-		window.location = "#/detailView";
+		//getReportService.setReport(id);
+		//window.location = "#/detailView";
 	};
 	
-	$scope.loadCreate = function(){
-		window.location = "#/createReport";
-	};
+	//$scope.loadCreate = function(){
+		//window.location = "#/createReport";
+	//};
 	
 }]);

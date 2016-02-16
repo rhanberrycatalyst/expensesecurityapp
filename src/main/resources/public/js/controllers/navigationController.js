@@ -9,7 +9,7 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
 
         $scope.currentUser = currentUserService.getCurrentUser();
 
-        //$scope.admin = $scope.currentUser.springrole.springRole === 'ROLE_ADMIN';
+        $scope.admin = $scope.currentUser.springrole.springRole === 'ROLE_ADMIN';
 
     });
 

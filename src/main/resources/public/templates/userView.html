@@ -4,16 +4,20 @@
                Expense Report
         </div>
     </div>
-    <div class="navbar-collapse collapse" >
+    <div class="navbar-collapse collapse" ng-controller="navigationController">
     	<ul class="nav navbar-nav">
         	<li>
-            	<a ui-sref="home.userView">Home</a>
+            	<a ui-sref="home.userView" ng-show="!admin">Home</a>
+            	
             </li>
             <li>
-             	<a ui-sref="home.createReport" ng-show="admin">Create New Report</a>
+            	<a ui-sref="home.adminHome" ng-show="admin">Home</a>
+            </li>
+            <li>
+             	<a ui-sref="home.createReport" ng-show="!admin">Create New Report</a>
          	</li>
           	<li>
-           		<a ui-sref="home.createProject" ng-show="!admin">Create Project</a>
+           		<a ui-sref="home.createProject" ng-show="admin">Create Project</a>
           	</li>  
        </ul>
        <ul class="nav navbar-nav navbar-right">

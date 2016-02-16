@@ -1,8 +1,9 @@
 
 angular.module('expenseApp').controller('detailController', ['$scope', '$state', '$http', 'getReportService','reportStatusService', function($scope, $state, $http, getReportService,reportStatusService){
 	$scope.reportToView = {};
+	
 	$scope.reportId = getReportService.curReport;
-
+console.log("$scope.reportId"+$scope.reportId);
 	if($scope.reportId == 0)
 	{
 	  //If the page was refreshed and we lost the reportId, (it will default back to 0)
@@ -16,7 +17,10 @@ angular.module('expenseApp').controller('detailController', ['$scope', '$state',
 
 		  function(success){
 				  $scope.reportToView = success.data;
+				  $scope.submitted=success.data.reportStatus.reportStatus === 'Submitted';
+				 
 				  console.log(success.data);
+				  
 				  return success.data;
 			  },function(error){
 
@@ -24,8 +28,8 @@ angular.module('expenseApp').controller('detailController', ['$scope', '$state',
 			  }
 			  );
 	}
-
-			
+	
+		
 	
 	$scope.submitx=function()
 	{ 
