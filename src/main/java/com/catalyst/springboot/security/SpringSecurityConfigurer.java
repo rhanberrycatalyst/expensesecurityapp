@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @EnableWebMvcSecurity
@@ -54,52 +55,41 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.inMemoryAuthentication().withUser("user").password("root").authorities("user");
-
 		auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(encoder())
 				.usersByUsernameQuery("SELECT email,password,isactive FROM enduser WHERE email=?")
 				.authoritiesByUsernameQuery(
-
-						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");
-						
-																																							
-					
-		
-																																								
-																																								
- 
-
+						"SELECT enduser.email,springrole.role FROM enduser JOIN springrole ON enduser.springroleid =springrole.roleid WHERE enduser.email=?");																																																																																																																																			
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
+		.csrf().disable()
 		.authorizeRequests()
-		.and()
-	.formLogin()
-		.loginPage("/login")
-		.permitAll()
-		.defaultSuccessUrl("/index.html")
-		.usernameParameter("username")
-		.passwordParameter("password")
-		.failureHandler(authFailure)
-		.and()
+			.antMatchers("/register/**", "/index", "/login").permitAll()
+			.anyRequest().authenticated()
+	    	.and()
+	    .formLogin()
+			.loginPage("/#/login")
+			.permitAll()
+			.loginProcessingUrl("/loginPage")
+			.defaultSuccessUrl("/")
+			.usernameParameter("username")
+			.passwordParameter("password")
+			.failureHandler(authFailure)
+			.and()
 	.headers()
 		.cacheControl()
 		.and()
 	.logout()
 		.logoutSuccessHandler(logoutSuccessHandler)
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/")
 		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
-		.permitAll()
-		.and()
-	.csrf().disable();
-
-
-
+		.permitAll();
 	}
-
+	
 	@Bean
 	public BCryptPasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
@@ -112,9 +102,9 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-            .antMatchers("/scripts/**/*.{js,html}")
-            .antMatchers("/bower_components/**")
-            .antMatchers("/test/**");
+        	.antMatchers("/login/**")
+            .antMatchers("/css/**")
+            .antMatchers("/js/**");
     }
  
 

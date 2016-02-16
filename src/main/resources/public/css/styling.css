@@ -7,6 +7,14 @@
 	left:0;
 }
 
+h2, h4 {
+	margin-left: 15px;
+	margin-bottom: 20px;
+}
+
+a {
+	color: black;
+}
 .form-group {
 	margin-left: 25px;
 }
@@ -15,6 +23,9 @@ td{	margin-left: 25px;
 
 label {
 	margin-left: 15px;
+	display: inline-block;
+    width: 100px;
+    margin-bottom: 25px;
 }
 
 .btn-primary {
@@ -31,4 +42,13 @@ button {
 
 .textLeft {
 	text-align: left !important;
+}
+
+#email {
+	margin-right: 25px;
+}
+
+#addedUser, #loggedOut {
+	color:green;
+	margin-top: 15px;
 }

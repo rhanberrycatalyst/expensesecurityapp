@@ -1,11 +1,16 @@
 <head>
 </head>
 
-<body ng-app ="expenseApp">
+<body ng-app ="loginApp">
+<form id="loginPage" name="loginPage" ng-submit="login()">
 	<label for="userName" >User: </label>
-	<input id="userName" type="text" ng-bind="username"/>
+	<input id="userName" name="userName" type="text" ng-model="userName"/>
 	<label for="passWord">Password: </label>
-	<input id="passWord" type="text" />
-	<button>Login</button>
-	<button>Register</button>
+	<input id="passWord" name="passWord" type="text" ng-model="passWord"/>
+	<input type="submit" value="Login"/>
+	<a ui-sref="register">
+		<button>Register</button>
+	</a>
+</form>	
+	
 </body>

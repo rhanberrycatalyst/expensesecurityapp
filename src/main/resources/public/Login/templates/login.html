@@ -1,0 +1,15 @@
+<p id="loggedOut" ng-show="logout" class="text-center"> You have been successfully logged out. </p>
+<p id="addedUser" ng-show="register" class="text-center"> Your account has successfully been created. </p>
+
+<h2>Welcome to the Expense Report Application</h2>
+<h4>Please Login or Register now</h4>
+<form id="loginPage" name="loginPage" ng-submit="login()">
+	<label for="userName" id="email" >Email/Username: </label>
+	<input id="userName" name="userName" type="text" ng-model="userName"/>
+	<label for="passWord">Password: </label>
+	<input id="passWord" name="passWord" type="password" ng-model="passWord"/>
+	<input type="submit" value="Login"/>
+	<a ui-sref="register">
+		<button>Register</button>
+	</a>
+</form>	
