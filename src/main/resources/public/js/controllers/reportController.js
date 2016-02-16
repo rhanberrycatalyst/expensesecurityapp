@@ -86,7 +86,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log("succss");
-            	window.location="#/home";
+            	window.location="#/home/homeView";
             }).
             error(function(data, status, headers, config){
             	console.log("fail");

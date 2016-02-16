@@ -39,4 +39,9 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			templateUrl: 'templates/createProject.html',
 			controller: 'projectController'
 		})
+		.state("home.detailView", {
+			url: '/detailView',
+			templateUrl: 'templates/detailView.html',
+			controller: 'detailController'
+		})
 }]);
