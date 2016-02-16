@@ -13,23 +13,7 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 			
 			authService.setLogout(true);
 			registerService.setRegister(false);
-			getCurrentUserService.currentUser().then(function(success){
-		        currentUserService.setCurrentUser(success.data);
-		        
-		        $scope.admin = success.data.springrole.springRole === 'ROLE_ADMIN';
-		        console.log(" from function $scope.admin"+ $scope.admin);
-			
-			console.log(" $scope.admin"+ $scope.admin);
-	        if(!($scope.admin))
-        	{
-	        $state.go("home.userView");
-        	}
-        else
-        	{
-        	$state.go("home.adminHome");
-        	}
-			});
-
+			$state.go("home.userView");
 		})
 		.error(function(data, status, headers, config){
 			console.log("fail");

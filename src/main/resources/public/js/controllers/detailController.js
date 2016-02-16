@@ -3,7 +3,7 @@ angular.module('expenseApp').controller('detailController', ['$scope', '$state',
 	$scope.reportToView = {};
 	
 	$scope.reportId = getReportService.curReport;
-console.log("$scope.reportId"+$scope.reportId);
+	console.log("$scope.reportId"+$scope.reportId);
 	if($scope.reportId == 0)
 	{
 	  //If the page was refreshed and we lost the reportId, (it will default back to 0)
