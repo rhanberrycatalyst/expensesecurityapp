@@ -12,7 +12,7 @@ angular.module('expenseApp').service('currentUserService', [function(){
     
 
     function getAdmin() {
-    	return true;
+    	return false;
     }
     
 
