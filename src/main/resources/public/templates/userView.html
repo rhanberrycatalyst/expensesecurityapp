@@ -10,10 +10,10 @@
             	<a ui-sref="home.userView">Home</a>
             </li>
             <li>
-             	<a ui-sref="home.createReport" ng-show="admin">Create New Report</a>
+             	<a ui-sref="home.createReport" ng-show="!admin">Create New Report</a>
          	</li>
           	<li>
-           		<a ui-sref="home.createProject" ng-show="!admin">Create Project</a>
+           		<a ui-sref="home.createProject" ng-show="admin">Create Project</a>
           	</li>  
        </ul>
        <ul class="nav navbar-nav navbar-right">
