@@ -14,6 +14,7 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 		})
 		.error(function(data, status, headers, config){
 			console.log("fail");
+			// $scope.loginFailure = "Invalid Email/Password";
 		});
 	}
 }]);

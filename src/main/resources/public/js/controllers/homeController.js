@@ -11,8 +11,8 @@ angular.module('expenseApp').controller('homeController', ['$scope', '$state', '
 				  console.log(error);  
 			  }
 			  );
-	
-	
+
+		
 	$scope.loadView = function(id){
 		getReportService.setReport(id);
 		window.location = "#/detailView";

@@ -16,7 +16,8 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state("home", {
 			url: '/home',
-			templateUrl: 'templates/userView.html'
+			templateUrl: 'templates/userView.html',
+			controller: 'navigationController'
 		})
 		.state("home.userView", {
 			url: '/homeView',
