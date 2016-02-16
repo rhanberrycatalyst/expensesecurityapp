@@ -25,7 +25,7 @@ angular.module('expenseApp').controller('detailController', ['$scope', '$state',
 			  );
 	}
 
-			
+
 	
 	$scope.submitx=function()
 	{ 

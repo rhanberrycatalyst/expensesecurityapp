@@ -63,7 +63,7 @@
 					</select>
 				</div>
 			</td>
-			
+
 			<td>
 				{{lineItem.value | currency}}
 			</td>
@@ -76,31 +76,31 @@
 
 </form>
 
-<div>
+<!--<div>-->
 
-<table>
-  <tr>
-    <td>Name:&nbsp;</td>
-    <td colspan="3"><input type="text" ng-value="reportToEdit.name"></td>
-  </tr>
-  <tr>
-    <td>Notes:&nbsp;</td>
-    <td colspan="3"><textarea >{{reportToEdit.note}}</textarea></td>
-  </tr>
-  <tr ng-repeat="lineItem in reportToEdit.lineItems">
-    <td>Expense Type:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.type.type" ></td>
-    <td>Expense Amount:&nbsp;</td>
-    <td><input type="text" ng-value="lineItem.value | currency" ></td>
-    <td>
-		<a class="btn" ng-click="removeItem(reportToEdit.lineItem)">Remove</button>
-	</td>
-  </tr>
-</table>
-<div class="form-group">
-	<div>
-		<input type="submit" value="Save Report" ng-click="sendEditedReport()" class="btn btn-primary"/>
-	</div>
-</div>
-<p ng-show="error">Report failed to create</p>
-</div>
+<!--<table>-->
+  <!--<tr>-->
+    <!--<td>Name:&nbsp;</td>-->
+    <!--<td colspan="3"><input type="text" ng-value="reportToEdit.name"></td>-->
+  <!--</tr>-->
+  <!--<tr>-->
+    <!--<td>Notes:&nbsp;</td>-->
+    <!--<td colspan="3"><textarea >{{reportToEdit.note}}</textarea></td>-->
+  <!--</tr>-->
+  <!--<tr ng-repeat="lineItem in reportToEdit.lineItems">-->
+    <!--<td>Expense Type:&nbsp;</td>-->
+    <!--<td><input type="text" ng-value="lineItem.type.type" ></td>-->
+    <!--<td>Expense Amount:&nbsp;</td>-->
+    <!--<td><input type="text" ng-value="lineItem.value | currency" ></td>-->
+    <!--<td>-->
+		<!--<a class="btn" ng-click="removeItem(reportToEdit.lineItem)">Remove</button>-->
+	<!--</td>-->
+  <!--</tr>-->
+<!--</table>-->
+<!--<div class="form-group">-->
+	<!--<div>-->
+		<!--<input type="submit" value="Save Report" ng-click="sendEditedReport()" class="btn btn-primary"/>-->
+	<!--</div>-->
+<!--</div>-->
+<!--<p ng-show="error">Report failed to create</p>-->
+<!--</div>-->
