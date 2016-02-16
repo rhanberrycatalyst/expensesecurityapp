@@ -1,5 +1,5 @@
-angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'currentUserService', function($scope, $state, $http, createLineItemService, currentUserService){
-	
+angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'getCurrentUserService', function($scope, $state, $http, createLineItemService, getCurrentUserService){
+
 //	$scope.typetype = {
 //		    availableOptions: [
 //		      {typeId: '1', value: 'Mileage'},
@@ -11,37 +11,32 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 //		      {typeId: '7', value: 'Parking'},
 //		      {typeId: '8', value: 'Other'}
 //		    ]};
-	
-	$scope.getCurrentUser =currentUserService.getCurrentUser();// {"userId":2};
-	console.log("geee"+$scope.getCurrentUser);
-	$scope.projectList = [];
 
-//$http.get('/projectsusers/' + $scope.getCurrentUser.userId).then(function(data){
-
-	$http.get('/projects').then(function(data){
-
-		$scope.data = data;
-		console.log($scope.data);
-		$scope.curProject = {};
-		angular.forEach($scope.data.data, function(value, key){
-			$scope.curProject = value;
-			angular.forEach(value.endUsers, function(value, key){
-				if(value.userId == $scope.getCurrentUser.userId){
-					//console.log(value.userId);
-					//console.log($scope.getCurrentUser.userId);
-					$scope.projectList.push($scope.curProject);
-				}
+	getCurrentUserService.currentUser()
+	.then(function(data){
+		$scope.projectList = [];
+		$scope.getCurrentUser = data.data;
+		$http.get('/projects/').then(function(data){
+			$scope.data = data;
+			$scope.curProject = {};
+			angular.forEach($scope.data.data, function(value, key){
+				$scope.curProject = value;
+				angular.forEach(value.endUsers, function(value, key){
+					if(value.userId == $scope.getCurrentUser.userId){
+						$scope.projectList.push($scope.curProject);
+					}
+				});
 			});
+			console.log($scope.projectList);
 		});
-		console.log($scope.projectList);
 	});
-	
 
-	
+
+
 	$scope.itemList = [];
 	$scope.itemType = 1;
 	$scope.cost = '';
-		
+
 	$scope.addRow = function(){
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = 1;
@@ -91,7 +86,7 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
             	console.log("succss");
-            	window.location="#/home";
+            	window.location="#/home/homeView";
             }).
             error(function(data, status, headers, config){
             	console.log("fail");

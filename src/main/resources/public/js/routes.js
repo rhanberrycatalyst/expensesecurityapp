@@ -16,27 +16,23 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state("home", {
 			url: '/home',
-			templateUrl: 'templates/userView.html'
+			templateUrl: 'templates/userView.html',
+			controller: 'navigationController'
 		})
 		.state("home.userView", {
 			url: '/homeView',
 			templateUrl: 'templates/userHomeView.html',
 			controller: 'userHomeController'
 		})
-		.state("home.adminHome", {
-			url: '/admin',
-			templateUrl: 'templates/adminHomeView.html',
-			controller: 'adminHomeController'
-		})
+//		.state("home.adminHome", {
+//			url: '/admin',
+//			templateUrl: 'templates/adminHomeView.html',
+//			controller: 'adminHomeController'
+//		})
 		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',
 			controller: 'reportController'
-		})
-		.state("detailView", {
-			url: '/detailView',
-			templateUrl: 'templates/detailView.html',
-			controller: 'detailController'
 		})
 		.state("home.editReport", {
 			url: '/editReport',
@@ -47,5 +43,10 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			url: '/createProject',
 			templateUrl: 'templates/createProject.html',
 			controller: 'projectController'
+		})
+		.state("home.detailView", {
+			url: '/detailView',
+			templateUrl: 'templates/detailView.html',
+			controller: 'detailController'
 		})
 }]);
