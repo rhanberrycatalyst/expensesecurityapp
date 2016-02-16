@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location','authService','registerService','getCurrentUserService','currentUserService', function($scope, $state, $http, $location, authService, registerService,getCurrentUserService,currentUserService){
+=======
+angular.module('expenseApp').controller('loginController', ['$scope', '$state', '$http', '$location','authService','registerService', function($scope, $state, $http, $location, authService, registerService){
+	
+	$scope.loginFailure = false;
+>>>>>>> LogoutBranch
 	$scope.logout = authService.getLogout();
 	$scope.register = registerService.getRegister();
 	
@@ -10,13 +16,18 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 			}
 		})
 		.success(function(data, status, headers, config){
+<<<<<<< HEAD
 			
+=======
+			$scope.loginFailure = false;
+>>>>>>> LogoutBranch
 			authService.setLogout(true);
 			registerService.setRegister(false);
 			$state.go("home.userView");
 		})
 		.error(function(data, status, headers, config){
 			console.log("fail");
+			$scope.loginFailure = true;
 		});
 	}
 }]);

@@ -1,4 +1,4 @@
-angular.module('expenseApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', function($scope, currentUserService, getCurrentUserService, $state) {
+angular.module('expenseApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', '$http', function($scope, currentUserService, getCurrentUserService, $state, $http) {
 
 	getCurrentUserService.currentUser().then(function(success){
         currentUserService.setCurrentUser(success.data);
@@ -10,7 +10,9 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
     	.then(function(data){
     		$scope.getCurrentUser = data;
     		console.log($scope.getCurrentUser.data);
-
+ 				if ($scope.getCurrentUser.data.userId == null || $scope.getCurrentUser.data.userId == 'undefined') {
+    				$state.go("login");
+    			}
     		$scope.admin = ($scope.getCurrentUser.data.springrole.roleId == 1);
     		console.log($scope.admin);
     	});
@@ -19,5 +21,13 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
 
     });
 
+	$scope.logout = function() {
+		  $http.post('/logout', {}).success(function() {
+			 // routerService.setLoggedIn(false);
+			  console.log("success");
+		  }).error(function(data) {
+		    console.log("Failed to logout")
+		  });
+		};
 
 }]);
