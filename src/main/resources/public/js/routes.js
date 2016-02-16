@@ -16,18 +16,19 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 		.state("home", {
 			url: '/home',
-			templateUrl: 'templates/userView.html'
+			templateUrl: 'templates/userView.html',
+			controller: 'navigationController'
 		})
 		.state("home.userView", {
 			url: '/homeView',
 			templateUrl: 'templates/userHomeView.html',
 			controller: 'userHomeController'
 		})
-		.state("home.adminHome", {
-			url: '/admin',
-			templateUrl: 'templates/adminHomeView.html',
-			controller: 'adminHomeController'
-		})
+//		.state("home.adminHome", {
+//			url: '/admin',
+//			templateUrl: 'templates/adminHomeView.html',
+//			controller: 'adminHomeController'
+//		})
 		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',

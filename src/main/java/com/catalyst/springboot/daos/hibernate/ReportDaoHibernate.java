@@ -138,14 +138,10 @@ public class ReportDaoHibernate implements ReportDao {
 		String projects = "";
 		for(Project proj : projectList)
 		{
-		  projects = projects + "" + proj.getProjectId() + ",";
-		}
-		if(projects.length() > 0)
-		{ //cut off trailing comma
-		  projects = projects.substring(0, projects.length()-1); 
+		  projects = projects + "," + proj.getProjectId() + "";
 		}
 		try {
-			return em.createQuery("SELECT r FROM Report r WHERE r.project.projectId IN(" + projects + ") AND r.reportStatus.reportStatus = 'Submitted'", Report.class)
+			return em.createQuery("SELECT r FROM Report r WHERE r.project.projectId IN(0" + projects + ") AND r.reportStatus.reportStatus = 'Submitted'", Report.class)
 					 .getResultList();
 		} finally {
 			em.close();
