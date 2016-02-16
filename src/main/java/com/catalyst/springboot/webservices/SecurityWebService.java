@@ -25,8 +25,10 @@ public class SecurityWebService {
 	}
 	
 	@RequestMapping(value="/security/current",method=RequestMethod.GET)
-	
 		public EndUser currentUser(Principal principal){
+			if (principal == null) {
+				System.out.println("No value passed");
+			}
 		System.out.println("principal"+principal);
 		System.out.println("principalname"+principal.getName());
 		return  endUserService.getUserByUsername(principal.getName());

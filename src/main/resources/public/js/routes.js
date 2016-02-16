@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+	
 	$urlRouterProvider.otherwise('/home/homeView');
 	
 	$stateProvider
@@ -39,4 +40,4 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			templateUrl: 'templates/createProject.html',
 			controller: 'projectController'
 		})
-}]);
+}])

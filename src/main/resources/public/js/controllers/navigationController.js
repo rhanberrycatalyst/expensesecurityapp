@@ -10,7 +10,9 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
     	.then(function(data){
     		$scope.getCurrentUser = data;
     		console.log($scope.getCurrentUser.data);
-
+ 				if ($scope.getCurrentUser.data.userId == null || $scope.getCurrentUser.data.userId == 'undefined') {
+    				$state.go("login");
+    			}
     		$scope.admin = ($scope.getCurrentUser.data.springrole.roleId == 1);
     		console.log($scope.admin);
     	});
