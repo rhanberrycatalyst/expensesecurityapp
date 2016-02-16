@@ -9,7 +9,6 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 		})
 		.success(function(data, status, headers, config){
 			authService.setLogout(true);
-			registerService.setRegister(false);
 			$state.go("home.userView");
 		})
 		.error(function(data, status, headers, config){
