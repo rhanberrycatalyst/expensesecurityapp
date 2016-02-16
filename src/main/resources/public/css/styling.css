@@ -48,7 +48,7 @@ button {
 	margin-right: 25px;
 }
 
-#addedUser, #loggedOut {
+.frontPageError{
 	color:green;
 	margin-top: 15px;
 }

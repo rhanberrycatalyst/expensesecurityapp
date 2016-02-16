@@ -1,8 +1,8 @@
-<form name="projectForm" class="form-horizontal">
+<form novalidate name="projectForm" class="form-horizontal">
 
 <div class="form-group">
 	<label for="projectName" class="col-sm-2 control-label textLeft">Project: </label>
-	<input id="projectName" name="projectName" type="text" ng-required/>
+	<input id="projectName" name="projectName" type="text" ng-model="projectName" ng-required/>
 </div>
 <div class="form-group">
 	<label for="techLead" class="col-sm-2 control-label textLeft">Tech Lead: </label>
@@ -24,6 +24,6 @@
 </div>
 </form>
 
-<button ng-disabled="!projectForm.valid" ng-click=(sendProject())>Create Project</button>
+<input type="submit" ng-hide="projectName.length < 1" ng-click=(sendProject()) value="Create Project">
 <p ng-show="worked">Project has been Created Successfully</p>
 <p ng-show="error">Project failed to create</p>

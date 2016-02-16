@@ -5,6 +5,7 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 		console.log(data);
 
 	});
+	$scope.projectName = "";
 	$scope.addDev = function(newDev){
 		$scope.devName = document.getElementById('developers')[document.getElementById('developers').selectedIndex].text;
 		$scope.curDev = {"userId": newDev, "nomdeplume": $scope.devName};

@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
 		.state("login", {
 			url: '/login',
@@ -47,3 +48,4 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 		})
 
 }]);
+
