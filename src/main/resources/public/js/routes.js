@@ -1,5 +1,5 @@
 'use strict';
-
+//angular routing information
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 	$urlRouterProvider.otherwise('/login');
@@ -25,11 +25,6 @@ angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', fun
 			templateUrl: 'templates/userHomeView.html',
 			controller: 'userHomeController'
 		})
-//		.state("home.adminHome", {
-//			url: '/admin',
-//			templateUrl: 'templates/adminHomeView.html',
-//			controller: 'adminHomeController'
-//		})
 		.state("home.createReport", {
 			url: '/createReport',
 			templateUrl: 'templates/createReport.html',

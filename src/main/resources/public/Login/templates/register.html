@@ -5,6 +5,7 @@
 	<input id="userName" name="userName" type="email" ng-model="formData.userName" required/>
 	<span ng-show="myForm.userName.$error.required && myForm.userName.$dirty">User name is required</span>
 	<span ng-show="!myForm.userName.$error.required && myForm.userName.$error.email && myForm.userName.$dirty">Not proper email format</span>
+	<span ng-show="error">User name already taken</span>
 </div>
 <div>
 	<label for="passWord">Password: </label>
