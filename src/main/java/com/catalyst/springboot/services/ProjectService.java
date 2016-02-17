@@ -31,12 +31,6 @@ public interface ProjectService {
 	 */
 	List<Project> getProjects();
 
-	/**
-	 * Retrieve projects by user ID
-	 * @param userId
-	 * @return
-	 */
-	List<Project> getProjectsByUserId(Integer userId);
 	
 	/**
 	 * Retrieve a single project's information if that project's projectId

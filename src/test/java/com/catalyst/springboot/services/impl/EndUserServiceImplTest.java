@@ -5,12 +5,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doNothing;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.catalyst.springboot.daos.EndUserDao;
 import com.catalyst.springboot.entities.EndUser;
@@ -20,29 +22,58 @@ public class EndUserServiceImplTest {
 
 	private EndUserServiceImpl target;
 	private EndUserDao mockuserDao;
+	private EndUser mockEndUser;
+	private BCryptPasswordEncoder mockEncoder;
+	
 	
 	@Before
 	public void setup(){
 		target = new EndUserServiceImpl();
 		mockuserDao = mock(EndUserDao.class);
+		mockEndUser = mock(EndUser.class);
 		target.setuserDao(mockuserDao);
+		mockEncoder = mock(BCryptPasswordEncoder.class);
+		target.setEncoder(mockEncoder);
 	}
 
 	@Test
 	public void testAdduser(){
-		target.add(null);
-		verify(mockuserDao, times(1)).add(null);
+		
+		when(mockEncoder.encode("password")).thenReturn("password");
+		doNothing().when(mockEndUser).setPassword("password");
+		target.add(mockEndUser);
+		verify(mockuserDao, times(1)).add(mockEndUser);
 	}
-	
+
 	@Test
-	public void testUpdateuser(){
+	public void testGetUsers() {
+		List<EndUser> expected = new ArrayList<>();
+		when(mockuserDao.getAllEndUsers()).thenReturn(expected);
+		target.getUsers();
+		verify(mockuserDao, times(1)).getAllEndUsers();
+	}
+/*	
+	@Test
+	public void testUpdateUser(){
+		EndUser mockEndUser2 = mock(EndUser.class);
+		when(mockProject.getTechId()).thenReturn(mockEndUser2);
+		when(mockEndUser2.getUserId()).thenReturn(1);
+		
+		
+		when(mockEncoder.encode("password")).thenReturn("password");
+		doNothing().when(mockEndUser).setPassword("password");
 		target.update(null);
 		verify(mockuserDao, times(1)).update(null);
-	}
+	}*/
 	
 	@Test(expected=InvalidInputException.class)
 	public void testGetByuserIdZero() throws InvalidInputException{
 		target.getByUserId(-1);
+	}
+	
+	@Test(expected=InvalidInputException.class)
+	public void testGetByUserNull() throws InvalidInputException{
+		target.getByUserId(null);
 	}
 	
 	@Test
