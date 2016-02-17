@@ -25,7 +25,6 @@ public class HomeController{
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-
 	public String login(){
 		return "index.html";
 	}

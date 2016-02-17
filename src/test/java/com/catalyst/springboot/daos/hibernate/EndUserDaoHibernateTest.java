@@ -21,8 +21,6 @@ import org.mockito.stubbing.Answer;
 import com.catalyst.springboot.entities.EndUser;
 import com.catalyst.springboot.entities.SpringRole;
 
-
-
 public class EndUserDaoHibernateTest {
 
 	private EndUserDaoHibernate target;
@@ -39,17 +37,12 @@ public class EndUserDaoHibernateTest {
 		target.setEm(mockEm);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void testAdd() {
+		target.add(mockEndUser);
 		
-		
-		
-		
-		target.add(null);
-		verify(mockEm, times(1)).persist(null);
 		//We have nothing we can assert. So use verify to check how many times a dependency's method was called.
-		//verify(mockEm, times(1)).persist(expected);
+		//verify(mockEm, times(1)).persist();
 	}
 
 	@Test
