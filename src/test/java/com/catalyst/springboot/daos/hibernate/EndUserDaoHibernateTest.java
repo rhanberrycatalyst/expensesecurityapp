@@ -8,6 +8,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,16 +34,18 @@ public class EndUserDaoHibernateTest {
 		target = new EndUserDaoHibernate();
 		mockSpringRole=new SpringRole();
 		mockEm = mock(EntityManager.class);
-		mockEndUser=new EndUser();
+		mockEndUser=mock(EndUser.class);
 		target.setEm(mockEm);
 	}
 
 	@Test
 	public void testAdd() {
+		TypedQuery<SpringRole> mockTypedQuery = mock(TypedQuery.class);
+		when(mockEm.createQuery("SELECT s FROM SpringRole s WHERE s.roleId = 2", SpringRole.class)).thenReturn(mockTypedQuery);
 		target.add(mockEndUser);
 		
 		//We have nothing we can assert. So use verify to check how many times a dependency's method was called.
-		//verify(mockEm, times(1)).persist();
+		verify(mockEm, times(1)).persist(mockEndUser);
 	}
 
 	@Test
@@ -75,6 +78,19 @@ public class EndUserDaoHibernateTest {
 		
 	}
 
+	@Test
+	public void testGetEndUserByEndUsername() {
+		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
+
+		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
+		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
+		 		 
+		
+		
+		target.getEndUserByEndUsername("user@user.com");
+		verify(mockTypedQuery, times(1)).setParameter(eq("email"), eq("user@user.com"));
+		
+	}
 	@Test
 	public void testUpdate() {
 		EndUser expected = new EndUser();
