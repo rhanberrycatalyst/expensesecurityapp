@@ -37,6 +37,7 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
             success(function(data, status, headers, config){
             	console.log("success");
             	$scope.worked = true;
+            	window.location="#/home/homeView";
             }).
             error(function(data, status, headers, config){
             	console.log("fail");

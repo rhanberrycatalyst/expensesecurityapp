@@ -17,7 +17,7 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
     		console.log($scope.admin);
     	});
 
-        $scope.admin = $scope.currentUser.springrole.springRole === 'ROLE_ADMIN';
+        //$scope.admin = $scope.currentUser.springrole.springRole === 'ROLE_ADMIN';
 
     });
 
