@@ -19,7 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.catalyst.springboot.entities.EndUser;
-import com.catalyst.springboot.entities.SpringRole;
+import com.catalyst.springboot.entities.Project;
 
 public class ProjectDaoHibernateTest {
 
@@ -33,66 +33,68 @@ public class ProjectDaoHibernateTest {
 		target = new ProjectDaoHibernate();
 		mockEm = mock(EntityManager.class);
 		mockEndUser=mock(EndUser.class);
+		mockProject = mock(Project.class);
 		target.setEm(mockEm);
 	}
 
 	@Test
-	public void testAdd() {
-		TypedQuery<SpringRole> mockTypedQuery = mock(TypedQuery.class);
-		when(mockEm.createQuery("SELECT s FROM SpringRole s WHERE s.roleId = 2", SpringRole.class)).thenReturn(mockTypedQuery);
-		target.add(mockEndUser);
+	public void testProjectAdd() {
+		EndUser mockEndUser2 = mock(EndUser.class);
+		when(mockProject.getTechId()).thenReturn(mockEndUser2);
+		when(mockEndUser2.getUserId()).thenReturn(1);
+		
+		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
+		when(mockEm.createQuery("SELECT e FROM EndUser e WHERE e.userId = :id", EndUser.class)).thenReturn(mockTypedQuery);
+		when(mockTypedQuery.setParameter("id", 1)).thenReturn(mockTypedQuery);
+		target.add(mockProject);
 		
 		//We have nothing we can assert. So use verify to check how many times a dependency's method was called.
-		verify(mockEm, times(1)).persist(mockEndUser);
+		verify(mockEm, times(1)).persist(mockProject);
 	}
 
 	@Test
-	public void testGetAllusers() {
+	public void testGetAllProjects() {
 
-		List<EndUser> expected = new ArrayList<>();
+		List<Project> expected = new ArrayList<>();
 
-		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
+		TypedQuery<Project> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(Project.class))).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.getResultList()).thenReturn(expected);
 
-		target.getAllEndUsers();
+		target.getAllProjects();
 
 		verify(mockTypedQuery, times(1)).getResultList();
 
 	}
 
 	@Test
-	public void testGetByuserId() {
-		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
+	public void testGetByProjectId() {
+		TypedQuery<Project> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(Project.class))).thenReturn(mockTypedQuery);
 		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
-		 		 
 		
-		
-		target.getByEndUserId(0);
+		target.getByProjectId(0);
 		verify(mockTypedQuery, times(1)).setParameter(eq("id"), eq(0));
 		
 	}
 
 	@Test
-	public void testGetEndUserByEndUsername() {
-		TypedQuery<EndUser> mockTypedQuery = mock(TypedQuery.class);
+	public void testGetProjectByProjectName() {
+		TypedQuery<Project> mockTypedQuery = mock(TypedQuery.class);
 
-		when(mockEm.createQuery(anyString(), eq(EndUser.class))).thenReturn(mockTypedQuery);
-		when(mockTypedQuery.setParameter(anyString(), anyInt())).thenReturn(mockTypedQuery);
+		when(mockEm.createQuery(anyString(), eq(Project.class))).thenReturn(mockTypedQuery);
+		when(mockTypedQuery.setParameter(anyString(), anyString())).thenReturn(mockTypedQuery);
 		 		 
-		
-		
-		target.getEndUserByEndUsername("user@user.com");
-		verify(mockTypedQuery, times(1)).setParameter(eq("email"), eq("user@user.com"));
+		target.getProjectByProjectName("test");
+		verify(mockTypedQuery, times(1)).setParameter(eq("projectname"), eq("test"));
 		
 	}
 	@Test
 	public void testUpdate() {
-		EndUser expected = new EndUser();
-		expected.setUserId(1);
+		Project expected = new Project();
+		expected.setProjectId(1);
 	
 		target.update(expected);
 		
