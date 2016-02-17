@@ -16,11 +16,16 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		getReportService.dbCall($scope.reportId).then(
 			function(success){
 				$scope.reportToEdit = success.data;
-//				angular.forEach($scope.reportToEdit.lineItems, function())
-				for(var x = 0; x<$scope.reportToEdit.lineItems.length;x++)
-				{
-					$scope.itemList.push({'type':{'typeId':$scope.reportToEdit.lineItems[x].type.typeId}, 'value':$scope.reportToEdit.lineItems[x].value});
-				}
+				angular.forEach($scope.reportToEdit.lineItems, function(value){
+					
+					$scope.itemList.push(value);
+					
+				});
+				console.log($scope.itemList);
+//				for(var x = 0; x<$scope.reportToEdit.lineItems.length;x++)
+//				{
+//					$scope.itemList.push({'type':{'typeId':$scope.reportToEdit.lineItems[x].type.typeId}, 'value':$scope.reportToEdit.lineItems[x].value});
+//				}
 				console.log(success.data);
 				return success.data;
 			},function(error){
@@ -73,7 +78,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 	$scope.cost = '';
 
 	$scope.addRow = function(){
-		console.log({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
+		console.log({'report':{'reportId':$scope.reportId}, 'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = 1;
 		$scope.cost = '';
@@ -113,6 +118,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		var lineItemsList = $scope.itemList;
 		$scope.error = false;
 		var userData = angular.toJson({
+			reportId: $scope.reportId,
 			endUser:{"userId":$scope.reportToEdit.endUser.userId}, //userid from the specific report
 			name:reportName.value,
 			note:note.value,
@@ -121,7 +127,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 			lineItems:lineItemsList
 		});
 		console.log(userData);
-		$http.put("/reports/"+ $scope.reportId, userData).
+		$http.put("/reports", userData).
 		success(function(data, status, headers, config){
 			console.log("editsuccess");
 			window.location="#/home/homeView";

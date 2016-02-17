@@ -38,7 +38,7 @@ public class Report {
 	@JoinColumn(name="statusid")
 	private ReportStatus reportStatus;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private Collection<LineItem> lineItems;
 	
 	/**

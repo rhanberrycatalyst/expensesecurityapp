@@ -67,8 +67,8 @@ public class ReportWebService {
 	 * @param id
 	 * @return Report
 	 */	
-	@RequestMapping(value="/reports/{id}", method = RequestMethod.PUT)
-	public void updatereport(@PathVariable Integer id, @RequestBody Report report){
+	@RequestMapping(value="/reports", method = RequestMethod.PUT)
+	public void updatereport(@RequestBody Report report){
 		reportService.update(report);
 	}
 	
