@@ -65,7 +65,7 @@
 			</td>
 
 			<td>
-				{{lineItem.value | currency}}
+				<input type="text" ng-value="lineItem.value | currency" >
 			</td>
 			<td>
 				<a class="btn" ng-click="removeItem(items)">Remove</button>
