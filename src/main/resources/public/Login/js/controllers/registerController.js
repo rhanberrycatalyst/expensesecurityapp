@@ -1,4 +1,4 @@
-angular.module('expenseApp').controller('registerController', ['$scope', '$state', '$http', 'registerService', function($scope, $state, $http, registerService){
+angular.module('expenseApp').controller('registerController', ['$scope', '$state', '$http', 'registerService','authService', function($scope, $state, $http, registerService, authService){
 
 	function someFunctionCallback(param){
 		console.log(param);
@@ -22,4 +22,10 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
             	console.log("Failed to Load Resource");
             });
     }
+	
+	$scope.cancel = function() {
+		registerService.setRegister(false);
+		authService.setLogout(false);
+		$state.go("login");
+	}
 }]);
