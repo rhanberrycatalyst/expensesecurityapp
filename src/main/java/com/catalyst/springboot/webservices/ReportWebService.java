@@ -81,7 +81,7 @@ public class ReportWebService {
 	 */	
 	@RequestMapping(value="/reportsubmitted/{id}", method = RequestMethod.PUT)
 	public void updateReportToSubmit(@PathVariable Integer id){
-		System.out.println("WebService id"+id);
+		//System.out.println("WebService id"+id);
 		reportService.updateToSubmit(id);
 	} 
 
