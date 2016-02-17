@@ -2,7 +2,7 @@
 
 angular.module('expenseApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	
-	$urlRouterProvider.otherwise('/home/homeView');
+	$urlRouterProvider.otherwise('/login');
 	
 	$stateProvider
 		.state("login", {

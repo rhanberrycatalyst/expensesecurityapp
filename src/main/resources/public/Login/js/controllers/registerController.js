@@ -13,7 +13,7 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
                 isActive:true
             })
             console.log(userData)
-            $http.post("/user", userData).
+            $http.post("/register", userData).
             success(function(){
             	registerService.setRegister(true);
             	$state.go("login");
