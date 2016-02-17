@@ -10,6 +10,7 @@ import static org.mockito.Mockito.doNothing;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,19 +53,46 @@ public class EndUserServiceImplTest {
 		target.getUsers();
 		verify(mockuserDao, times(1)).getAllEndUsers();
 	}
-/*	
+	
 	@Test
-	public void testUpdateUser(){
-		EndUser mockEndUser2 = mock(EndUser.class);
-		when(mockProject.getTechId()).thenReturn(mockEndUser2);
-		when(mockEndUser2.getUserId()).thenReturn(1);
+	public void testUpdateUserMatch(){
+		EndUser paramUser = mock(EndUser.class);
+		when(paramUser.getUserId()).thenReturn(1);
+		when(mockuserDao.getByEndUserId(1)).thenReturn(mockEndUser);
+		when(mockEndUser.getPassword()).thenReturn("test");
+		when(paramUser.getPassword()).thenReturn("test");
 		
+		doNothing().when(paramUser).setPassword("test");
+		target.update(paramUser);
+		verify(mockuserDao, times(1)).update(paramUser);
+	}
+	
+	@Test
+	public void testUpdateUserEmpty(){
+		EndUser paramUser = mock(EndUser.class);
+		when(paramUser.getUserId()).thenReturn(1);
+		when(mockuserDao.getByEndUserId(1)).thenReturn(mockEndUser);
+		when(mockEndUser.getPassword()).thenReturn("test");
+		when(paramUser.getPassword()).thenReturn("");
 		
-		when(mockEncoder.encode("password")).thenReturn("password");
-		doNothing().when(mockEndUser).setPassword("password");
-		target.update(null);
-		verify(mockuserDao, times(1)).update(null);
-	}*/
+		doNothing().when(paramUser).setPassword("test");
+		target.update(paramUser);
+		verify(mockuserDao, times(1)).update(paramUser);
+	}
+	
+	@Test
+	public void testUpdateUserNewPassword(){
+		EndUser paramUser = mock(EndUser.class);
+		when(paramUser.getUserId()).thenReturn(1);
+		when(mockuserDao.getByEndUserId(1)).thenReturn(mockEndUser);
+		when(mockEndUser.getPassword()).thenReturn("test");
+		when(paramUser.getPassword()).thenReturn("test2");
+		
+		when(mockEncoder.encode("test2")).thenReturn("test2");
+		doNothing().when(paramUser).setPassword("test");
+		target.update(paramUser);
+		verify(mockuserDao, times(1)).update(paramUser);
+	}
 	
 	@Test(expected=InvalidInputException.class)
 	public void testGetByuserIdZero() throws InvalidInputException{
@@ -83,44 +111,11 @@ public class EndUserServiceImplTest {
 		verify(mockuserDao, times(1)).getByEndUserId(any());
 	}
 	
-	/*@Test
-	public void testGetusersNoFilter(){
-		int expected = 2;
-		List<User> users = userList();
-		when(mockuserDao.getAllUsers()).thenReturn(users);
-		List<User> actual = target.getUsers(null);
-		assertEquals(expected, actual.size());
+	@Test
+	public void testGetUserByUserName(){
+		target.getUserByUsername("Luke");
 		
+		verify(mockuserDao, times(1)).getEndUserByEndUsername(any());
 	}
-
-	@Test
-	public void testGetusersActive(){
-		int expected = 1;
-		List<User> users = userList();
-		when(mockuserDao.getAllUsers()).thenReturn(users);
-		List<User> actual = target.getUsers(true);
-		assertEquals(expected, actual.size());
-	}
-	
-	@Test
-	public void testGetusersInactive(){
-		int expected = 1;
-		List<User> users = userList();
-		when(mockuserDao.getAllUsers()).thenReturn(users);
-		List<User> actual = target.getUsers(false);
-		assertEquals(expected, actual.size());
-	}
-	
-	private List<User> userList() {
-		List<User> users = new ArrayList<>();
-		User e = new User();
-		e.setActive(true);
-		users.add(e);
-		e = new User();
-		e.setActive(false);
-		users.add(e);
-		return users;
-	}*/
-	
 	
 }
