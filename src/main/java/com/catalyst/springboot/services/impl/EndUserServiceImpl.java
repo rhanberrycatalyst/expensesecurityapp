@@ -77,10 +77,8 @@ public class EndUserServiceImpl implements EndUserService {
 
 		if (StringUtils.isEmpty(newPassword) || newPassword.equals(oldPassword)) {
 			user.setPassword(oldPassword);
-		} else if (!encoder.matches(newPassword, oldPassword)) {
+		} else  {
 			user.setPassword(encoder.encode(newPassword));
-		} else {
-			user.setPassword(oldPassword);
 		}
 		endUserDao.update(user);
 	}
