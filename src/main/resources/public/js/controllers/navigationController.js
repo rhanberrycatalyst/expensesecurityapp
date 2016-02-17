@@ -1,4 +1,4 @@
-angular.module('expenseApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', '$http', function($scope, currentUserService, getCurrentUserService, $state, $http) {
+angular.module('expenseApp').controller('navigationController', ['$scope', 'currentUserService', 'getCurrentUserService', '$state', '$http', 'authService', function($scope, currentUserService, getCurrentUserService, $state, $http, authService) {
 
 	getCurrentUserService.currentUser().then(function(success){
         currentUserService.setCurrentUser(success.data);
@@ -23,8 +23,7 @@ angular.module('expenseApp').controller('navigationController', ['$scope', 'curr
 
 	$scope.logout = function() {
 		  $http.post('/logout', {}).success(function() {
-			 // routerService.setLoggedIn(false);
-			  console.log("success");
+			  authService.setLogout(true);
 		  }).error(function(data) {
 		    console.log("Failed to logout")
 		  });
