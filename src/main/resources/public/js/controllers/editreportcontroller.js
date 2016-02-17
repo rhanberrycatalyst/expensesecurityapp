@@ -1,5 +1,6 @@
 angular.module('expenseApp').controller('editreportController', ['$scope', '$state', '$http', 'createLineItemService', 'getCurrentUserService', 'getReportService', function($scope, $state, $http, createLineItemService, getCurrentUserService, getReportService){
 
+	$scope.itemList = [];
 
 	$scope.reportToEdit = {};
 	$scope.reportId = getReportService.curReport;
@@ -15,6 +16,11 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		getReportService.dbCall($scope.reportId).then(
 			function(success){
 				$scope.reportToEdit = success.data;
+//				angular.forEach($scope.reportToEdit.lineItems, function())
+				for(var x = 0; x<$scope.reportToEdit.lineItems.length;x++)
+				{
+					$scope.itemList.push({'type':{'typeId':$scope.reportToEdit.lineItems[x].type.typeId}, 'value':$scope.reportToEdit.lineItems[x].value});
+				}
 				console.log(success.data);
 				return success.data;
 			},function(error){
@@ -54,7 +60,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 						}
 					});
 				});
-				console.log($scope.projectList);
+				//console.log($scope.projectList);
 			});
 		});
 
@@ -62,11 +68,12 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 	//below is the controller functionality for creating a report.
 	//The above code selects the correct projects for a given user, below code provides functionality to edit the report.
 
-	$scope.itemList = [];
+	
 	$scope.itemType = 1;
 	$scope.cost = '';
 
 	$scope.addRow = function(){
+		console.log({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = 1;
 		$scope.cost = '';
@@ -106,7 +113,7 @@ angular.module('expenseApp').controller('editreportController', ['$scope', '$sta
 		var lineItemsList = $scope.itemList;
 		$scope.error = false;
 		var userData = angular.toJson({
-			endUser:{"userId":$scope.getCurrentUser.userId},
+			endUser:{"userId":$scope.reportToEdit.endUser.userId}, //userid from the specific report
 			name:reportName.value,
 			note:note.value,
 			project:{"projectId":projectName.value},
