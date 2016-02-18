@@ -71,7 +71,7 @@ public class ReportDaoHibernate implements ReportDao {
 						.setParameter("id", reportId).getSingleResult();
 
 				Integer typeId = item.getType().getTypeId();
-				System.out.println(typeId);
+				//System.out.println(typeId);
 				Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
 						.setParameter("id", typeId).getSingleResult();
 
