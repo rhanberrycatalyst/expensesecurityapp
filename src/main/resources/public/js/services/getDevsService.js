@@ -1,17 +1,23 @@
 angular.module("expenseApp").service("getDevsService", function(){
 	
 	//holds a list of devs
-	var devList = [];
 	var addDev = function(newDev){
-		devList.push(newDev);
+		this.devList.push(newDev);
 	};
 	
 	var getDevs = function(){
-		return devList;
+		return this.devList;
+	};
+	
+	var clearDevs = function(){
+		this.devList.splice(0,this.devList.length);
+		return [];
 	};
 	
 	return{
+		devList: [],
 		addDev: addDev,
-		getDev: getDevs
+		getDev: getDevs,
+		clearDevs: clearDevs
 	};
 })

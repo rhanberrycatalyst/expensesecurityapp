@@ -1,5 +1,6 @@
 angular.module('expenseApp').controller('projectController', ['$scope', '$state', '$http', 'getUsersService', 'getDevsService', function($scope, $state, $http, getUsersService, getDevsService){
 	
+	$scope.devLists = getDevsService.clearDevs();
 	//gets a list of all developers
 	$http.get('/users').then(function(data){
 		$scope.data = data;
@@ -9,8 +10,10 @@ angular.module('expenseApp').controller('projectController', ['$scope', '$state'
 	$scope.addDev = function(newDev){
 		$scope.devName = document.getElementById('developers')[document.getElementById('developers').selectedIndex].text;
 		$scope.curDev = {"userId": newDev, "nomdeplume": $scope.devName};
+		console.log($scope.devLists)
 		getDevsService.addDev($scope.curDev);
 		$scope.devLists = getDevsService.getDev();
+		console.log($scope.devLists);
 	};
 	//checks to see if a project name is unique
 	$scope.projectNameAvailable = function(){
