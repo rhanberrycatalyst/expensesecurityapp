@@ -35,6 +35,14 @@ public interface ProjectDao {
 	 */
 	Project getByProjectId(Integer projectId);
 
+	
+	/**
+	 * Retrieve information about a current users projects
+	 * @param userId
+	 * @return
+	 */
+	List<Project> getProjectsByUserId(Integer userId);
+	
 	/**
 	 * Retrieves an Project with a matching ProjectName.
 	 * 
