@@ -1,10 +1,11 @@
-angular.module('expenseApp').controller('registerController', ['$scope', '$state', '$http', 'registerService', function($scope, $state, $http, registerService){
+angular.module('expenseApp').controller('registerController', ['$scope', '$state', '$http', 'registerService','authService', function($scope, $state, $http, registerService, authService){
 
+	//saves a newly created user to the database
 	function someFunctionCallback(param){
 		console.log(param);
 	}
 	$scope.sendPost = function() {
-    	console.log(userName.value);
+		$scope.error = false;
         var userData = JSON.stringify({
         		email:userName.value,
                 password:passWord.value,
@@ -12,14 +13,22 @@ angular.module('expenseApp').controller('registerController', ['$scope', '$state
                 lastname:lastName.value,
                 isActive:true
             })
-            console.log(userData)
-            $http.post("/user", userData).
+
+
+            $http.post("/register", userData).
             success(function(){
             	registerService.setRegister(true);
             	$state.go("login");
-            }).
-            error(function(){
+            })
+            .error(function(){
             	console.log("Failed to Load Resource");
+            	$scope.error = true;
             });
     }
+	
+	$scope.cancel = function() {
+		registerService.setRegister(false);
+		authService.setLogout(false);
+		$state.go("login");
+	}
 }]);

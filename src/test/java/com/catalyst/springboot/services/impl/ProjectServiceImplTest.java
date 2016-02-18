@@ -16,44 +16,81 @@ import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.catalyst.springboot.daos.EndUserDao;
+import com.catalyst.springboot.daos.ProjectDao;
 import com.catalyst.springboot.entities.EndUser;
+import com.catalyst.springboot.entities.Project;
 import com.catalyst.springboot.services.InvalidInputException;
 
-public class EndUserServiceImplTest {
+public class ProjectServiceImplTest {
 
-	private EndUserServiceImpl target;
-	private EndUserDao mockuserDao;
-	private EndUser mockEndUser;
-	private BCryptPasswordEncoder mockEncoder;
+	private ProjectServiceImpl target;
+	private ProjectDao mockProjectDao;
+	private Project mockProject;
 	
 	
 	@Before
 	public void setup(){
-		target = new EndUserServiceImpl();
-		mockuserDao = mock(EndUserDao.class);
-		mockEndUser = mock(EndUser.class);
-		target.setuserDao(mockuserDao);
-		mockEncoder = mock(BCryptPasswordEncoder.class);
-		target.setEncoder(mockEncoder);
+		target = new ProjectServiceImpl();
+		mockProjectDao = mock(ProjectDao.class);
+		target.setProjectDao(mockProjectDao);
+		mockProject = mock(Project.class);
 	}
 
 	@Test
-	public void testAdduser(){
+	public void testAddProject(){
 		
-		when(mockEncoder.encode("password")).thenReturn("password");
-		doNothing().when(mockEndUser).setPassword("password");
-		target.add(mockEndUser);
-		verify(mockuserDao, times(1)).add(mockEndUser);
+		target.add(mockProject);
+		verify(mockProjectDao, times(1)).add(mockProject);
 	}
 
 	@Test
-	public void testGetUsers() {
-		List<EndUser> expected = new ArrayList<>();
-		when(mockuserDao.getAllEndUsers()).thenReturn(expected);
-		target.getUsers();
-		verify(mockuserDao, times(1)).getAllEndUsers();
+	public void testProjects() {
+		List<Project> expected = new ArrayList<>();
+		when(mockProjectDao.getAllProjects()).thenReturn(expected);
+		target.getProjects();
+		verify(mockProjectDao, times(1)).getAllProjects();
 	}
 	
+	@Test(expected=InvalidInputException.class)
+	public void testGetByProjectIdZero() throws InvalidInputException{
+		target.getByProjectId(-1);
+	}
+	
+	@Test(expected=InvalidInputException.class)
+	public void testGetByProjectNull() throws InvalidInputException{
+		target.getByProjectId(null);
+	}
+	
+	@Test
+	public void testGetByProjectIdSuccess() throws InvalidInputException{
+		target.getByProjectId(1);
+		verify(mockProjectDao, times(1)).getByProjectId(any());
+	}
+	
+	@Test
+	public void testUpdateProject(){
+		
+		target.update(mockProject);
+		verify(mockProjectDao, times(1)).update(mockProject);
+	}
+	
+	@Test(expected=InvalidInputException.class)
+	public void testGetByProjectNameEmpty() throws InvalidInputException{
+		target.getProjectByProjectName("");
+	}
+	
+	@Test(expected=InvalidInputException.class)
+	public void testGetByProjectNameNull() throws InvalidInputException{
+		target.getProjectByProjectName(null);
+	}
+	
+	@Test
+	public void testGetByProjectNameSuccess() throws InvalidInputException{
+		target.getProjectByProjectName("test");
+		verify(mockProjectDao, times(1)).getProjectByProjectName("test");
+	}
+
+	/*
 	@Test
 	public void testUpdateUserMatch(){
 		EndUser paramUser = mock(EndUser.class);
@@ -94,28 +131,15 @@ public class EndUserServiceImplTest {
 		verify(mockuserDao, times(1)).update(paramUser);
 	}
 	
-	@Test(expected=InvalidInputException.class)
-	public void testGetByuserIdZero() throws InvalidInputException{
-		target.getByUserId(-1);
-	}
 	
-	@Test(expected=InvalidInputException.class)
-	public void testGetByUserNull() throws InvalidInputException{
-		target.getByUserId(null);
-	}
 	
-	@Test
-	public void testGetByuserIdSuccess() throws InvalidInputException{
-		target.getByUserId(1);
-		
-		verify(mockuserDao, times(1)).getByEndUserId(any());
-	}
+	
 	
 	@Test
 	public void testGetUserByUserName(){
 		target.getUserByUsername("Luke");
 		
 		verify(mockuserDao, times(1)).getEndUserByEndUsername(any());
-	}
+	}*/
 	
 }

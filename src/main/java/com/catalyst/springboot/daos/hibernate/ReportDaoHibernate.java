@@ -169,10 +169,10 @@ public class ReportDaoHibernate implements ReportDao {
 
 
 
-/**
+	/**
 
-	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in.
-	 * @param projectList
+	 * Gets a list of reports with the 'Submitted' status belonging to any of a list of projects passed in. 
+	 * @param projectList 
 	 * @return
 	 */
 	@Override
@@ -193,7 +193,7 @@ public class ReportDaoHibernate implements ReportDao {
 
 
 	/* * update ReportStatus To Submit in database with
-	 *
+	 * 
 	 * @param report
 	 */
 	@Override

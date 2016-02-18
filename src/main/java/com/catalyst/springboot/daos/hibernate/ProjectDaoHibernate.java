@@ -55,12 +55,7 @@ public class ProjectDaoHibernate implements ProjectDao {
 			return em.createQuery("SELECT p FROM Project p", Project.class).
 				getResultList();
 	}
-	
-	public List<Project> getProjectsByUserId(Integer userId){
-			return em.createQuery("SELECT p FROM Project p", Project.class)
-				.getResultList();
-	}
-	
+
 	/**
 	 * Method obtains specific project by searching database with @param projectId.
 	 * @param projectId
