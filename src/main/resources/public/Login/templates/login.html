@@ -1,5 +1,6 @@
-<p id="loggedOut" ng-show="logout" class="text-center"> You have been successfully logged out. </p>
-<p id="addedUser" ng-show="register" class="text-center"> Your account has successfully been created. </p>
+<p ng-show="logout" class="text-center frontPageError"> You have been successfully logged out. </p>
+<p ng-show="register" class="text-center frontPageError"> Your account has successfully been created. </p>
+<p ng-show="loginFailure" class="text-center frontPageError"> Invalid Email or Password. Please try again. </p>
 
 <h2>Welcome to the Expense Report Application</h2>
 <h4>Please Login or Register now</h4>

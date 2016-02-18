@@ -1,4 +1,6 @@
 angular.module("expenseApp").directive("pwCheck", function(){
+	
+	//makes sure the password fits all criteria
 	return{
 		require: 'ngModel',
         link: function (scope, elem, attrs, model) {

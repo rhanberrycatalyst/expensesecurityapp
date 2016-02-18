@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @EnableWebMvcSecurity
@@ -84,7 +83,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.and()
 	.logout()
 		.logoutSuccessHandler(logoutSuccessHandler)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutUrl("/logout")
 		.logoutSuccessUrl("/")
 		.deleteCookies("JSESSIONID", "CSRF-TOKEN")
 		.permitAll();

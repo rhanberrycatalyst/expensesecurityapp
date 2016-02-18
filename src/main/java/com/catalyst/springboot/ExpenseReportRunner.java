@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *  to which the expense reports can attach.
  * @author ldahlberg
  * @author gwalpole
- * @author bboyd
+ * @author bhorn
  * @author rhanberry
  * @author apaulose
  *
