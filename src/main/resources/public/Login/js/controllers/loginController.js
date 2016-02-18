@@ -2,9 +2,10 @@ angular.module('expenseApp').controller('loginController', ['$scope', '$state', 
 	
 	$scope.loginFailure = false;
 	$scope.logout = authService.getLogout();
-	$scope.register = registerService.getRegister();
+	$scope.register = registerService.getRegister();	
 	
-
+	//sends the login information entered to the database to see if it's
+	//valid or not
 	$scope.login = function(){
 		$http.post('/loginPage', "username="+$scope.userName+"&password="+$scope.passWord, {
 			headers: {'Content-Type':'application/x-www-form-urlencoded', 

@@ -1,17 +1,7 @@
 angular.module('expenseApp').controller('reportController', ['$scope', '$state', '$http', 'createLineItemService', 'getCurrentUserService', function($scope, $state, $http, createLineItemService, getCurrentUserService){
 
-//	$scope.typetype = {
-//		    availableOptions: [
-//		      {typeId: '1', value: 'Mileage'},
-//		      {typeId: '2', value: 'Per Diem'},
-//		      {typeId: '3', value: 'Lodgin'},
-//		      {typeId: '4', value: 'Travel'},
-//		      {typeId: '5', value: 'Meals'},
-//		      {typeId: '6', value: 'Entertainment'},
-//		      {typeId: '7', value: 'Parking'},
-//		      {typeId: '8', value: 'Other'}
-//		    ]};
-
+	//gets the currently logged in user's information and fills the project
+	//drop down with projects they are currently associated with
 	getCurrentUserService.currentUser()
 	.then(function(data){
 		$scope.projectList = [];
@@ -27,16 +17,14 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 					}
 				});
 			});
-			console.log($scope.projectList);
 		});
 	});
-
-
 
 	$scope.itemList = [];
 	$scope.itemType = 1;
 	$scope.cost = '';
 
+	//add a line item to the report
 	$scope.addRow = function(){
 		$scope.itemList.push({'type':{'typeId':$scope.itemType}, 'value':$scope.cost});
 		$scope.itemType = 1;
@@ -68,10 +56,12 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
 			return "Other"
 		}
 	};
+	//removes a line item from the report
 	$scope.removeItem = function(item){
 		var index = $scope.itemList.indexOf(item);
 		$scope.itemList.splice(index, 1);
 	};
+	//saves the report to the database
 	$scope.sendReport = function() {
         var lineItemsList = $scope.itemList;
         $scope.error = false;
@@ -85,13 +75,9 @@ angular.module('expenseApp').controller('reportController', ['$scope', '$state',
             })
             $http.post("/reports", userData).
             success(function(data, status, headers, config){
-            	console.log("succss");
-
             	window.location="#/home/homeView";
-
             }).
             error(function(data, status, headers, config){
-            	console.log("fail");
             	$scope.error = true;
             });
     };

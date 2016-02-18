@@ -1,5 +1,6 @@
  angular.module("expenseApp").service("getReportService", ["$http", function($http){
 	
+	//returns report information
 	return {
 	  dbCall: function(id){ return $http.get('/reportlist/'+id)},
 	  dbGetAll: function(userid){ return $http.get('/reports/'+userid)},
