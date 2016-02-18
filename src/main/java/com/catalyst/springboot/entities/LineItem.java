@@ -1,6 +1,5 @@
 package com.catalyst.springboot.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +21,7 @@ public class LineItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer lineItemId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="reportid")
 	private Report report;
 	

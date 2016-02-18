@@ -47,11 +47,11 @@
 				Cost
 			</th>
 		</tr>
-		<tr ng-repeat="lineItem in reportToEdit.lineItems">
+		<tr ng-repeat="lineItem in itemList">
 			<td>
 				<div class="form-group">
 					<label for="itemType" class="col-sm-2">Type: </label>
-					<select name="itemType" ng-model="lineItem.type.type" ng-value="lineItem.type.type">
+					<select name="itemType" ng-model="itemType" ng-value="lineItem.type.type">
 				 		<option value="1">Mileage</option>
 						<option value="2">Per Diem</option>
 						<option value="3">Lodging</option>
@@ -61,6 +61,7 @@
 						<option value="7">Parking</option>
 						<option value="8">Other</option>
 					</select>
+					<input  name="ExpenseType" type="text" ng-value="lineItem.type.type" />
 				</div>
 			</td>
 

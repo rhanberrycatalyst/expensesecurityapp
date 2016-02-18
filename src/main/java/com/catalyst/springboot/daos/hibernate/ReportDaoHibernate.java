@@ -143,22 +143,24 @@ public class ReportDaoHibernate implements ReportDao {
 
 			Integer reportValue = report.getReportId();
 			Collection<LineItem> lineItems = report.getLineItems();
-//			for (LineItem item: lineItems){
-//				Integer reportId = reportValue;
-//				Report lineReport = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
-//				.setParameter("id", reportId)
-//				.getSingleResult();
-//
-//				Integer typeId = item.getType().getTypeId();
-//				System.out.println(typeId);
-//				Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
-//				.setParameter("id", typeId)
-//				.getSingleResult();
-//
-//				item.setReport(lineReport);
-//				item.setType(type);
-//				em.merge(item);
-//			}
+			for (LineItem item: lineItems){
+				Integer reportId = reportValue;
+				Report lineReport = em.createQuery("SELECT r FROM Report r WHERE r.reportId = :id", Report.class)
+				.setParameter("id", reportId)
+				.getSingleResult();
+				
+				
+
+				Integer typeId = item.getType().getTypeId();
+				System.out.println(typeId);
+				Type type = em.createQuery("SELECT t FROM Type t WHERE t.typeId = :id", Type.class)
+				.setParameter("id", typeId)
+				.getSingleResult();
+
+				item.setReport(lineReport);
+				item.setType(type);
+				em.merge(item);
+			}
 			
 			
 //		} finally {
